@@ -12,7 +12,6 @@ class rfk_program extends Model
     protected $fillable = [
         'id_sopd',
         "kode_a",
-        "kode_a",
         "kode_b",
         "program_kode",
         "sasaran" ,
@@ -21,4 +20,7 @@ class rfk_program extends Model
         "kode_rekening" ,
         "pagu_program"  ,
     ];
+
+    protected $primaryKey = 'id_program';
 }
+

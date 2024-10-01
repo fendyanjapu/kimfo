@@ -16,8 +16,7 @@
     <div class="par-tex2">
 </h2><br>
 <a href="{{ route('rfk_program.create') }}"
-      class="btn btn-primary" title="Tambah"><i class="fa fa-plus"> Tambah</i></a><br><br><br>
-
+        class="btn btn-primary mb-4" title="Tambah"><i class="icon-plus me-1"></i>Tambah</i></a>
         <table id="tabel" class="table table-striped table-bordered" >
   <thead>
     <tr>
@@ -51,13 +50,15 @@
         </td>
 
         <td style="text-align: center">
-            <a href="{{ route('rfk_program.edit', $key->id_program) }}" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i>Edit</a>
-            <a href="{{ route('rfk_program.destroy', $key->id_program) }}" onclick="return confirm('Hapus Data?')" class="btn btn-danger btn-sm mt-1" title="Hapus"><i class="fa fa-eraser"></i>Hapus</a>
+                <a href="{{ route('rfk_program.edit', $key->id_program) }}" class="btn btn-success btn-sm" title="Edit"><i class="icon-pencil"></i></a>
+
+                <a href="{{ route('rfk_program.destroy', $key->id_program) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
+                    <i class="icon-trash"></i>
+                </a>
+            </div>
         </td>
       </tr>
-    <?php
-      endforeach
-    ?>
+    @endforeach
   </tbody>
 </table>
 @endsection

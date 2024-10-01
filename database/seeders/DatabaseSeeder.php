@@ -13,7 +13,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            UserSeeder::class
+            UserSeeder::class,
+            rfk_program::class,
+            RfkKegiatanSeeder::class,
+            RfkSubkegiatanSeeder::class,
+            UraianSubkegiatanSeeder::class,
         ]);
     }
 }

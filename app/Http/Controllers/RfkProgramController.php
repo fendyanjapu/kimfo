@@ -10,7 +10,11 @@ class RfkProgramController extends Controller
 {
     public function index(){
 
-        $data = rfk_program::all();
+        // confirm delete
+        $title='Hapus Data!';
+        $text="Apakah Anda Yakin?";
+        confirmDelete($title, $text);
+        $data = rfk_program::all()->sortByDesc('created_at');
 
         return view('pages.admin.program.index',compact('data'));
     }
@@ -20,31 +24,20 @@ class RfkProgramController extends Controller
     }
     public function store(Request $request){
 
-        $validasi = $request->validate([
-            "kode_a" => 'required|integer',
-            "kode_b" => 'required|integer',
-            "program_kode" => 'required|integer',
-            "sasaran" => 'required|string',
-            "program" =>  'required|string',
-            "indikator_kinerja" =>  'required|string',
-            "kode_rekening" =>  'required|integer',
-            "pagu_program" =>  'required|integer',
-        ]);
-
         $create = rfk_program::create([
             "id_sopd" => '18',
-            "kode_a" => $validasi['kode_a'],
-            "kode_b" => $validasi['kode_b'],
-            "program_kode" => $validasi['program_kode'],
-            "sasaran" =>$validasi['sasaran'],
-            "program" =>  $validasi['program'],
-            "indikator_kinerja" =>  $validasi['indikator_kinerja'],
-            "kode_rekening" =>  $validasi['kode_rekening'],
-            "pagu_program" =>  $validasi['pagu_program'],
+            "kode_a" => $request['kode_a'],
+            "kode_b" => $request['kode_b'],
+            "program_kode" => $request['program_kode'],
+            "sasaran" =>$request['sasaran'],
+            "program" =>  $request['program'],
+            "indikator_kinerja" =>  $request['indikator_kinerja'],
+            "kode_rekening" =>  $request['kode_rekening'],
+            "pagu_program" =>  $request['pagu_program'],
         ]);
 
         if($create == true){
-            Alert::success('Suksus', 'Data Berhasil Ditambahkan');
+            Alert::success('Sukses', 'Data Berhasil Ditambahkan');
             return redirect()->route('rfk_program.index');
         }
         else{
@@ -53,10 +46,51 @@ class RfkProgramController extends Controller
         }
 
     }
-    public function show(Request $request){
+
+    public function edit($id){
+
+        $dProgram = rfk_program::findorfail($id);
+        return view('pages.admin.program.edit_program', compact('dProgram'));
 
     }
-    public function destroy(Request $request){
-        dd($request);
+
+    public function update(Request $request, $id){
+        $uProgram = rfk_program::Findorfail($id);
+
+        $update = $uProgram->update([
+            "id_sopd" => '18',
+            "kode_a" => $request['kode_a'],
+            "kode_b" => $request['kode_b'],
+            "program_kode" => $request['program_kode'],
+            "sasaran" =>$request['sasaran'],
+            "program" =>  $request['program'],
+            "indikator_kinerja" =>  $request['indikator_kinerja'],
+            "kode_rekening" =>  $request['kode_rekening'],
+            "pagu_program" =>  $request['pagu_program'],
+        ]);
+
+        if($update == true){
+            Alert::success('Sukses', 'Data Berhasil diubah');
+            return redirect()->route('rfk_program.index');
+        }
+        else{
+            Alert::error('Error!', 'Data Gagal diubah');
+            return redirect()->back();
+        }
+    }
+
+    public function destroy($id){
+        $hProgram = rfk_program::findorfail($id);
+        $hProgram->delete();
+
+        if($hProgram == true){
+            Alert::success('Sukses', 'Data Berhasil Dihapus');
+            return redirect()->route('rfk_program.index');
+        }
+        else{
+            Alert::error('Error!', 'Data Gagal Dihapus');
+            return redirect()->back();
+        }
+
     }
 }

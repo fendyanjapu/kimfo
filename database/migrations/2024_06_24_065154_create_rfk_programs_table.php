@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('rfk_programs', function (Blueprint $table) {
             $table->increments('id_program');
             $table->integer('id_sopd')->unsigned();
-            $table->string('kode_a', 10);
-            $table->string('kode_b', 10);
-            $table->string('program_kode', 10);
-            $table->string('sasaran');
-            $table->string('program');
-            $table->string('indikator_kinerja');
-            $table->string('kode_rekening', 100);
-            $table->string('pagu_program', 100);
+            $table->string('kode_a', 10)->nullable();
+            $table->string('kode_b', 10)->nullable();
+            $table->string('program_kode', 10)->nullable();
+            $table->string('sasaran')->nullable();
+            $table->string('program')->nullable();
+            $table->string('indikator_kinerja')->nullable();
+            $table->string('kode_rekening', 100)->nullable();
+            $table->string('pagu_program', 100)->nullable();
             $table->timestamps();
         });
     }

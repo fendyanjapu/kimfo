@@ -27,10 +27,10 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="DataMaster">
                     <li><a class="dropdown-item" href="{{ route('rfk_program.index') }}">Program</a></li>
-                    <li><a class="dropdown-item" href="{{ route('rfk_kegiatan') }}">Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="{{ route('rfk_subkegiatan') }}">Sub Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="{{ route('uraian_subkegiatan') }}">Uraian Subkegiatan</a></li>
-                    <li><a class="dropdown-item" href="{{ route('data_pegawai') }}">Pegawai</a></li>
+                    <li><a class="dropdown-item" href="{{ route('rfk_kegiatan.index') }}">Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('rfk_subkegiatan.index') }}">Sub Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('uraian_subkegiatan.index') }}">Uraian Subkegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('pegawai.index') }}">Pegawai</a></li>
                 </ul>
             </li>
 
@@ -39,10 +39,10 @@
                     <i class="icon-book"></i><span>Rencana Kas Anggaran</span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="RencanaKas">
-                    <li><a class="dropdown-item" href="">Program</a></li>
-                    <li><a class="dropdown-item" href="">Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="">Sub Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="">Uraian Subkegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('indexProgram') }}">Program</a></li>
+                    <li><a class="dropdown-item" href="{{ route('indexKegiatan') }}">Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('indexSubkegiatan') }}">Sub Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('indexUraianSubkegiatan') }}">Uraian Subkegiatan</a></li>
                 </ul>
               </li>
               <li class="nav-item">
