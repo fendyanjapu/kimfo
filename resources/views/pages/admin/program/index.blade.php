@@ -40,6 +40,9 @@
         <td>{{ $key->program }}</td>
         <td>{{ $key->indikator_kinerja }}</td>
         <td style="text-align: right">
+          @if ($key->pagu_program != '')
+          Rp {{ number_format($key->pagu_program) }}
+          @endif
         {{-- <?php
                 $this->db->select('SUM(pagu) as jumlah');
                 $this->db->from('uraian_subkegiatan');

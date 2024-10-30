@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PengendalianController;
+use App\Http\Controllers\PenggunaanKasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
@@ -47,6 +49,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::resource('rfk_subkegiatan', RfkSubkegiatanController::class);
    Route::resource('uraian_subkegiatan', UraianSubkegiatanController::class);
    Route::resource('pegawai', PegawaiController::class);
+   Route::resource('penggunaan_kas', PenggunaanKasController::class);
+
+   Route::get('pengendalian-program', [PengendalianController::class, 'program'] )->name('pengendalianProgram');
 
     // rencanakas
     Route::prefix('rencana_kas')->group(function () {

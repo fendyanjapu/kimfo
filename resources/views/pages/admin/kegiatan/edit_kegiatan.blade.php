@@ -61,7 +61,7 @@
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Pagu Kegiatan</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="pagu_kegiatan" value="{{ $rfk_kegiatan->pagu_kegiatan }}">
+                        <input type="text" class="form-control" name="pagu_kegiatan" value="{{ $rfk_kegiatan->pagu_kegiatan }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     </div>
                 </div>
 

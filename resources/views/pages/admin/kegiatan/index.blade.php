@@ -37,9 +37,9 @@
   <tbody>
     @foreach ($data as $key)
     @php
-        $ka = $key->program->kode_a;
-        $kb = $key->program->kode_b;
-        $p = $key->program->program_kode;
+        $ka = $key->program?->kode_a;
+        $kb = $key->program?->kode_b;
+        $p = $key->program?->program_kode;
         $kk = $key->kegiatan_kode;
         $kode = $ka .' '. $kb .' '. $p . ' ' . $kk;
 
@@ -49,10 +49,13 @@
         <td style="text-align: center">{{ $loop->iteration }}</td>
         <td>{{ $kode }}</td>
         <td>{{ $key->kegiatan_sasaran }}</td>
-        <td>{{ $key->program->program }}</td>
+        <td>{{ $key->program?->program }}</td>
         <td>{{ $key->kegiatan }}</td>
         <td>{{ $key->kegiatan_indikator_kinerja }}</td>
         <td style="text-align: right">
+          @if ($key->pagu_kegiatan != '')
+          Rp {{ number_format($key->pagu_kegiatan) }}
+          @endif
         {{-- <?php
                 $this->db->select('SUM(pagu) as jumlah');
                 $this->db->from('uraian_subkegiatan');

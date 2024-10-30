@@ -37,10 +37,10 @@
   <tbody>
     @foreach ($rfk_subkegiatan as $key)
     @php
-        $ka = $key->kegiatan->program->kode_a;
-        $kb = $key->kegiatan->program->kode_b;
-        $p = $key->kegiatan->program->program_kode;
-        $kk = $key->kegiatan->kegiatan_kode;
+        $ka = $key->kegiatan?->program->kode_a;
+        $kb = $key->kegiatan?->program->kode_b;
+        $p = $key->kegiatan?->program->program_kode;
+        $kk = $key->kegiatan?->kegiatan_kode;
         $skk = $key->subkegiatan_kode;
         $kode = $ka .' '. $kb .' '. $p . ' ' . $kk . ' ' . $skk;
 
@@ -52,11 +52,14 @@
         <td>
             {{ optional(optional($key->kegiatan)->program)->program ?? '' }}
         </td>
-        <td>{{ $key->kegiatan->kegiatan }}</td>
+        <td>{{ $key->kegiatan?->kegiatan }}</td>
         <td>{{ $key->subkegiatan }}</td>
         <td>{{ $key->subkegiatan_indikator_kinerja }}</td>
 
         <td style="text-align: right">
+          @if ($key->pagu_subkegiatan != '')
+          Rp {{ number_format($key->pagu_subkegiatan) }}
+          @endif
         {{-- <?php
                 $this->db->select('SUM(pagu) as jumlah');
                 $this->db->from('uraian_subkegiatan');

@@ -79,7 +79,7 @@
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Pagu SubKegiatan</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="pagu_subkegiatan" value="{{ $subkegiatan->pagu_subkegiatan }}">
+                        <input type="text" class="form-control" name="pagu_subkegiatan" value="{{ $subkegiatan->pagu_subkegiatan }}" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     </div>
                 </div>
 

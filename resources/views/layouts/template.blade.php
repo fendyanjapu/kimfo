@@ -46,7 +46,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                <a class="nav-link active" href="{{ route('penggunaan_kas.index') }}">
                     <i class="icon-money"></i><span>Penggunaan Kas/Bukti Kegiatan</span>
                 </a>
               </li>
@@ -56,7 +56,7 @@
                     <i class="icon-bar-chart"></i><span>Pengendalian</span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="Pengendalian">
-                    <li><a class="dropdown-item" href="">Program</a></li>
+                    <li><a class="dropdown-item" href="{{ route('pengendalianProgram') }}">Program</a></li>
                     <li><a class="dropdown-item" href="">Kegiatan</a></li>
                     <li><a class="dropdown-item" href="">Sub Kegiatan</a></li>
                     <li><a class="dropdown-item" href="">Uraian Subkegiatan</a></li>
