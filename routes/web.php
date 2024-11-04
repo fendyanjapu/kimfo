@@ -52,6 +52,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
 
    Route::get('pengendalian-program', [PengendalianController::class, 'program'] )->name('pengendalianProgram');
+   Route::get('pengendalian-kegiatan', [PengendalianController::class, 'kegiatan'] )->name('pengendalianKegiatan');
+   Route::get('pengendalian-subkegiatan', [PengendalianController::class, 'subkegiatan'] )->name('pengendalianSubkegiatan');
+   Route::get('pengendalian-uraian-subkegiatan', [PengendalianController::class, 'uraian_subkegiatan'] )->name('pengendalianUraianSubkegiatan');
 
     // rencanakas
     Route::prefix('rencana_kas')->group(function () {

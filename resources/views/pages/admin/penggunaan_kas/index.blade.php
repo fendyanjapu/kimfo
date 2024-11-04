@@ -35,7 +35,7 @@
             <td>{{ $key->subkegiatan->subkegiatan }}</td>
             <td>{{ $key->uraian_subkegiatan->uraian }}</td>
             <td style="text-align: center">{{ $key->bulan }}</td>
-            <td style="text-align: right">{{ $key->pagu != '' ? number_format($key->pagu) : '' }} </td>
+            <td style="text-align: right">{{ $key->pagu != '' ? "Rp ".number_format($key->pagu) : '' }} </td>
             <td style="text-align: center">
                 <a href="{{ route('penggunaan_kas.show', ['penggunaan_ka' => $key->id]) }}" class="btn btn-default" target="_blank">Lihat</a>
             </td>

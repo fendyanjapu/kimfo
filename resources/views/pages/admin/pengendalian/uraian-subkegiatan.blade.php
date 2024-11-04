@@ -11,7 +11,7 @@
     });
   </script>
   <h2>
-      <div class="par-text">Program</div>
+      <div class="par-text">subkegiatan</div>
       <div class="par-tex2">
   </h2><br>
   
@@ -19,7 +19,8 @@
     <thead>
       <tr>
         <th style="vertical-align: middle; text-align: center">NO</th>
-        <th style="vertical-align: middle; text-align: center">Program</th>
+        <th style="vertical-align: middle; text-align: center">Subkegiatan</th>
+        <th style="vertical-align: middle; text-align: center">Uraian</th>
         <th style="vertical-align: middle; text-align: center">Pagu</th>
         <th style="vertical-align: middle; text-align: center">Triwulan I</th>
         <th style="vertical-align: middle; text-align: center">Triwulan II</th>
@@ -34,17 +35,16 @@
         @foreach ($query as $key)
             <tr>
                 <td style="vertical-align: middle; text-align: center">{{ $loop->iteration }}</td>
-                <td>{{ $key->program }}</td>
+                <td>{{ $key->subkegiatan->subkegiatan }}</td>
+                <td>{{ $key->uraian }}</td>
                 <td style="vertical-align: middle; text-align: right">
                     <?php
-                        $q = App\Models\uraian_subkegiatan::selectRaw('sum(pagu) as jumlah')->where('id_program', '=', $key->id_program)->first();
-                        $pagu = $q->jumlah;
-                        echo $q->jumlah != '' ? "Rp ".number_format($q->jumlah) : '';
+                        echo $key->pagu != '' ? "Rp ".number_format($key->pagu) : '';
                     ?>
                 </td>
                 <td style="vertical-align: middle; text-align: right">
                     <?php
-                        $q = App\Models\Penggunaan_kas::where('id_program', '=', $key->id_program)->where('triwulan', '=', "i")->get();
+                        $q = App\Models\Penggunaan_kas::where('uraian', '=', $key->id_uraian_subkegiatan)->where('triwulan', '=', "i")->get();
                         $triwulan_i = 0;
                         foreach ($q as $row) {
                             $triwulan_i += $row->pagu;
@@ -54,7 +54,7 @@
                 </td>
                 <td style="vertical-align: middle; text-align: right">
                     <?php
-                        $q = App\Models\Penggunaan_kas::where('id_program', '=', $key->id_program)->where('triwulan', '=', "ii")->get();
+                        $q = App\Models\Penggunaan_kas::where('uraian', '=', $key->id_uraian_subkegiatan)->where('triwulan', '=', "ii")->get();
                         $triwulan_ii = 0;
                         foreach ($q as $row) {
                             $triwulan_ii += $row->pagu;
@@ -64,7 +64,7 @@
                 </td>
                 <td style="vertical-align: middle; text-align: right">
                     <?php
-                        $q = App\Models\Penggunaan_kas::where('id_program', '=', $key->id_program)->where('triwulan', '=', "iii")->get();
+                        $q = App\Models\Penggunaan_kas::where('uraian', '=', $key->id_uraian_subkegiatan)->where('triwulan', '=', "iii")->get();
                         $triwulan_iii = 0;
                         foreach ($q as $row) {
                             $triwulan_iii += $row->pagu;
@@ -74,7 +74,7 @@
                 </td>
                 <td style="vertical-align: middle; text-align: right">
                     <?php
-                        $q = App\Models\Penggunaan_kas::where('id_program', '=', $key->id_program)->where('triwulan', '=', "iv")->get();
+                        $q = App\Models\Penggunaan_kas::where('uraian', '=', $key->id_uraian_subkegiatan)->where('triwulan', '=', "iv")->get();
                         $triwulan_iv = 0;
                         foreach ($q as $row) {
                             $triwulan_iv += $row->pagu;
@@ -85,7 +85,7 @@
                 <td style="vertical-align: middle; text-align: right">
                     <?php
                         $total = $triwulan_i + $triwulan_ii + $triwulan_iii + $triwulan_iv;
-                        $sisa = intval($pagu) - intval($total);
+                        $sisa = intval($key->pagu) - intval($total);
                         echo "Rp ".number_format($sisa);
                     ?>
                 </td>
@@ -97,12 +97,12 @@
       ?>
         <tr>
           <td style="text-align: center"><?= ++$no ?></td>
-          <td><?= $key->program ?></td>
+          <td><?= $key->subkegiatan ?></td>
           <td style="text-align: right">
               <?php
                   $this->db->select('SUM(pagu) as jumlah');
                   $this->db->from('uraian_subkegiatan');
-                  $this->db->where('id_program', $key->id_program);
+                  $this->db->where('id_subkegiatan', $key->id_subkegiatan);
                   $row = $this->db->get()->row();
                   $pagu = $row->jumlah;
                   echo $row->jumlah != '' ? "Rp ".number_format($pagu) : '';
@@ -110,7 +110,7 @@
           </td>
           <td style="text-align: right">
               <?php
-                  $this->db->where('id_program', $key->id_program);
+                  $this->db->where('id_subkegiatan', $key->id_subkegiatan);
                   $this->db->where('triwulan', 'i');
                   $queri = $this->db->get('rfk_realisasi');
                   $triwulan_i = 0;
@@ -122,7 +122,7 @@
           </td>
           <td style="text-align: right">
               <?php
-                  $this->db->where('id_program', $key->id_program);
+                  $this->db->where('id_subkegiatan', $key->id_subkegiatan);
                   $this->db->where('triwulan', 'ii');
                   $queri = $this->db->get('rfk_realisasi');
                   $triwulan_ii = 0;
@@ -134,7 +134,7 @@
           </td>
           <td style="text-align: right">
               <?php
-                  $this->db->where('id_program', $key->id_program);
+                  $this->db->where('id_subkegiatan', $key->id_subkegiatan);
                   $this->db->where('triwulan', 'iii');
                   $queri = $this->db->get('rfk_realisasi');
                   $triwulan_iii = 0;
@@ -146,7 +146,7 @@
           </td>
           <td style="text-align: right">
               <?php
-                  $this->db->where('id_program', $key->id_program);
+                  $this->db->where('id_subkegiatan', $key->id_subkegiatan);
                   $this->db->where('triwulan', 'iv');
                   $queri = $this->db->get('rfk_realisasi');
                   $triwulan_iv = 0;

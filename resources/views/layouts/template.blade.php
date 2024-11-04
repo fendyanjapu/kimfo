@@ -57,9 +57,9 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="Pengendalian">
                     <li><a class="dropdown-item" href="{{ route('pengendalianProgram') }}">Program</a></li>
-                    <li><a class="dropdown-item" href="">Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="">Sub Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="">Uraian Subkegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('pengendalianKegiatan') }}">Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('pengendalianSubkegiatan') }}">Sub Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('pengendalianUraianSubkegiatan') }}">Uraian Subkegiatan</a></li>
                 </ul>
               </li>
 
