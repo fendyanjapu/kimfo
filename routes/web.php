@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IkuController;
+use App\Http\Controllers\KartuKendaliController;
+use App\Http\Controllers\KinerjaPegawaiController;
 use App\Http\Controllers\PengendalianController;
 use App\Http\Controllers\PenggunaanKasController;
 use Illuminate\Support\Facades\Route;
@@ -50,11 +53,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::resource('uraian_subkegiatan', UraianSubkegiatanController::class);
    Route::resource('pegawai', PegawaiController::class);
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
+   Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
+
+   Route::get('iku/index/{i}', [IkuController::class, 'index'])->name('iku.index');
+   Route::get('iku/download/{iku}', [IkuController::class, 'download'])->name('iku.download');
+
+   Route::resource('iku', IkuController::class)->except('index','create','edit', 'update');
 
    Route::get('pengendalian-program', [PengendalianController::class, 'program'] )->name('pengendalianProgram');
    Route::get('pengendalian-kegiatan', [PengendalianController::class, 'kegiatan'] )->name('pengendalianKegiatan');
    Route::get('pengendalian-subkegiatan', [PengendalianController::class, 'subkegiatan'] )->name('pengendalianSubkegiatan');
    Route::get('pengendalian-uraian-subkegiatan', [PengendalianController::class, 'uraian_subkegiatan'] )->name('pengendalianUraianSubkegiatan');
+
+   Route::get('kartu-kendali', [KartuKendaliController::class, 'index'] )->name('kartuKendali');
 
     // rencanakas
     Route::prefix('rencana_kas')->group(function () {

@@ -64,7 +64,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link active" href="">
+                <a class="nav-link active" href="{{ route('kartuKendali') }}">
                     <i class="icon-file"></i><span>Kartu Kendali</span>
                 </a>
               </li>
@@ -74,14 +74,14 @@
                     <i class="icon-bar-chart"></i><span>IKU</span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="IKU">
-                    <li><a class="dropdown-item" href="">Esselon 2</a></li>
-                    <li><a class="dropdown-item" href="">Esselon 3</a></li>
-                    <li><a class="dropdown-item" href="">Esselon 4</a></li>
+                    <li><a class="dropdown-item" href="{{ route('iku.index', ['i' => 2]) }}">Esselon 2</a></li>
+                    <li><a class="dropdown-item" href="{{ route('iku.index', ['i' => 3]) }}">Esselon 3</a></li>
+                    <li><a class="dropdown-item" href="{{ route('iku.index', ['i' => 4]) }}">Esselon 4</a></li>
                 </ul>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link active" href="">
+                <a class="nav-link active" href="{{ route('kinerja_pegawai.index') }}">
                     <i class="icon-list-alt"></i><span>Kinerja</span>
                 </a>
               </li>
