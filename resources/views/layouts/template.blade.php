@@ -30,7 +30,7 @@
                     <li><a class="dropdown-item" href="{{ route('rfk_kegiatan.index') }}">Kegiatan</a></li>
                     <li><a class="dropdown-item" href="{{ route('rfk_subkegiatan.index') }}">Sub Kegiatan</a></li>
                     <li><a class="dropdown-item" href="{{ route('uraian_subkegiatan.index') }}">Uraian Subkegiatan</a></li>
-                    <li><a class="dropdown-item" href="{{ route('pegawai.index') }}">Pegawai</a></li>
+                    <li><a class="dropdown-item" href="{{ route('user.index') }}">Pegawai</a></li>
                 </ul>
             </li>
 

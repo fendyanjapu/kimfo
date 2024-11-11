@@ -4,7 +4,7 @@
 <div class="herocontent">
     <div class="row justify-content-center">
         <div class="col-md-8 shadow-xl bg-white rounded">
-            <form class="px-5 py-5" action="{{ route('pegawai.store')}}" method="post">
+            <form class="px-5 py-5" action="{{ route('user.store')}}" method="post">
                 @csrf
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Nip</label>

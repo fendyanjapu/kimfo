@@ -17,7 +17,7 @@ class Kinerja_pegawai extends Model
         'tgl_input'
     ];
 
-    public function program()
+    public function pegawai()
     {
         return $this->belongsTo(Pegawai::class, 'pegawai_id', 'id');
     }

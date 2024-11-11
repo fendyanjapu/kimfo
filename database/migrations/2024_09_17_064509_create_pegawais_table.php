@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('nip', 30)->unique();
             $table->string('nama');
-            $table->string('username', 50);
             $table->string('jabatan');
             $table->date('tgl_login')->nullable();
             $table->timestamps();

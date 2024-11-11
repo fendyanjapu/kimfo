@@ -1,20 +1,21 @@
 <?php
 
-use App\Http\Controllers\IkuController;
-use App\Http\Controllers\KartuKendaliController;
-use App\Http\Controllers\KinerjaPegawaiController;
-use App\Http\Controllers\PengendalianController;
-use App\Http\Controllers\PenggunaanKasController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IkuController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RfkProgramController;
-use App\Http\Controllers\RfkKegiatanController;
-use App\Http\Controllers\RfkSubkegiatanController;
-use App\Http\Controllers\SelectComboController;
-use App\Http\Controllers\UraianSubkegiatanController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\RencanaKasController;
+use App\Http\Controllers\RfkProgramController;
+use App\Http\Controllers\RfkKegiatanController;
+use App\Http\Controllers\SelectComboController;
+use App\Http\Controllers\KartuKendaliController;
+use App\Http\Controllers\PengendalianController;
+use App\Http\Controllers\PenggunaanKasController;
+use App\Http\Controllers\KinerjaPegawaiController;
+use App\Http\Controllers\RfkSubkegiatanController;
+use App\Http\Controllers\UraianSubkegiatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::resource('rfk_subkegiatan', RfkSubkegiatanController::class);
    Route::resource('uraian_subkegiatan', UraianSubkegiatanController::class);
    Route::resource('pegawai', PegawaiController::class);
+   Route::resource('user', UserController::class);
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
 

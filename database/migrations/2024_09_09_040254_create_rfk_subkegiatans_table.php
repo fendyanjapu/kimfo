@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('subkegiatan_sasaran')->nullable();
             $table->string('subkegiatan')->nullable();
             $table->string('subkegiatan_indikator_kinerja')->nullable();
+            $table->string('kode_rekening')->nullable();
             $table->string('pagu_subkegiatan',100)->nullable();
             $table->timestamps();
         });

@@ -29,6 +29,7 @@
         <th style="vertical-align: middle; text-align: center">Kegiatan</th>
         <th style="vertical-align: middle; text-align: center">Subkegiatan</th>
         <th style="vertical-align: middle; text-align: center">Indikator Kinerja Program (Outcome/Kegiatan Output)</th>
+        <th style="vertical-align: middle; text-align: center">Kode Rekening</th>
         <th style="vertical-align: middle; text-align: center">Pagu Subkegiatan</th>
         <th style="vertical-align: middle; text-align: center" width="15px">#</th>
      </tr>
@@ -55,7 +56,7 @@
         <td>{{ $key->kegiatan?->kegiatan }}</td>
         <td>{{ $key->subkegiatan }}</td>
         <td>{{ $key->subkegiatan_indikator_kinerja }}</td>
-
+        <td>{{ $key->kode_rekening }}</td>
         <td style="text-align: right">
           @if ($key->pagu_subkegiatan != '')
           Rp {{ number_format($key->pagu_subkegiatan) }}

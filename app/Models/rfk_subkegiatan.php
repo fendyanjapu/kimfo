@@ -17,6 +17,7 @@ class rfk_subkegiatan extends Model
         "subkegiatan",
         "subkegiatan_indikator_kinerja",
         "pagu_subkegiatan",
+        "kode_rekening",
     ];
 
     protected $primaryKey = 'id_subkegiatan';

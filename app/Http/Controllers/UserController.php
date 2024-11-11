@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pegawai;
+use Alert;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-use Alert;
-class PegawaiController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         // confirm delete
-         $title='Hapus Data!';
-         $text="Apakah Anda Yakin?";
-         confirmDelete($title, $text);
+        // confirm delete
+        $title='Hapus Data!';
+        $text="Apakah Anda Yakin?";
+        confirmDelete($title, $text);
 
-        $pegawai = User::where('level', '!=' , 'Admin')->get();
-        return view('pages.admin.pegawai.index', compact('pegawai'));
+       $user = User::where('level', '!=' , 'Admin')->get();
+       return view('pages.admin.user.index', compact('user'));
     }
 
     /**
@@ -28,7 +27,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pegawai.add');
+        return view('pages.admin.user.add');
     }
 
     /**
@@ -63,7 +62,7 @@ class PegawaiController extends Controller
 
                 if($createUser){
                     Alert::success('Sukses', 'Pegawai Berhasil Ditambahkan');
-                    return redirect()->route('pegawai.index');
+                    return redirect()->route('user.index');
                 }
                 else{
                     Alert::error('Gagal', 'Pegawai Gagal Ditambahkan');
@@ -78,7 +77,7 @@ class PegawaiController extends Controller
     public function show(User $user)
     {
         if($user){
-            return view('pages.admin.pegawai.lihat', compact('pegawai'));
+            return view('pages.admin.user.show', compact('user'));
         }
         else{
             alert::error('error', 'Tidak Boleh!');
@@ -89,16 +88,16 @@ class PegawaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pegawai $pegawai)
+    public function edit(User $user)
     {
-        $query = Pegawai::findOrFail($pegawai->id);
-        return view('pages.admin.pegawai.edit', ['pegawai' => $query]);
+        $query = User::findOrFail($user->id);
+        return view('pages.admin.user.edit', ['user' => $query]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pegawai $pegawai)
+    public function update(Request $request, User $user)
     {
         $validasi = $request->validate([
             'nip' => 'required|max:30',
@@ -107,25 +106,26 @@ class PegawaiController extends Controller
             'username' => 'required',
         ]);
 
-        $updatePegawai = $pegawai->update([
+        if ($request->password != '') {
+            $password = sha1($request->password);
+        } else {
+            $password = $request->password_lama;
+        }
+
+        $qUser = User::Findorfail($user->id);
+
+        $updateUser = $qUser->update([
             'nip' => $validasi['nip'],
             'nama' => $validasi['nama'],
             'username' => $validasi['username'],
+            'password' => $password,
             'jabatan' => $validasi['jabatan'],
         ]);
 
-        $data['username'] = $validasi['username'];
 
-        if ($request->password != '') {
-            $data['username'] = sha1($validasi['username']);
-        }
-
-        $updateUser = User::update($data);
-
-
-        if($updatePegawai && $updateUser){
+        if($updateUser){
             Alert::success('Sukses', 'Data Berhasil Diubah');
-            return redirect()->route('uraian_subkegiatan.index');
+            return redirect()->route('user.index');
         }
         else{
             Alert::error('Error!', 'Data Gagal ditambah');
@@ -142,7 +142,7 @@ class PegawaiController extends Controller
 
         if($delete){
             Alert::success('Sukses', 'Data Berhasil Dihapus');
-            return redirect()->route('iku.index', );
+            return redirect()->route('user.index', );
         }
         else{
             Alert::error('Error!', 'Data Gagal Dihapus');

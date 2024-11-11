@@ -28,6 +28,7 @@
         <th style="vertical-align: middle; text-align: center">Program</th>
         <th style="vertical-align: middle; text-align: center">Kegiatan</th>
         <th style="vertical-align: middle; text-align: center">Indikator Kinerja Program (Outcome/Kegiatan Output)</th>
+        <th style="vertical-align: middle; text-align: center">Kode Rekening</th>
         <th style="vertical-align: middle; text-align: center">Pagu Kegiatan</th>
 
         <th style="vertical-align: middle; text-align: center" width="15px">#</th>
@@ -52,6 +53,7 @@
         <td>{{ $key->program?->program }}</td>
         <td>{{ $key->kegiatan }}</td>
         <td>{{ $key->kegiatan_indikator_kinerja }}</td>
+        <td>{{ $key->kode_rekening }}</td>
         <td style="text-align: right">
           @if ($key->pagu_kegiatan != '')
           Rp {{ number_format($key->pagu_kegiatan) }}

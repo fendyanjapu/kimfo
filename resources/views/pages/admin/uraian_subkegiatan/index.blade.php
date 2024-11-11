@@ -26,6 +26,7 @@
         <th style="vertical-align: middle; text-align: center">Kode Rekening</th>
         <th style="vertical-align: middle; text-align: center">Subkegiatan</th>
         <th style="vertical-align: middle; text-align: center">Uraian</th>
+        <th style="vertical-align: middle; text-align: center">Kode Rekening</th>
         <th style="vertical-align: middle; text-align: center">Pagu</th>
         <th style="vertical-align: middle; text-align: center" width="15px">#</th>
        </tr>
@@ -40,6 +41,7 @@
                 {{ $key->subkegiatan ? $key->subkegiatan->subkegiatan : '' }}
            </td>
             <td> {{ $key->uraian }} </td>
+            <td> {{ $key->kode_rekening }} </td>
             <td style="text-align: right">
                 {{ $key->pagu != '' ? "Rp " . number_format($key->pagu) : '' }}
             </td>

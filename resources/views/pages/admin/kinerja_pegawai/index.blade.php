@@ -4,8 +4,6 @@
 <script>
     $(document).ready(function(){
       $('#tabel').DataTable( {
-          scrollX: true,
-          scrollY: true,
          "language": {
               "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json"
           } 
@@ -13,7 +11,7 @@
     });
   </script>
   <h2>
-      <div class="par-text">Kinerja Pegawai {{ Session::get('level') }}</div>
+      <div class="par-text">Kinerja Pegawai</div>
       <div class="par-tex2">
   </h2><br>
   <a href="{{ route('kinerja_pegawai.create') }}"
@@ -36,8 +34,8 @@
         <tr>
             <td style="text-align: center" style="width:1%">{{ $loop->iteration }}</td>
             <td style="width:20%">
-              <?= $key->nama ?> <br>
-              <?= $key->nip ?>
+              <?= $key->pegawai->nama ?> <br>
+              <?= $key->pegawai->nip ?>
             </td>
             <td style="width:20%"><?= $key->kinerja_harian ?></td>
             <td style="width:20%"><?= $key->target_bulanan ?></td>
@@ -45,15 +43,19 @@
             <td style="width:10%"><?= date('d-m-Y', STRTOTIME($key->tgl_input)) ?></td>
                 <td style="text-align: center">
                    
-                        {{-- <?php if($this->session->nip) : ?>
-                          <a href="<?= base_url('kinerja_pegawai/edit/'.$key->id_kinerja) ?>" class="btn btn-second" title="edit"><i class="fa fa-pencils"></i>Edit</a>
-                        <?php endif ?>
+                        {{-- <?php if(Session::get('level') == 'Pegawai') : ?> --}}
+                          <a href="{{ route('kinerja_pegawai.edit', ['kinerja_pegawai' => $key->id]) }}" class="btn btn-success" title="edit"><i class="fa fa-pencils"></i>Edit</a>
+                        {{-- <?php endif ?> --}}
     
-                        <a href="<?php echo base_url('kinerja_pegawai/cetak/'.$key->id_kinerja) ?>" class="btn btn-warning" title="Print" target="_blank">
+                        <a href="#" class="btn btn-warning" title="Print" target="_blank">
                         <i class="fa fa-print" aria-hidden="true">Cetak</i>
-                        <?php if($this->session->level == 'admin') : ?>
-                        <a href="<?= base_url('kinerja_pegawai/hapus/'.$key->id_kinerja) ?>" class="btn btn-danger" title="Hapus"><i class="fa fa-eraser"></i>Hapus</a>
-                        <?php endif ?> --}}
+                        </a>
+                        <form action="{{ route('kinerja_pegawai.destroy', ['kinerja_pegawai' => $key->id]) }}" method="POST">
+                          @csrf
+                          <button class="btn btn-danger" onclick="return confirm('Hapus data?')"><i class="fa fa-eraser"> Hapus</i></button>
+                          @method('delete')
+                        </form>
+                        
                 </td>
           </tr>
         @endforeach

@@ -20,7 +20,11 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
-        'level'
+        'level',
+        'nip',
+        'nama',
+        'jabatan',
+        'tgl_login'
     ];
 
 

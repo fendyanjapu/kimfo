@@ -16,7 +16,7 @@
     <div class="par-text">Data Pegawai</div>
     <div class="par-tex2">
 </h2><br>
-<a href="{{ route('pegawai.create') }}"
+<a href="{{ route('user.create') }}"
       class="btn btn-primary mb-4" title="Tambah"><i class="icon-plus me-1"></i>Tambah</i></a>
 <table id="tabel" class="table table-striped table-bordered">
     <thead>
@@ -29,19 +29,21 @@
      </tr>
   </thead>
   <tbody>
-    @foreach ($pegawai as $item)
+    @foreach ($user as $item)
     <tr>
         <td style="text-align: center;width:1%">{{ $loop->iteration }}</td>
         <td style="text-align: center;width:20%">{{ $item->nip }}</td>
         <td style="text-align: center;">{{ $item->nama }}</td>
         <td style="text-align: center;">{{ $item->jabatan }}</td>
         <td style="text-align: center">
-            <a href="{{ route('pegawai.show', $item->id) }}" class="btn btn-secondary btn-sm mt-1" title="lihat"><i class="icon-eye-open"></i></a>
-            <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
+            <a href="{{ route('user.show', $item->id) }}" class="btn btn-secondary btn-sm mt-1" title="lihat"><i class="icon-eye-open"></i></a>
+            <a href="{{ route('user.edit', ['user' => $item->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
 
-            <a href="{{ route('pegawai.destroy', $item->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
-                <i class="icon-trash"></i>
-            </a>
+            <form action="{{ route('user.destroy', ['user' => $item->id]) }}" method="POST">
+              @csrf
+              <button class="btn btn-danger" onclick="return confirm('Hapus data?')"><i class="icon-trash"> Hapus</i></button>
+              @method('delete')
+            </form>
         </td>
       </tr>
     @endforeach

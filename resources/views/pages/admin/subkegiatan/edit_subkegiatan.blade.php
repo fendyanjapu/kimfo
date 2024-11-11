@@ -73,7 +73,7 @@
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Kode Rekening</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="kode_rekening" value="{{ $subkegiatan->kegiatan->program->kode_rekening }}">
+                        <input type="text" class="form-control" name="kode_rekening" value="{{ $subkegiatan->kode_rekening }}">
                     </div>
                 </div>
                 <div class="form-group row mt-3">
