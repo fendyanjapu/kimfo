@@ -15,7 +15,7 @@
       <div class="par-tex2">
   </h2><br>
   <a href="{{ route('penggunaan_kas.create') }}"
-        class="btn btn-primary" title="Tambah"><i class="fa fa-plus">Tambah</i></a><br><br><br>
+        class="btn btn-primary mb-4" title="Tambah"><i class="icon-plus me-1"> Tambah</i></a>
   <table id="tabel" class="table table-striped table-bordered" >
     <thead>
        <tr>
@@ -37,11 +37,16 @@
             <td style="text-align: center">{{ $key->bulan }}</td>
             <td style="text-align: right">{{ $key->pagu != '' ? "Rp ".number_format($key->pagu) : '' }} </td>
             <td style="text-align: center">
-                <a href="{{ route('penggunaan_kas.show', ['penggunaan_ka' => $key->id]) }}" class="btn btn-default" target="_blank">Lihat</a>
+                <a href="{{ route('penggunaan_kas.show', ['penggunaan_ka' => $key->id]) }}" class="btn btn-secondary btn-sm mt-1" target="_blank" title="lihat"><i class="icon-eye-open"></i></a>
             </td>
             <td style="text-align: center">
-                <a href="#" class="btn btn-success" title="Edit"><i class="fa fa-edit"></i>Edit</a>
-                <a href="#" class="btn btn-danger" title="Hapus"><i class="fa fa-eraser"></i>Hapus</a>
+                <a href="{{ route('penggunaan_kas.edit', ['penggunaan_ka' => $key->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
+                <form action="{{ route('penggunaan_kas.destroy', ['penggunaan_ka' => $key->id]) }}" method="POST">
+                  @csrf
+                  <button class="btn btn-danger btn-sm mt-1" data-confirm-delete="true" title="hapus"><i class="icon-trash"></i></button>
+                  @method('delete')
+                </form>
+              </a>
             </td>
           </tr>
         @endforeach

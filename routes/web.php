@@ -52,7 +52,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
 
    Route::resource('rfk_subkegiatan', RfkSubkegiatanController::class);
    Route::resource('uraian_subkegiatan', UraianSubkegiatanController::class);
-   Route::resource('pegawai', PegawaiController::class);
    Route::resource('user', UserController::class);
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);

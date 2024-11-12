@@ -41,7 +41,7 @@
 
             <form action="{{ route('user.destroy', ['user' => $item->id]) }}" method="POST">
               @csrf
-              <button class="btn btn-danger" onclick="return confirm('Hapus data?')"><i class="icon-trash"> Hapus</i></button>
+              <button class="btn btn-danger btn-sm mt-1" data-confirm-delete="true" title="hapus"><i class="icon-trash"></i></button>
               @method('delete')
             </form>
         </td>
