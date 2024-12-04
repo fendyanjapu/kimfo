@@ -22,7 +22,7 @@
 			<div class="form-group">
 				<label class="col-sm-12 control-label">Pegawai</label>
 				<div class="col-sm-12">
-					<select class="form-control" style="width:100%" name="pegawai_id" id="pegawai_id" required>
+					<select class="form-control" style="width:100%" name="user_id" id="user_id" required>
 						<option value=""></option>
                         @foreach ($pegawai as $row)
                         <option value="<?= $row->id ?>"><?= $row->nama ?></option>

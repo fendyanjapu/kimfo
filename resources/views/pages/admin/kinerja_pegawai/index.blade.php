@@ -15,7 +15,7 @@
       <div class="par-tex2">
   </h2><br>
   <a href="{{ route('kinerja_pegawai.create') }}"
-        class="btn btn-primary" title="Tambah"><i class="fa fa-plus">Tambah</i></a><br><br><br>
+    class="btn btn-primary mb-4" title="Tambah"><i class="icon-plus me-1"> Tambah</i></a>
   <table id="tabel" class="table table-striped table-bordered" >
     <thead>
       <tr>
@@ -34,8 +34,8 @@
         <tr>
             <td style="text-align: center" style="width:1%">{{ $loop->iteration }}</td>
             <td style="width:20%">
-              <?= $key->pegawai->nama ?> <br>
-              <?= $key->pegawai->nip ?>
+              <?= $key->user->nama ?> <br>
+              <?= $key->user->nip ?>
             </td>
             <td style="width:20%"><?= $key->kinerja_harian ?></td>
             <td style="width:20%"><?= $key->target_bulanan ?></td>
@@ -44,17 +44,14 @@
                 <td style="text-align: center">
                    
                         {{-- <?php if(Session::get('level') == 'Pegawai') : ?> --}}
-                          <a href="{{ route('kinerja_pegawai.edit', ['kinerja_pegawai' => $key->id]) }}" class="btn btn-success" title="edit"><i class="fa fa-pencils"></i>Edit</a>
+                          <a href="{{ route('kinerja_pegawai.edit', ['kinerja_pegawai' => $key->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
                         {{-- <?php endif ?> --}}
     
-                        <a href="#" class="btn btn-warning" title="Print" target="_blank">
-                        <i class="fa fa-print" aria-hidden="true">Cetak</i>
+                        <a href="{{ route('kinerja_pegawai.show', ['kinerja_pegawai' => $key->id]) }}" class="btn btn-warning btn-sm mt-1" title="print" target="_blank">
+                        <i class="icon-print" aria-hidden="true"></i>
                         </a>
-                        <form action="{{ route('kinerja_pegawai.destroy', ['kinerja_pegawai' => $key->id]) }}" method="POST">
-                          @csrf
-                          <button class="btn btn-danger" onclick="return confirm('Hapus data?')"><i class="fa fa-eraser"> Hapus</i></button>
-                          @method('delete')
-                        </form>
+                        <a href="{{ route('kinerja_pegawai.destroy', $key->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
+                          <i class="icon-trash"></i>
                         
                 </td>
           </tr>

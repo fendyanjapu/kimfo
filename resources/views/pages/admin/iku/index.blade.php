@@ -56,13 +56,10 @@
 			<td>{{ $key->nama_dokumen }}</td>
 			<td>{{ $key->dokumen }}</td>
 			<td style="text-align: center">
-				<a href="{{ route('iku.show', ['iku' => $key->id]) }}" target="blank" class="btn btn-success" title="Lihat"><i class="fa fa-eye"></i>Lihat</a>
-				<a href="{{ route('iku.download', ['iku' =>$key->id]) }}" target="blank" class="btn btn-primary" title="Unduh"><i class="fa fa-download"></i>Download</a>
-				<form action="{{ route('iku.destroy', ['iku' => $key->id]) }}" method="POST">
-					@csrf
-					<button class="btn btn-danger" onclick="return confirm('Hapus data?')"><i class="fa fa-eraser"> Hapus</i></button>
-					@method('delete')
-				</form>
+				<a href="{{ route('iku.show', ['iku' => $key->id]) }}" target="blank" class="btn btn-secondary btn-sm mt-1" title="lihat"><i class="icon-eye-open"></i></a>
+				<a href="{{ route('iku.download', ['iku' =>$key->id]) }}" target="blank" class="btn btn-info btn-sm mt-1" title="unduh"><i class="icon-download"></i></a>
+				<a href="{{ route('iku.destroy', $key->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
+					<i class="icon-trash"></i>
 			</td>
 		</tr>
 		@endforeach

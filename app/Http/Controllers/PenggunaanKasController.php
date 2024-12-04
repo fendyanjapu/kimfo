@@ -73,7 +73,7 @@ class PenggunaanKasController extends Controller
                 'pagu' => $request->pagu,
                 'tanggal' => date('Y-m-d'),
                 'triwulan' => $triwulan,
-                'uraian' => $request->uraian,
+                'id_uraian_subkegiatan' => $request->uraian,
             ]);
             Alert::success('Hore!', 'Data berhasil disimpan');
             return redirect()->route('penggunaan_kas.index');
@@ -159,7 +159,7 @@ class PenggunaanKasController extends Controller
             'pagu' => $request->pagu,
             'tanggal' => date('Y-m-d'),
             'triwulan' => $triwulan,
-            'uraian' => $request->uraian,
+            'id_uraian_subkegiatan' => $request->uraian,
         ]);
 
         if($update == true){
@@ -177,15 +177,13 @@ class PenggunaanKasController extends Controller
      */
     public function destroy(Penggunaan_kas $penggunaan_ka)
     {
-        $delete = Penggunaan_kas::destroy($penggunaan_ka->id);
-
-        if($delete){
+        if ($penggunaan_ka) {
+            $penggunaan_ka->delete();
             Alert::success('Sukses', 'Data Berhasil Dihapus');
-            return redirect()->route('penggunaan_kas.index', );
+            return redirect()->route('penggunaan_kas.index');
         }
-        else{
-            Alert::error('Error!', 'Data Gagal Dihapus');
-            return redirect()->back();
-        }
+
+        Alert::error('Error!', 'Data Gagal Dihapus');
+        return redirect()->back();
     }
 }

@@ -14,6 +14,11 @@ class IkuController extends Controller
      */
     public function index($i='')
     {
+        // confirm delete
+        $title='Hapus Data!';
+        $text="Apakah Anda Yakin?";
+        confirmDelete($title, $text);
+        
         $dokumen = "IKU Esselon ${i}";
         $iku = Iku::where('jenis_dokumen', '=', $dokumen)->get();
 
@@ -96,16 +101,14 @@ class IkuController extends Controller
         $i = substr($query->jenis_dokumen, -1);
         File::delete('upload/'.$dokumen);
 
-        $delete = Iku::destroy($iku->id);
-
-        if($delete){
+        if ($iku) {
+            $iku->delete();
             Alert::success('Sukses', 'Data Berhasil Dihapus');
-            return redirect()->route('iku.index', ['i' => $i]);
+            return redirect()->route('iku.index');
         }
-        else{
-            Alert::error('Error!', 'Data Gagal Dihapus');
-            return redirect()->back();
-        }
+
+        Alert::error('Error!', 'Data Gagal Dihapus');
+        return redirect()->back();
 
     }
 

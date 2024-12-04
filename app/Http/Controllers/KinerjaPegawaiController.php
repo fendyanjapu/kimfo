@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kinerja_pegawai;
-use App\Models\Pegawai;
-use Illuminate\Http\Request;
-use Session;
 use Alert;
+use Session;
+use PDF;
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\Kinerja_pegawai;
 
 class KinerjaPegawaiController extends Controller
 {
@@ -20,8 +21,13 @@ class KinerjaPegawaiController extends Controller
         if ($sesi == 'Admin') {
             $kinerjaPegawai = Kinerja_pegawai::all();
         } else if ($sesi == 'Pegawai') {
-            $kinerjaPegawai = Kinerja_pegawai::where('pegawai_id', '=', Session::get('id_user'))->get();
+            $kinerjaPegawai = Kinerja_pegawai::where('user_id', '=', Session::get('id_user'))->get();
         }
+
+        // confirm delete
+        $title='Hapus Data!';
+        $text="Apakah Anda Yakin?";
+        confirmDelete($title, $text);
         
         return view('pages.admin.kinerja_pegawai.index', ['query' => $kinerjaPegawai]);
     }
@@ -34,9 +40,9 @@ class KinerjaPegawaiController extends Controller
         $sesi = Session::get('level');
 
         if ($sesi == 'Admin') {
-            $pegawai = Pegawai::all();
+            $pegawai = User::where('level', '!=', 'Admin')->get();
         } else if ($sesi == 'Pegawai') {
-            $pegawai = Pegawai::where('id', '=', Session::get('id_user'))->get();
+            $pegawai = User::where('id', '=', Session::get('id_user'))->get();
         }
 
         return view('pages.admin.kinerja_pegawai.create', ['pegawai' => $pegawai]);
@@ -60,7 +66,10 @@ class KinerjaPegawaiController extends Controller
      */
     public function show(Kinerja_pegawai $kinerja_pegawai)
     {
-        //
+        $kinerja_pegawais = Kinerja_pegawai::findOrFail($kinerja_pegawai->id);
+ 
+        $pdf = PDF::loadview('pages.admin.kinerja_pegawai.show',['kinerja_pegawai'=>$kinerja_pegawais]);
+        return $pdf->stream();
     }
 
     /**
@@ -71,9 +80,9 @@ class KinerjaPegawaiController extends Controller
         $sesi = Session::get('level');
 
         if ($sesi == 'Admin') {
-            $pegawai = Pegawai::all();
+            $pegawai = User::where('level', '!=', 'Admin')->get();
         } else if ($sesi == 'Pegawai') {
-            $pegawai = Pegawai::where('id', '=', Session::get('id_user'))->get();
+            $pegawai = User::where('id', '=', Session::get('id_user'))->get();
         }
 
         $kinerja_pegawais = Kinerja_pegawai::findOrFail($kinerja_pegawai->id);
@@ -90,7 +99,7 @@ class KinerjaPegawaiController extends Controller
     public function update(Request $request, Kinerja_pegawai $kinerja_pegawai)
     {
         $update = $kinerja_pegawai->update([
-            "pegawai_id" =>  $request['pegawai_id'],
+            "user_id" =>  $request['user_id'],
             "kinerja_harian" =>$request['kinerja_harian'],
             "target_bulanan" =>$request['target_bulanan'],
             "iku_bidang" =>$request['iku_bidang'],
@@ -111,15 +120,13 @@ class KinerjaPegawaiController extends Controller
      */
     public function destroy(Kinerja_pegawai $kinerja_pegawai)
     {
-        $delete = Kinerja_pegawai::destroy($kinerja_pegawai->id);
-
-        if($delete){
+        if ($kinerja_pegawai) {
+            $kinerja_pegawai->delete();
             Alert::success('Sukses', 'Data Berhasil Dihapus');
             return redirect()->route('kinerja_pegawai.index');
         }
-        else{
-            Alert::error('Error!', 'Data Gagal Dihapus');
-            return redirect()->back();
-        }
+
+        Alert::error('Error!', 'Data Gagal Dihapus');
+        return redirect()->back();
     }
 }

@@ -34,8 +34,8 @@
             <td><?= $key->subkegiatan->subkegiatan ?></td>
             <td><?= $key->uraian ?></td>
                 <td style="text-align: center">
-                    <a href="#" class="btn btn-warning" title="Print" target="_blank">
-                        <i class="fa fa-print" aria-hidden="true">Cetak</i>
+                    <a href="{{ route('kartuKendali.show', ['id_uraian_subkegiatan' => $key->id_uraian_subkegiatan]) }}" class="btn btn-warning" title="print" target="_blank">
+                        <i class="icon-print" aria-hidden="true"></i>
                     
                 </td>
         </tr>

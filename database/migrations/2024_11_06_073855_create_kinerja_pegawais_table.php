@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kinerja_pegawais', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('pegawai_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('kinerja_harian',255)->nullable();
             $table->string('target_bulanan',255)->nullable();
             $table->string('iku_bidang',255)->nullable();

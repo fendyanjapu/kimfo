@@ -138,15 +138,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $delete = User::destroy($user->id);
-
-        if($delete){
+        if ($user) {
+            $user->delete();
             Alert::success('Sukses', 'Data Berhasil Dihapus');
-            return redirect()->route('user.index', );
+            return redirect()->route('user.index');
         }
-        else{
-            Alert::error('Error!', 'Data Gagal Dihapus');
-            return redirect()->back();
-        }
+
+        Alert::error('Error!', 'Data Gagal Dihapus');
+        return redirect()->back();
     }
 }

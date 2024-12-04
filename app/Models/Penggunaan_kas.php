@@ -20,8 +20,18 @@ class Penggunaan_kas extends Model
         'pagu',
         'tanggal',
         'triwulan',
-        'uraian',
+        'id_uraian_subkegiatan',
     ];
+
+    public function program()
+    {
+        return $this->belongsTo(rfk_program::class, 'id_program', 'id_program');
+    }
+
+    public function kegiatan()
+    {
+        return $this->belongsTo(rfk_kegiatan::class, 'id_kegiatan', 'id_kegiatan');
+    }
 
     public function subkegiatan()
     {
@@ -30,6 +40,6 @@ class Penggunaan_kas extends Model
 
     public function uraian_subkegiatan()
     {
-        return $this->belongsTo(uraian_subkegiatan::class, 'uraian', 'id_uraian_subkegiatan');
+        return $this->belongsTo(uraian_subkegiatan::class, 'id_uraian_subkegiatan', 'id_uraian_subkegiatan');
     }
 }

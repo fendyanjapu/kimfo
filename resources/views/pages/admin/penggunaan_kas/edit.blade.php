@@ -55,7 +55,7 @@
 			    <option></option>
                 @foreach ($uraian_subkegiatan as $item)
                     @if ($item->id_subkegiatan == $penggunaan_ka->id_subkegiatan)
-                        <option value="{{ $item->id_uraian_subkegiatan }}" {{ $penggunaan_ka->uraian == $item->id_uraian_subkegiatan ? 'selected' : '' }}>
+                        <option value="{{ $item->id_uraian_subkegiatan }}" {{ $penggunaan_ka->id_uraian_subkegiatan == $item->id_uraian_subkegiatan ? 'selected' : '' }}>
                             {{ $item->uraian }}
                         </option>
                     @endif

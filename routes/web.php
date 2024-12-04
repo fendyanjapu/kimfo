@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::get('pengendalian-uraian-subkegiatan', [PengendalianController::class, 'uraian_subkegiatan'] )->name('pengendalianUraianSubkegiatan');
 
    Route::get('kartu-kendali', [KartuKendaliController::class, 'index'] )->name('kartuKendali');
+   Route::get('kartu-kendali-show/{id_uraian_subkegiatan}', [KartuKendaliController::class, 'show'] )->name('kartuKendali.show');
 
     // rencanakas
     Route::prefix('rencana_kas')->group(function () {

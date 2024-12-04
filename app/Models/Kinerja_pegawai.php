@@ -10,15 +10,15 @@ class Kinerja_pegawai extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pegawai_id',
+        'user_id',
         'kinerja_harian',
         'target_bulanan',
         'iku_bidang',
         'tgl_input'
     ];
 
-    public function pegawai()
+    public function user()
     {
-        return $this->belongsTo(Pegawai::class, 'pegawai_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

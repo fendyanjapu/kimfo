@@ -41,11 +41,8 @@
             </td>
             <td style="text-align: center">
                 <a href="{{ route('penggunaan_kas.edit', ['penggunaan_ka' => $key->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
-                <form action="{{ route('penggunaan_kas.destroy', ['penggunaan_ka' => $key->id]) }}" method="POST">
-                  @csrf
-                  <button class="btn btn-danger btn-sm mt-1" data-confirm-delete="true" title="hapus"><i class="icon-trash"></i></button>
-                  @method('delete')
-                </form>
+                <a href="{{ route('penggunaan_kas.destroy', $key->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
+                  <i class="icon-trash"></i>
               </a>
             </td>
           </tr>
