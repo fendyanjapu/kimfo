@@ -4,7 +4,7 @@
 <div class="herocontent">
     <div class="row justify-content-center">
         <div class="col-md-8 shadow-xl bg-white rounded">
-            <form class="px-5 py-5" action="{{ route('presensi.store')}}" method="post">
+            <form class="px-5 py-5" action="{{ route('presensi.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 
                 <div class="form-group row mt-3">
