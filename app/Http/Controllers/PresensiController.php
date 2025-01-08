@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Presensi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PresensiController extends Controller
 {
@@ -12,7 +13,12 @@ class PresensiController extends Controller
      */
     public function index()
     {
-        //
+        $cek = Presensi::where('user_id', "=", Session::get('id_user'))->where('tanggal', "=", date('Y-m-d'))->count();
+        if ($cek == 0) {
+            return redirect()->route('presensi.create');
+        } else {
+            return redirect()->route('presensi.show');
+        }
     }
 
     /**
@@ -28,7 +34,20 @@ class PresensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gambar =$request->file('gambar');
+        $tujuan_upload = 'upload';
+        $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
+        $gambar->move($tujuan_upload,$nama_gbr);
+
+        Presensi::create([
+            'user_id' => Session::get(('id_user')),
+            'uci_id' => $request->uci_id,
+            'tanggal' => date('Y-m-d'),
+            'jam' => date('H:i:s'),
+            'gambar' => $nama_gbr,
+        ]);
+        Alert::success('Hore!', 'Data berhasil mengisi presensi');
+        return redirect()->route('presensi.index');
     }
 
     /**

@@ -21,7 +21,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('presensi.create') }}">
+                <a class="nav-link" href="{{ route('presensi.index') }}">
                     <i class="icon-user"></i><span>Presensi</span>
                 </a>
               </li>
@@ -40,6 +40,30 @@
                 </ul>
             </li>
 
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                  <i class="icon-book"></i><span>Pengumpulan</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                  <i class="icon-bar-chart"></i><span>Pengukuran</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                  <i class="icon-file"></i><span>Laporan</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                  <i class="icon-list-alt"></i><span>Evaluasi</span>
+              </a>
+            </li>
+
             {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="RencanaKas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="icon-book"></i><span>Rencana Kas Anggaran</span>
@@ -51,7 +75,7 @@
                     <li><a class="dropdown-item" href="{{ route('indexUraianSubkegiatan') }}">Uraian Subkegiatan</a></li>
                 </ul>
               </li> --}}
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link active" href="{{ route('penggunaan_kas.index') }}">
                     <i class="icon-money"></i><span>Penggunaan Kas/Bukti Kegiatan</span>
                 </a>
@@ -90,7 +114,7 @@
                 <a class="nav-link active" href="{{ route('kinerja_pegawai.index') }}">
                     <i class="icon-list-alt"></i><span>Kinerja</span>
                 </a>
-              </li>
+              </li> --}}
 
               <li class="nav-item">
                 <a class="nav-link active" href="{{ route('logout') }}">
