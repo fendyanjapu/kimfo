@@ -14,17 +14,26 @@
     <div class="subnavbar-inner">
       <div class="container">
         <ul class="mainnav">
+          <?php if (Session::get('level') == 'pegawai'): ?>
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('indexPegawai') }}">
+                <i class="icon-home"></i><span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('presensi.index') }}">
+                <i class="icon-user"></i><span>Presensi</span>
+            </a>
+          </li>
+          <?php endif ?>
+          
             <?php if (Session::get('level') == 'Admin'): ?>
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('indexAdmin') }}">
                     <i class="icon-home"></i><span>Home</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('presensi.index') }}">
-                    <i class="icon-user"></i><span>Presensi</span>
-                </a>
-              </li>
+             
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
                   <i class="icon-list"></i><span>Data Master</span>

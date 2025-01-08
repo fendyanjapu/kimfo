@@ -38,7 +38,10 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login-aksi', [LoginController::class, 'loginAksi'])->name('login-aksi');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::resource('presensi', PresensiController::class);
+Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
+    Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
+    Route::resource('presensi', PresensiController::class);
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::get('/', [AdminController::class, 'index'] )->name('indexAdmin');

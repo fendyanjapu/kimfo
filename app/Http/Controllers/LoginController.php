@@ -34,7 +34,7 @@ class LoginController extends Controller
 
                 return redirect()->to('admin');
             }
-            elseif($get_data[0]['level'] == 'Pegawai'){
+            elseif($get_data[0]['level'] == 'pegawai'){
                 Session::push('cek', 1);
                 Session::put('id_user', $get_data[0]['id']);
                 Session::put('username', $get_data[0]['username']);
@@ -43,7 +43,7 @@ class LoginController extends Controller
                 Alert::toast('Anda berhasil login', 'success')
                 ->autoClose(2000)->position('bottom-end');
 
-                return redirect()->to('pegawai');
+                return redirect()->route('indexPegawai');
             }
             else{
                 echo "<script>
