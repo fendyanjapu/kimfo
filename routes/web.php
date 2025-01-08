@@ -38,6 +38,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login-aksi', [LoginController::class, 'loginAksi'])->name('login-aksi');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::resource('presensi', PresensiController::class);
+
 Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::get('/', [AdminController::class, 'index'] )->name('indexAdmin');
    Route::resource('rfk_program', RfkProgramController::class);
@@ -58,7 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
    Route::resource('jabatan', JabatanController::class)->except('show');
-   Route::resource('presensi', PresensiController::class)->except('show');
+   Route::resource('presensi', PresensiController::class);
 
    Route::get('iku/index/{i}', [IkuController::class, 'index'])->name('iku.index');
    Route::get('iku/download/{iku}', [IkuController::class, 'download'])->name('iku.download');
