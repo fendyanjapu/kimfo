@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Presensi extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'tanggal',
+        'jam',
+        'gambar',
+    ];
 }

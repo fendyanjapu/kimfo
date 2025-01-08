@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\Presensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -17,7 +18,7 @@ class PresensiController extends Controller
         if ($cek == 0) {
             return redirect()->route('presensi.create');
         } else {
-            return redirect()->route('presensi.show');
+            return redirect()->route('presensi.create');
         }
     }
 
@@ -40,7 +41,7 @@ class PresensiController extends Controller
         $gambar->move($tujuan_upload,$nama_gbr);
 
         Presensi::create([
-            'user_id' => Session::get(('id_user')),
+            'user_id' => Session::get("id_user"),
             'uci_id' => $request->uci_id,
             'tanggal' => date('Y-m-d'),
             'jam' => date('H:i:s'),
