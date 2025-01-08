@@ -20,6 +20,11 @@
                     <i class="icon-home"></i><span>Home</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('presensi.create') }}">
+                    <i class="icon-user"></i><span>Presensi</span>
+                </a>
+              </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
                   <i class="icon-list"></i><span>Data Master</span>
@@ -31,10 +36,11 @@
                     <li><a class="dropdown-item" href="{{ route('rfk_subkegiatan.index') }}">Sub Kegiatan</a></li>
                     <li><a class="dropdown-item" href="{{ route('uraian_subkegiatan.index') }}">Uraian Subkegiatan</a></li>
                     <li><a class="dropdown-item" href="{{ route('user.index') }}">Pegawai</a></li>
+                    <li><a class="dropdown-item" href="{{ route('jabatan.index') }}">Jabatan</a></li>
                 </ul>
             </li>
 
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="RencanaKas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="icon-book"></i><span>Rencana Kas Anggaran</span>
                 </a>
@@ -44,7 +50,7 @@
                     <li><a class="dropdown-item" href="{{ route('indexSubkegiatan') }}">Sub Kegiatan</a></li>
                     <li><a class="dropdown-item" href="{{ route('indexUraianSubkegiatan') }}">Uraian Subkegiatan</a></li>
                 </ul>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 <a class="nav-link active" href="{{ route('penggunaan_kas.index') }}">
                     <i class="icon-money"></i><span>Penggunaan Kas/Bukti Kegiatan</span>

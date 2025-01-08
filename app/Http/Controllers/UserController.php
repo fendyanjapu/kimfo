@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use App\Models\Jabatan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.user.add');
+        $jabatan = Jabatan::all();
+        return view('pages.admin.user.add', compact('jabatan'));
     }
 
     /**
@@ -38,37 +40,31 @@ class UserController extends Controller
         $validasi = $request->validate([
             'nip' => 'required|max:30',
             'nama' => 'required|string',
-            'jabatan' => 'required|string',
+            'atasan' => 'required',
+            'jabatan_id' => 'required',
             'username' => 'required',
             'password' => 'required'
         ]);
 
-        $cekPegawai = User::where('nip', $request->nip)->count();
+        $createUser = User::create([
+            'nip' => $validasi['nip'],
+            'nama' => $validasi['nama'],
+            'username' => $validasi['username'],
+            'atasan' => $validasi['atasan'],
+            'jabatan_id' => $validasi['jabatan_id'],
+            'tgl_login' => Null,
+            'password' => sha1($validasi['password']),
+            'level' => 'pegawai'
+        ]);
 
-        if($cekPegawai >= 1){
-            Alert::error('Gagal', 'NIP Pegawai Sudah Ada');
-            return redirect()->back();
+        if($createUser){
+            Alert::success('Sukses', 'Pegawai Berhasil Ditambahkan');
+            return redirect()->route('user.index');
         }
         else{
-                $createUser = User::create([
-                    'nip' => $validasi['nip'],
-                    'nama' => $validasi['nama'],
-                    'username' => $validasi['username'],
-                    'jabatan' => $validasi['jabatan'],
-                    'tgl_login' => Null,
-                    'password' => sha1($validasi['password']),
-                    'level' => 'pegawai'
-                ]);
-
-                if($createUser){
-                    Alert::success('Sukses', 'Pegawai Berhasil Ditambahkan');
-                    return redirect()->route('user.index');
-                }
-                else{
-                    Alert::error('Gagal', 'Pegawai Gagal Ditambahkan');
-                    return redirect()->back();
-                }
-          }
+            Alert::error('Gagal', 'Pegawai Gagal Ditambahkan');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -90,8 +86,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $jabatan = Jabatan::all();
         $query = User::findOrFail($user->id);
-        return view('pages.admin.user.edit', ['user' => $query]);
+        return view('pages.admin.user.edit', [
+            'user' => $query,
+            'jabatan' => $jabatan
+        ]);
     }
 
     /**
@@ -102,15 +102,9 @@ class UserController extends Controller
         $validasi = $request->validate([
             'nip' => 'required|max:30',
             'nama' => 'required|string',
-            'jabatan' => 'required|string',
+            'jabatan_id' => 'required',
             'username' => 'required',
         ]);
-
-        if ($request->password != '') {
-            $password = sha1($request->password);
-        } else {
-            $password = $request->password_lama;
-        }
 
         $qUser = User::Findorfail($user->id);
 
@@ -118,8 +112,8 @@ class UserController extends Controller
             'nip' => $validasi['nip'],
             'nama' => $validasi['nama'],
             'username' => $validasi['username'],
-            'password' => $password,
-            'jabatan' => $validasi['jabatan'],
+            'atasan' => $request->atasan,
+            'jabatan_id' => $validasi['jabatan_id'],
         ]);
 
 

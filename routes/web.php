@@ -5,7 +5,9 @@ use App\Http\Controllers\IkuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\RencanaKasController;
 use App\Http\Controllers\RfkProgramController;
 use App\Http\Controllers\RfkKegiatanController;
@@ -55,6 +57,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::resource('user', UserController::class);
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
+   Route::resource('jabatan', JabatanController::class)->except('show');
+   Route::resource('presensi', PresensiController::class)->except('show');
 
    Route::get('iku/index/{i}', [IkuController::class, 'index'])->name('iku.index');
    Route::get('iku/download/{iku}', [IkuController::class, 'download'])->name('iku.download');

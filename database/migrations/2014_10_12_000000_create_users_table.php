@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->string('password');
-            $table->string('nip', 30)->unique();
+            $table->string('nip')->nullable();
             $table->string('nama');
-            $table->string('jabatan');
-            $table->enum('level', ['Admin', 'Pegawai']);
+            $table->integer('jabatan_id')->nullable();
+            $table->integer('atasan')->nullable();
+            $table->string('level');
             $table->date('tgl_login')->nullable();
             $table->timestamps();
         });

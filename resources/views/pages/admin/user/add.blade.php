@@ -6,6 +6,7 @@
         <div class="col-md-8 shadow-xl bg-white rounded">
             <form class="px-5 py-5" action="{{ route('user.store')}}" method="post">
                 @csrf
+                <input type="file" accept="image/*" capture="user">
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Nip</label>
                     <div class="col-sm-8">
@@ -27,10 +28,23 @@
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Jabatan</label>
                     <div class="col-sm-8">
-                        <input type="text" style="width:100%" name="jabatan" class="form-control @error('jabatan') is-invalid @enderror" id="jabatan" required/>
-                        @error('jabatan')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <select style="width:100%" name="jabatan_id" class="form-control">
+                            <option value=""></option>
+                            @foreach ($jabatan as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama_jabatan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Atasan</label>
+                    <div class="col-sm-8">
+                        <select style="width:100%" name="atasan" class="form-control">
+                            <option value=""></option>
+                            @foreach ($jabatan as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama_jabatan }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row mt-3 border-top pt-3">
