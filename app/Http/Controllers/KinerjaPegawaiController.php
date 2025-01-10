@@ -53,8 +53,14 @@ class KinerjaPegawaiController extends Controller
      */
     public function store(Request $request)
     {
+        $gambar =$request->file('bukti_kegiatan');
+        $tujuan_upload = 'upload/bukti_kegiatan';
+        $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
+        $gambar->move($tujuan_upload,$nama_gbr);
+
         $data = $request->all();
         $data['tgl_input'] = date('Y-m-d');
+        $data['bukti_kegiatan'] = $nama_gbr;
         Kinerja_pegawai::create($data);
 
         Alert::success('Sukses', 'Data Berhasil Ditambahkan');

@@ -36,7 +36,7 @@ class PresensiController extends Controller
     public function store(Request $request)
     {
         $gambar =$request->file('gambar');
-        $tujuan_upload = 'upload';
+        $tujuan_upload = 'upload/presensi';
         $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
         $gambar->move($tujuan_upload,$nama_gbr);
 

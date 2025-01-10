@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kinerja_harian',255)->nullable();
             $table->string('target_bulanan',255)->nullable();
             $table->string('iku_bidang',255)->nullable();
+            $table->string('bukti_kegiatan',255)->nullable();
             $table->date('tgl_input')->nullable();
 
             $table->timestamps();

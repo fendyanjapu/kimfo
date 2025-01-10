@@ -15,14 +15,13 @@
     }
 </Style>
 
-<form action="{{ route('kinerja_pegawai.store') }}" method="post">
+<form action="{{ route('kinerja_pegawai.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 	<div class="row">
 		<div class="col-12 col-md-8">
 			@foreach ($pegawai as $row)
                 <input type="hidden" style="width:100%" name="user_id" class="form-control" id="user_id" value="{{ $row->id }}" readonly/>
 			@endforeach
-			<input type="hidden" style="width:100%" name="target_bulanan" class="form-control" id="target_bulanan" value="" required/>
 			<div class="form-group">
 				<label class="col-sm-12 control-label">Kinerja Harian</label>
 				<div class="col-sm-12">
@@ -33,6 +32,12 @@
 				<label class="col-sm-12 control-label">IKU Bidang</label>
 				<div class="col-sm-12">
 					<input type="text" style="width:100%" name="iku_bidang" class="form-control" id="iku_bidang" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-12 control-label">Bukti Kegiatan</label>
+				<div class="col-sm-12">
+					<input type="file" accept="image/*" capture="user" name="bukti_kegiatan" required>
 				</div>
 			</div>
             <br>
