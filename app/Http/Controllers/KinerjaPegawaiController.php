@@ -20,7 +20,7 @@ class KinerjaPegawaiController extends Controller
 
         if ($sesi == 'Admin') {
             $kinerjaPegawai = Kinerja_pegawai::all();
-        } else if ($sesi == 'Pegawai') {
+        } else if ($sesi == 'pegawai') {
             $kinerjaPegawai = Kinerja_pegawai::where('user_id', '=', Session::get('id_user'))->get();
         }
 
@@ -41,7 +41,7 @@ class KinerjaPegawaiController extends Controller
 
         if ($sesi == 'Admin') {
             $pegawai = User::where('level', '!=', 'Admin')->get();
-        } else if ($sesi == 'Pegawai') {
+        } else if ($sesi == 'pegawai') {
             $pegawai = User::where('id', '=', Session::get('id_user'))->get();
         }
 
@@ -81,7 +81,7 @@ class KinerjaPegawaiController extends Controller
 
         if ($sesi == 'Admin') {
             $pegawai = User::where('level', '!=', 'Admin')->get();
-        } else if ($sesi == 'Pegawai') {
+        } else if ($sesi == 'pegawai') {
             $pegawai = User::where('id', '=', Session::get('id_user'))->get();
         }
 

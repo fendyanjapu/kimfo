@@ -41,6 +41,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
     Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
     Route::resource('presensi', PresensiController::class);
+    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){

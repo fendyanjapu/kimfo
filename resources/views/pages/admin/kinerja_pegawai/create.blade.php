@@ -19,28 +19,14 @@
     @csrf
 	<div class="row">
 		<div class="col-12 col-md-8">
-			<div class="form-group">
-				<label class="col-sm-12 control-label">Pegawai</label>
-				<div class="col-sm-12">
-					<select class="form-control" style="width:100%" name="user_id" id="user_id" required>
-						<option value=""></option>
-                        @foreach ($pegawai as $row)
-                        <option value="<?= $row->id ?>"><?= $row->nama ?></option>
-                        @endforeach
-						
-					</select>
-				</div>
-			</div>
+			@foreach ($pegawai as $row)
+                <input type="hidden" style="width:100%" name="user_id" class="form-control" id="user_id" value="{{ $row->id }}" readonly/>
+			@endforeach
+			<input type="hidden" style="width:100%" name="target_bulanan" class="form-control" id="target_bulanan" value="" required/>
 			<div class="form-group">
 				<label class="col-sm-12 control-label">Kinerja Harian</label>
 				<div class="col-sm-12">
 					<input type="text" style="width:100%" name="kinerja_harian" class="form-control" id="kinerja_harian" required/>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-12 control-label">Target Bulanan</label>
-				<div class="col-sm-12">
-					<input type="text" style="width:100%" name="target_bulanan" class="form-control" id="target_bulanan" required/>
 				</div>
 			</div>
 			<div class="form-group">

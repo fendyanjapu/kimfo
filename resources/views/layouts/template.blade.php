@@ -25,6 +25,33 @@
                 <i class="icon-user"></i><span>Presensi</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                <i class="icon-book"></i><span>Pengumpulan</span>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pengukuran" role="button" data-bs-toggle="dropdown" >
+              <i class="icon-bar-chart"></i><span>Pengukuran</span>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="pengukuran">
+                <li><a class="dropdown-item" href="{{ route('kinerja_pegawai.index') }}">Kinerja</a></li>
+            </ul>
+        </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                <i class="icon-file"></i><span>Laporan</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                <i class="icon-list-alt"></i><span>Evaluasi</span>
+            </a>
+          </li>
           <?php endif ?>
           
             <?php if (Session::get('level') == 'Admin'): ?>
