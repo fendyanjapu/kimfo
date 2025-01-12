@@ -25,11 +25,15 @@
                 <i class="icon-user"></i><span>Presensi</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="{{ route('indexAdmin') }}">
-                <i class="icon-book"></i><span>Pengumpulan</span>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
+              <i class="icon-book"></i><span>Pengumpulan</span>
+              <b class="caret"></b>
             </a>
-          </li>
+            <ul class="dropdown-menu" aria-labelledby="DataMaster">
+                <li><a class="dropdown-item" href="{{ route('indikator.index') }}">Indikator</a></li>
+            </ul>
+        </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pengukuran" role="button" data-bs-toggle="dropdown" >
@@ -37,7 +41,7 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" aria-labelledby="pengukuran">
-                <li><a class="dropdown-item" href="{{ route('kinerja_pegawai.index') }}">Kinerja</a></li>
+                <li><a class="dropdown-item" href="{{ route('kinerja_harian.index') }}">Kinerja Harian</a></li>
             </ul>
         </li>
 
@@ -52,6 +56,13 @@
                 <i class="icon-list-alt"></i><span>Evaluasi</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('logout') }}">
+                <i class="icon-signout"></i><span>Keluar</span>
+            </a>
+          </li>
+
           <?php endif ?>
           
             <?php if (Session::get('level') == 'Admin'): ?>
@@ -75,12 +86,16 @@
                     <li><a class="dropdown-item" href="{{ route('jabatan.index') }}">Jabatan</a></li>
                 </ul>
             </li>
-
-            <li class="nav-item">
-              <a class="nav-link active" href="{{ route('indexAdmin') }}">
-                  <i class="icon-book"></i><span>Pengumpulan</span>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
+                <i class="icon-book"></i><span>Pengumpulan</span>
+                <b class="caret"></b>
               </a>
-            </li>
+              <ul class="dropdown-menu" aria-labelledby="DataMaster">
+                  <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
+                  <li><a class="dropdown-item" href="#">Indikator</a></li>
+              </ul>
+          </li>
 
             <li class="nav-item">
               <a class="nav-link active" href="{{ route('indexAdmin') }}">
@@ -158,8 +173,6 @@
                 </a>
               </li>
 
-            <?php elseif (Session::get('level') == 'Pegawai'): ?>
-            <?php else: ?>
             <?php endif; ?>
         </ul>
       </div>

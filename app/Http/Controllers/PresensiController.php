@@ -14,11 +14,13 @@ class PresensiController extends Controller
      */
     public function index()
     {
-        $cek = Presensi::where('user_id', "=", Session::get('id_user'))->where('tanggal', "=", date('Y-m-d'))->count();
-        if ($cek == 0) {
+        $presensi = Presensi::where('user_id', '=', Session::get('id_user'))->where('tanggal', '=', date('Y-m-d'));
+        if ($presensi->count() == 0) {
             return redirect()->route('presensi.create');
         } else {
-            return redirect()->route('presensi.create');
+            return view('pages.admin.presensi.show', [
+                'presensi' => $presensi->get()
+            ]);
         }
     }
 
@@ -47,7 +49,7 @@ class PresensiController extends Controller
             'jam' => date('H:i:s'),
             'gambar' => $nama_gbr,
         ]);
-        Alert::success('Hore!', 'Data berhasil mengisi presensi');
+        Alert::success('Hore!', 'Anda berhasil mengisi presensi');
         return redirect()->route('presensi.index');
     }
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->integer('user_id')->unsigned();
+            $table->integer('indikator_id')->unsigned();
             $table->string('kinerja_harian',255)->nullable();
             $table->string('target_bulanan',255)->nullable();
             $table->string('iku_bidang',255)->nullable();

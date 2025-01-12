@@ -39,6 +39,7 @@ class LoginController extends Controller
                 Session::put('id_user', $get_data[0]['id']);
                 Session::put('username', $get_data[0]['username']);
                 Session::put('level', $get_data[0]['level']);
+                Session::put('atasan', $get_data[0]['atasan']);
 
                 Alert::toast('Anda berhasil login', 'success')
                 ->autoClose(2000)->position('bottom-end');

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IndikatorController;
+use App\Http\Controllers\KinerjaHarianContoller;
+use App\Http\Controllers\SasaranController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IkuController;
 use App\Http\Controllers\UserController;
@@ -41,7 +44,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
     Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
     Route::resource('presensi', PresensiController::class);
-    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
+    Route::resource('kinerja_harian', KinerjaHarianContoller::class);
+    Route::resource('indikator', IndikatorController::class);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
@@ -64,7 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
    Route::resource('jabatan', JabatanController::class)->except('show');
-   Route::resource('presensi', PresensiController::class);
+   Route::resource('sasaran', SasaranController::class)->except('show');
 
    Route::get('iku/index/{i}', [IkuController::class, 'index'])->name('iku.index');
    Route::get('iku/download/{iku}', [IkuController::class, 'download'])->name('iku.download');

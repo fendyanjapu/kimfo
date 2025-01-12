@@ -28,8 +28,12 @@ class UserController extends Controller
      */
     public function create()
     {
+        $users = User::where('level', '!=' , 'Admin')->get();
         $jabatan = Jabatan::all();
-        return view('pages.admin.user.add', compact('jabatan'));
+        return view('pages.admin.user.add', [
+            'users' => $users,
+            'jabatan' => $jabatan,
+        ]);
     }
 
     /**

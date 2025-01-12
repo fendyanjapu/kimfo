@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use App\Models\Presensi;
 use Session;
 use PDF;
 use App\Models\User;
@@ -22,6 +23,10 @@ class KinerjaPegawaiController extends Controller
             $kinerjaPegawai = Kinerja_pegawai::all();
         } else if ($sesi == 'pegawai') {
             $kinerjaPegawai = Kinerja_pegawai::where('user_id', '=', Session::get('id_user'))->get();
+            $cekPresensi = Presensi::where('user_id', '=', Session::get('id_user'))->where('tanggal', '=', date('Y-m-d'))->count();
+            if ($cekPresensi == 0) {
+                return redirect()->route('presensi.index');
+            }
         }
 
         // confirm delete
