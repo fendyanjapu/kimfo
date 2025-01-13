@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $users = User::where('level', '!=' , 'Admin')->get();
+        $users = User::where('id', '<=' , '5')->get();
         $jabatan = Jabatan::all();
         return view('pages.admin.user.add', [
             'users' => $users,
@@ -90,10 +90,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $users = User::where('id', '<=' , '5')->get();
         $jabatan = Jabatan::all();
         $query = User::findOrFail($user->id);
         return view('pages.admin.user.edit', [
             'user' => $query,
+            'users' => $users,
             'jabatan' => $jabatan
         ]);
     }

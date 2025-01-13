@@ -31,6 +31,7 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" aria-labelledby="DataMaster">
+                <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
                 <li><a class="dropdown-item" href="{{ route('indikator.index') }}">Indikator</a></li>
             </ul>
         </li>

@@ -10,6 +10,9 @@ class Sasaran extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'nama_sasaran',
+        'target',
+        'satuan',
     ];
 }

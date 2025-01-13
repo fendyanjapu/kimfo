@@ -20,9 +20,13 @@
     <thead>
       <tr>
         <th style="vertical-align: middle; text-align: center" width="15px">NO</th>
-        <th style="vertical-align: middle; text-align: center">Kinerja Harian</th>
+        <th style="vertical-align: middle; text-align: center">Sasaran</th>
         <th style="vertical-align: middle; text-align: center">Indikator</th>
+        <th style="vertical-align: middle; text-align: center">Kinerja Harian</th>
+        <th style="vertical-align: middle; text-align: center">Jumlah</th>
+        <th style="vertical-align: middle; text-align: center">Satuan</th>
         <th style="vertical-align: middle; text-align: center">Tanggal</th>
+        <th style="vertical-align: middle; text-align: center">Jam</th>
         <th style="vertical-align: middle; text-align: center">Bukti Kegiatan</th>
         <th style="vertical-align: middle; text-align: center" width="15px">#</th>
        </tr>
@@ -32,9 +36,13 @@
         @foreach ($query as $key)
         <tr>
             <td style="text-align: center" style="width:1%">{{ $loop->iteration }}</td>
-            <td style="width:20%"><?= $key->kinerja_harian ?></td>
+            <td style="width:20%"><?= $key->sasaran->nama_sasaran ?></td>
             <td style="width:20%"><?= $key->indikator->nama_indikator ?></td>
+            <td style="width:20%"><?= $key->kinerja_harian ?></td>
+            <td style="width:20%"><?= $key->jumlah ?></td>
+            <td style="width:20%"><?= $key->satuan ?></td>
             <td style="width:10%"><?= date('d-m-Y', STRTOTIME($key->tgl_input)) ?></td>
+            <td style="width:20%"><?= $key->jam_awal." - ".$key->jam_akhir ?></td>
             <td style="text-align: center; width:10%">
               <a href="{{ env('APP_URL').'upload/bukti_kegiatan/'.$key->bukti_kegiatan }}" class="btn btn-default btn-sm mt-1" title="lihat" target="_blank">
                 <i class="icon-picture" aria-hidden="true"></i>

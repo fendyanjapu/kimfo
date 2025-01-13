@@ -15,8 +15,7 @@ class IndikatorController extends Controller
      */
     public function index()
     {
-        $indikators = Indikator::all();
-        $id_user = Session::get('id_user');
+        $indikators = Indikator::where('user_id','=', Session::get('id_user'))->get();
         // confirm delete
         $title='Hapus Data!';
         $text="Apakah Anda Yakin?";
@@ -24,7 +23,6 @@ class IndikatorController extends Controller
         
         return view('pages.pegawai.indikator.index', [
             'indikators' => $indikators,
-            'id_user' => $id_user,
         ]);
     }
 
@@ -33,7 +31,7 @@ class IndikatorController extends Controller
      */
     public function create()
     {
-        $sasarans = Sasaran::all();
+        $sasarans = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
         return view('pages.pegawai.indikator.add', [
             'sasarans' => $sasarans
         ]);
@@ -65,7 +63,7 @@ class IndikatorController extends Controller
      */
     public function edit(Indikator $indikator)
     {
-        $sasarans = Sasaran::all();
+        $sasarans = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
         $query = indikator::findOrFail($indikator->id);
 
         return view('pages.pegawai.indikator.edit', [

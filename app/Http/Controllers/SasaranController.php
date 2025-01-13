@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Models\Sasaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SasaranController extends Controller
 {
@@ -13,13 +14,13 @@ class SasaranController extends Controller
      */
     public function index()
     {
-        $sasarans = Sasaran::all();
+        $sasarans = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
         // confirm delete
         $title='Hapus Data!';
         $text="Apakah Anda Yakin?";
         confirmDelete($title, $text);
         
-        return view('pages.admin.sasaran.index', ['sasarans' => $sasarans]);
+        return view('pages.pegawai.sasaran.index', ['sasarans' => $sasarans]);
     }
 
     /**
@@ -27,7 +28,7 @@ class SasaranController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.sasaran.add');
+        return view('pages.pegawai.sasaran.add');
     }
 
     /**
@@ -36,6 +37,7 @@ class SasaranController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $data['user_id'] = Session::get('id_user');
         Sasaran::create($data);
 
         Alert::success('Sukses', 'Data Berhasil Ditambahkan');
@@ -57,7 +59,7 @@ class SasaranController extends Controller
     {
         $query = Sasaran::findOrFail($sasaran->id);
 
-        return view('pages.admin.sasaran.edit', [
+        return view('pages.pegawai.sasaran.edit', [
             'sasaran' => $query,
         ]);
     }
@@ -69,6 +71,8 @@ class SasaranController extends Controller
     {
         $update = $sasaran->update([
             "nama_sasaran" => $request['nama_sasaran'],
+            "target" => $request['target'],
+            "satuan" => $request['satuan'],
         ]);
         if($update == true){
             Alert::success('Sukses', 'Data Berhasil diubah');

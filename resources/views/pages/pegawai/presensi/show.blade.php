@@ -14,9 +14,6 @@
                 </div>
                 @endforeach
 
-                <div class="col-sm-offset-4 mt-4 text-center">
-                    <a href="#" class="btn btn-danger" onClick="self.history.back()">Kembali</a>
-                </div>
                 <br>
         </div>
     </div>

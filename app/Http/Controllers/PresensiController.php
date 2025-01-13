@@ -18,7 +18,7 @@ class PresensiController extends Controller
         if ($presensi->count() == 0) {
             return redirect()->route('presensi.create');
         } else {
-            return view('pages.admin.presensi.show', [
+            return view('pages.pegawai.presensi.show', [
                 'presensi' => $presensi->get()
             ]);
         }
@@ -29,7 +29,7 @@ class PresensiController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.presensi.create');
+        return view('pages.pegawai.presensi.create');
     }
 
     /**

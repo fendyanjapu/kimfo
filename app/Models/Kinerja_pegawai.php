@@ -11,17 +11,25 @@ class Kinerja_pegawai extends Model
 
     protected $fillable = [
         'user_id',
+        'sasaran_id',
         'indikator_id',
         'kinerja_harian',
-        'target_bulanan',
-        'iku_bidang',
+        'jumlah',
+        'satuan',
         'bukti_kegiatan',
-        'tgl_input'
+        'tgl_input',
+        'jam_awal',
+        'jam_akhir',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function sasaran()
+    {
+        return $this->belongsTo(Sasaran::class);
     }
 
     public function indikator()

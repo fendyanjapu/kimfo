@@ -46,9 +46,9 @@
 		<div class="col-sm-8">
 			<select style="width:100%" name="atasan" class="form-control">
 				<option value=""></option>
-				@foreach ($jabatan as $item)
+				@foreach ($users as $item)
 					<option value="{{ $item->id }}" {{ $item->id == $user->atasan ? "selected" : "" }}>
-						{{ $item->nama_jabatan }}
+						{{ $item->jabatan->nama_jabatan }}
 					</option>
 				@endforeach
 			</select>

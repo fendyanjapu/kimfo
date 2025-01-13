@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Indikator;
+use App\Models\Sasaran;
 use PDF;
 use Alert;
 use App\Models\Presensi;
@@ -36,9 +37,11 @@ class KinerjaHarianContoller extends Controller
      */
     public function create()
     {
-        $indikator = Indikator::where('user_id', '=', Session::get('atasan'))->get();
+        $sasaran = Sasaran::where('user_id', '=', Session::get('atasan'))->get();
+        $indikator = Indikator::where('user_id', '=', Session::get('id_user'))->get();
         return view('pages.pegawai.kinerja_harian.create', [
             'indikators' => $indikator,
+            'sasarans' => $sasaran,
         ]);
     }
 
@@ -77,12 +80,14 @@ class KinerjaHarianContoller extends Controller
      */
     public function edit(Kinerja_pegawai $kinerja_harian)
     {
-        $indikator = Indikator::where('user_id', '=', Session::get('atasan'))->get();
+        $sasaran = Sasaran::where('user_id', '=', Session::get('atasan'))->get();
+        $indikator = Indikator::where('user_id', '=', Session::get('id_user'))->get();
         $kinerja_pegawais = Kinerja_pegawai::findOrFail($kinerja_harian->id);
 
         return view('pages.pegawai.kinerja_harian.edit', [
             'kinerja_pegawai' => $kinerja_pegawais,
             'indikators' => $indikator,
+            'sasarans' => $sasaran,
         ]);
     }
 
@@ -93,8 +98,13 @@ class KinerjaHarianContoller extends Controller
     {
         $update = $kinerja_harian->update([
             "kinerja_harian" => $request['kinerja_harian'],
+            "sasaran_id" => $request['sasaran_id'],
             "indikator_id" => $request['indikator_id'],
-            "tgl_input" => $request['tgl_input']
+            "jumlah" => $request['jumlah'],
+            "satuan" => $request['satuan'],
+            "tgl_input" => $request['tgl_input'],
+            "jam_awal" => $request['jam_awal'],
+            "jam_akhir" => $request['jam_akhir'],
         ]);
         if($update == true){
             Alert::success('Sukses', 'Data Berhasil diubah');

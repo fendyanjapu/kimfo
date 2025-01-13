@@ -45,6 +45,7 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
     Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
     Route::resource('presensi', PresensiController::class);
     Route::resource('kinerja_harian', KinerjaHarianContoller::class);
+    Route::resource('sasaran', SasaranController::class)->except('show');
     Route::resource('indikator', IndikatorController::class);
 });
 
@@ -68,7 +69,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
    Route::resource('jabatan', JabatanController::class)->except('show');
-   Route::resource('sasaran', SasaranController::class)->except('show');
+   
 
    Route::get('iku/index/{i}', [IkuController::class, 'index'])->name('iku.index');
    Route::get('iku/download/{iku}', [IkuController::class, 'download'])->name('iku.download');
