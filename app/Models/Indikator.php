@@ -13,6 +13,8 @@ class Indikator extends Model
         'user_id',
         'sasaran_id',
         'nama_indikator',
+        'target',
+        'satuan',
     ];
 
     public function sasaran()

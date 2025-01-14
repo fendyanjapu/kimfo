@@ -16,6 +16,8 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('sasaran_id');
             $table->string('nama_indikator', 255);
+            $table->float('target');
+            $table->string('satuan', 100)->nullable();
             $table->timestamps();
         });
     }

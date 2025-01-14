@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('nama_sasaran', 255);
-            $table->float('target');
-            $table->string('satuan', 100)->nullable();
             $table->timestamps();
         });
     }

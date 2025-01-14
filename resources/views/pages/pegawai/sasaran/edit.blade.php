@@ -17,20 +17,6 @@
 					<input type="text" style="width:100%" name="nama_sasaran" class="form-control" id="nama_sasaran" value="<?= $sasaran->nama_sasaran ?>" required/>
 				</div>
 			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Target</label>
-				<div class="col-sm-12">
-					<input type="text" style="width:100%" name="target" class="form-control" id="target" value="<?= $sasaran->target ?>" required/>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Satuan</label>
-				<div class="col-sm-12">
-					<input type="text" style="width:100%" name="satuan" class="form-control" id="satuan" value="<?= $sasaran->satuan ?>"/>
-				</div>
-			</div>
 			
 			<br>
 			<div class="col-sm-offset-2">

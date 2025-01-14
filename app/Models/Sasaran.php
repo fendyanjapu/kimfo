@@ -12,7 +12,5 @@ class Sasaran extends Model
     protected $fillable = [
         'user_id',
         'nama_sasaran',
-        'target',
-        'satuan',
     ];
 }

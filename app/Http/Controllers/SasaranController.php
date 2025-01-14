@@ -71,8 +71,6 @@ class SasaranController extends Controller
     {
         $update = $sasaran->update([
             "nama_sasaran" => $request['nama_sasaran'],
-            "target" => $request['target'],
-            "satuan" => $request['satuan'],
         ]);
         if($update == true){
             Alert::success('Sukses', 'Data Berhasil diubah');

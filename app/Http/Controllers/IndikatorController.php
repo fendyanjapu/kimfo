@@ -80,6 +80,8 @@ class IndikatorController extends Controller
         $update = $indikator->update([
             "sasaran_id" => $request['sasaran_id'],
             "nama_indikator" => $request['nama_indikator'],
+            "target" => $request['target'],
+            "satuan" => $request['satuan'],
         ]);
         if($update == true){
             Alert::success('Sukses', 'Data Berhasil diubah');

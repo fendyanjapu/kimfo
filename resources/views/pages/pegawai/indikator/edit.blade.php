@@ -7,9 +7,9 @@
             <form class="px-5 py-5" action="{{ route('indikator.update', ['indikator' => $indikator])}}" method="post">
                 @csrf
 				@method('PUT')
-                <div class="form-group row mt-3">
-                    <label class="col-sm-4 control-label">Sasaran</label>
-                    <div class="col-sm-8">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Sasaran</label>
+                    <div class="col-sm-12">
                         <select id="sasaran" class="form-control" name="sasaran_id" required>  
                             <option value="">Pilih Sasaran</option>
                             @foreach ($sasarans as $item)
@@ -18,13 +18,27 @@
                          </select>
                     </div>
                 </div>
-                <div class="form-group row mt-3">
-                    <label class="col-sm-4 control-label">Indikator</label>
-                    <div class="col-sm-8">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Indikator</label>
+                    <div class="col-sm-12">
                         <input type="text" style="width:100%" name="nama_indikator" class="form-control" value="{{ $indikator->nama_indikator }}" id="nama_indikator" required/>
                         @error('nama_indikator')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Target</label>
+                    <div class="col-sm-12">
+                        <input type="text" style="width:100%" name="target" class="form-control" id="target" value="<?= $indikator->target ?>" required/>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Satuan</label>
+                    <div class="col-sm-12">
+                        <input type="text" style="width:100%" name="satuan" class="form-control" id="satuan" value="<?= $indikator->satuan ?>"/>
                     </div>
                 </div>
 

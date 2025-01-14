@@ -23,8 +23,7 @@
      <tr>
       <th style="vertical-align: middle; text-align: center" width="15px">No</th>
       <th style="vertical-align: middle; text-align: center">Sasaran</th>
-      <th style="vertical-align: middle; text-align: center">Target</th>
-      <th style="vertical-align: middle; text-align: center">Satuan</th>
+      
       <th style="vertical-align: middle; text-align: center" width="15px">#</th>
      </tr>
   </thead>
@@ -33,8 +32,6 @@
     <tr>
         <td style="text-align: center;width:1%">{{ $loop->iteration }}</td>
         <td style="text-align: center;">{{ $item->nama_sasaran }}</td>
-        <td style="text-align: center;">{{ $item->target }}</td>
-        <td style="text-align: center;">{{ $item->satuan }}</td>
         <td style="text-align: center">
             <a href="{{ route('sasaran.edit', ['sasaran' => $item->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
 
