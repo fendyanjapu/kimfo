@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\IndikatorController;
-use App\Http\Controllers\KinerjaHarianContoller;
-use App\Http\Controllers\SasaranController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IkuController;
 use App\Http\Controllers\UserController;
@@ -10,13 +7,17 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\SasaranController;
 use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\IndikatorController;
 use App\Http\Controllers\RencanaKasController;
 use App\Http\Controllers\RfkProgramController;
 use App\Http\Controllers\RfkKegiatanController;
 use App\Http\Controllers\SelectComboController;
 use App\Http\Controllers\KartuKendaliController;
+use App\Http\Controllers\KinerjaHarianContoller;
 use App\Http\Controllers\PengendalianController;
+use App\Http\Controllers\SasaranUtamaController;
 use App\Http\Controllers\PenggunaanKasController;
 use App\Http\Controllers\KinerjaPegawaiController;
 use App\Http\Controllers\RfkSubkegiatanController;
@@ -47,6 +48,7 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
     Route::resource('kinerja_harian', KinerjaHarianContoller::class);
     Route::resource('sasaran', SasaranController::class)->except('show');
     Route::resource('indikator', IndikatorController::class);
+    Route::resource('sasaran-utama', SasaranUtamaController::class)->except('show');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){

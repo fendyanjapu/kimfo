@@ -31,8 +31,13 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" aria-labelledby="DataMaster">
+              @if (Session::get('id_user') <= 5)
+                <li><a class="dropdown-item" href="{{ route('sasaran-utama.index') }}">Sasaran dan Indikator Kinerja</a></li>
+              @else
                 <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
                 <li><a class="dropdown-item" href="{{ route('indikator.index') }}">Indikator</a></li>
+              @endif
+                
             </ul>
         </li>
 
