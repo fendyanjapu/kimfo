@@ -44,6 +44,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
     Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
+    Route::get('/get-indikator/{sasaran_id}', [KinerjaHarianContoller::class, 'getIndikator'] )->name('getIndikator');
+
     Route::resource('presensi', PresensiController::class);
     Route::resource('kinerja_harian', KinerjaHarianContoller::class);
     Route::resource('sasaran', SasaranController::class)->except('show');

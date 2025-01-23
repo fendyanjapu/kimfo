@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Indikator;
 use App\Models\Sasaran;
+use App\Models\SasaranUtama;
 use PDF;
 use Alert;
 use App\Models\Presensi;
@@ -37,11 +38,11 @@ class KinerjaHarianContoller extends Controller
      */
     public function create()
     {
-        $sasaran = Sasaran::where('user_id', '=', Session::get('atasan'))->get();
-        $indikator = Indikator::where('user_id', '=', Session::get('id_user'))->get();
+        $sasaranUtama = SasaranUtama::where('user_id', '=', Session::get('atasan'))->get();
+        $sasaran = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
         return view('pages.pegawai.kinerja_harian.create', [
-            'indikators' => $indikator,
             'sasarans' => $sasaran,
+            'sasaranUtama' => $sasaranUtama,
         ]);
     }
 
@@ -80,7 +81,8 @@ class KinerjaHarianContoller extends Controller
      */
     public function edit(Kinerja_pegawai $kinerja_harian)
     {
-        $sasaran = Sasaran::where('user_id', '=', Session::get('atasan'))->get();
+        $sasaranUtama = SasaranUtama::where('user_id', '=', Session::get('atasan'))->get();
+        $sasaran = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
         $indikator = Indikator::where('user_id', '=', Session::get('id_user'))->get();
         $kinerja_pegawais = Kinerja_pegawai::findOrFail($kinerja_harian->id);
 
@@ -88,6 +90,7 @@ class KinerjaHarianContoller extends Controller
             'kinerja_pegawai' => $kinerja_pegawais,
             'indikators' => $indikator,
             'sasarans' => $sasaran,
+            'sasaranUtama' => $sasaranUtama,
         ]);
     }
 
@@ -98,6 +101,7 @@ class KinerjaHarianContoller extends Controller
     {
         $update = $kinerja_harian->update([
             "kinerja_harian" => $request['kinerja_harian'],
+            "sasaran_utama_id" => $request['sasaran_utama_id'],
             "sasaran_id" => $request['sasaran_id'],
             "indikator_id" => $request['indikator_id'],
             "jumlah" => $request['jumlah'],
@@ -129,5 +133,11 @@ class KinerjaHarianContoller extends Controller
 
         Alert::error('Error!', 'Data Gagal Dihapus');
         return redirect()->back();
+    }
+
+    public function getIndikator($sasaran_id)
+    {
+        $indikator = Indikator::where('sasaran_id', '=', $sasaran_id)->get();
+        return response()->json($indikator);
     }
 }
