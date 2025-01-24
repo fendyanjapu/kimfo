@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Presensi extends Model
+class Arsip extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'tanggal',
-        'jam_masuk',
-        'jam_pulang',
-        'gambar_masuk',
-        'gambar_pulang',
+        'jenis_arsip_id',
+        'nama_arsip',
+        'keterangan',
+        'file',
     ];
 }

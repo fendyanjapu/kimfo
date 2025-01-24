@@ -11,16 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('presensis', function (Blueprint $table) {
+        Schema::create('jenis_arsips', function (Blueprint $table) {
             $table->id();
-
-            $table->integer('user_id');
-            $table->date('tanggal');
-            $table->time('jam_masuk');
-            $table->time('jam_pulang')->nullable();
-            $table->string('gambar_masuk', 255);
-            $table->string('gambar_pulang', 255)->nullable();
-
+            $table->string('jenis_arsip', 100);
             $table->timestamps();
         });
     }
@@ -30,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('presensis');
+        Schema::dropIfExists('jenis_arsips');
     }
 };

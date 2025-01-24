@@ -20,11 +20,19 @@
                 <i class="icon-home"></i><span>Home</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('presensi.index') }}">
-                <i class="icon-user"></i><span>Presensi</span>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
+              <i class="icon-user"></i><span>Presensi</span>
+              <b class="caret"></b>
             </a>
-          </li>
+            <ul class="dropdown-menu" aria-labelledby="DataMaster">
+              
+                <li><a class="dropdown-item" href="{{ route('presensi.index') }}">Presensi Masuk</a></li>
+                <li><a class="dropdown-item" href="{{ route('presensi-pulang.index') }}">Presensi Pulang</a></li>
+                
+            </ul>
+        </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
               <i class="icon-book"></i><span>Pengumpulan</span>
@@ -36,6 +44,8 @@
               @else
                 <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
                 <li><a class="dropdown-item" href="{{ route('indikator.index') }}">Indikator</a></li>
+
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 1]) }}">Renstra</a></li>
               @endif
                 
             </ul>

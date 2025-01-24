@@ -7,11 +7,11 @@
                 
                 @foreach ($presensi as $item)
                 <div class="col-sm-offset-4 mt-4 text-center">
-                    <img src="{{ url('/upload/presensi/'.$item->gambar_masuk) }}" height="300"/>
+                    <img src="{{ url('/upload/presensi/'.$item->gambar_pulang) }}" height="300"/>
                 </div>
                 <div class="col-sm-offset-4 mt-4 text-center">
-                    <p>Presensi Masuk</p>
-                    <p>{{ $item->created_at }}</p>
+                    <p>Presensi Pulang</p>
+                    <p>{{ $item->updated_at }}</p>
                 </div>
                 @endforeach
 

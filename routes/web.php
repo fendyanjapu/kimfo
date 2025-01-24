@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IkuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArsipController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PegawaiController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\PengendalianController;
 use App\Http\Controllers\SasaranUtamaController;
 use App\Http\Controllers\PenggunaanKasController;
 use App\Http\Controllers\KinerjaPegawaiController;
+use App\Http\Controllers\PresensiPulangController;
 use App\Http\Controllers\RfkSubkegiatanController;
 use App\Http\Controllers\UraianSubkegiatanController;
 
@@ -45,8 +47,12 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
     Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
     Route::get('/get-indikator/{sasaran_id}', [KinerjaHarianContoller::class, 'getIndikator'] )->name('getIndikator');
+    Route::get('/arsip/{jenis_arsip_id}', [ArsipController::class, 'index'] )->name('arsip.index');
+    Route::get('/arsip/create/{jenis_arsip_id}', [ArsipController::class, 'create'] )->name('arsip.create');
+    Route::post('/arsip/store', [ArsipController::class, 'store'] )->name('arsip.store');
 
     Route::resource('presensi', PresensiController::class);
+    Route::resource('presensi-pulang', PresensiPulangController::class);
     Route::resource('kinerja_harian', KinerjaHarianContoller::class);
     Route::resource('sasaran', SasaranController::class)->except('show');
     Route::resource('indikator', IndikatorController::class);

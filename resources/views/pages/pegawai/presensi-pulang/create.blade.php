@@ -4,11 +4,11 @@
 <div class="herocontent">
     <div class="row justify-content-center">
         <div class="col-md-8 shadow-xl bg-white rounded">
-            <form class="px-5 py-5" action="{{ route('presensi.store')}}" method="post" enctype="multipart/form-data">
+            <form class="px-5 py-5" action="{{ route('presensi-pulang.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 
                 <div class="form-group row mt-3">
-                    <label class="col-sm-4 control-label">Foto Presensi Masuk</label>
+                    <label class="col-sm-4 control-label">Foto Presensi Pulang</label>
                     <div class="col-sm-8">
                         <input type="file" accept="image/*" capture="user" name="gambar" required>
                     </div>
