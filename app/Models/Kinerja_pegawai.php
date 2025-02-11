@@ -11,7 +11,6 @@ class Kinerja_pegawai extends Model
 
     protected $fillable = [
         'user_id',
-        'sasaran_utama_id',
         'sasaran_id',
         'indikator_id',
         'kinerja_harian',

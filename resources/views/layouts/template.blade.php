@@ -44,8 +44,17 @@
               @else
                 <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
                 <li><a class="dropdown-item" href="{{ route('indikator.index') }}">Indikator</a></li>
-
+                {{-- Upload arsip --}}
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 1]) }}">Renstra</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 2]) }}">IKU</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 3]) }}">Renja</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 4]) }}">PK</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 5]) }}">Rencana Aksi</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 6]) }}">DPA</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 7]) }}">Pohon Kinerja / Cascading</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 8]) }}">LHE</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 9]) }}">Laporan Monev</a></li>
+                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 10]) }}">Lainnya</a></li>
               @endif
                 
             </ul>

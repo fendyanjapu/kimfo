@@ -49,7 +49,10 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
     Route::get('/get-indikator/{sasaran_id}', [KinerjaHarianContoller::class, 'getIndikator'] )->name('getIndikator');
     Route::get('/arsip/{jenis_arsip_id}', [ArsipController::class, 'index'] )->name('arsip.index');
     Route::get('/arsip/create/{jenis_arsip_id}', [ArsipController::class, 'create'] )->name('arsip.create');
+    Route::get('/arsip/{id}/edit', [ArsipController::class, 'edit'] )->name('arsip.edit');
     Route::post('/arsip/store', [ArsipController::class, 'store'] )->name('arsip.store');
+    Route::put('/arsip/{id}/update', [ArsipController::class, 'update'] )->name('arsip.update');
+    Route::delete('/arsip/{id}/delete', [ArsipController::class, 'delete'] )->name('arsip.delete');
 
     Route::resource('presensi', PresensiController::class);
     Route::resource('presensi-pulang', PresensiPulangController::class);

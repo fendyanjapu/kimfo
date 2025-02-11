@@ -20,7 +20,6 @@
     <thead>
       <tr>
         <th style="vertical-align: middle; text-align: center" width="15px">NO</th>
-        <th style="vertical-align: middle; text-align: center">Sasaran Utama</th>
         <th style="vertical-align: middle; text-align: center">Sasaran</th>
         <th style="vertical-align: middle; text-align: center">Indikator</th>
         <th style="vertical-align: middle; text-align: center">Kinerja Harian</th>
@@ -37,7 +36,6 @@
         @foreach ($query as $key)
         <tr>
             <td style="text-align: center" style="width:1%">{{ $loop->iteration }}</td>
-            <td style="width:20%"><?= $key->sasaran_utama->sasaran_strategis ?></td>
             <td style="width:20%"><?= $key->sasaran->nama_sasaran ?></td>
             <td style="width:20%"><?= $key->indikator->nama_indikator ?></td>
             <td style="width:20%"><?= $key->kinerja_harian ?></td>

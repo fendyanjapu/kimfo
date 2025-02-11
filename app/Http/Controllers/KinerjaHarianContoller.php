@@ -38,11 +38,9 @@ class KinerjaHarianContoller extends Controller
      */
     public function create()
     {
-        $sasaranUtama = SasaranUtama::where('user_id', '=', Session::get('atasan'))->get();
         $sasaran = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
         return view('pages.pegawai.kinerja_harian.create', [
             'sasarans' => $sasaran,
-            'sasaranUtama' => $sasaranUtama,
         ]);
     }
 
@@ -81,7 +79,6 @@ class KinerjaHarianContoller extends Controller
      */
     public function edit(Kinerja_pegawai $kinerja_harian)
     {
-        $sasaranUtama = SasaranUtama::where('user_id', '=', Session::get('atasan'))->get();
         $sasaran = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
         $indikator = Indikator::where('user_id', '=', Session::get('id_user'))->get();
         $kinerja_pegawais = Kinerja_pegawai::findOrFail($kinerja_harian->id);
@@ -90,7 +87,6 @@ class KinerjaHarianContoller extends Controller
             'kinerja_pegawai' => $kinerja_pegawais,
             'indikators' => $indikator,
             'sasarans' => $sasaran,
-            'sasaranUtama' => $sasaranUtama,
         ]);
     }
 

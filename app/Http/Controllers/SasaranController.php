@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Alert;
 use App\Models\Sasaran;
+use App\Models\SasaranUtama;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -28,7 +29,10 @@ class SasaranController extends Controller
      */
     public function create()
     {
-        return view('pages.pegawai.sasaran.add');
+        $sasaranUtama = SasaranUtama::where('user_id', '=', Session::get('atasan'))->get();
+        return view('pages.pegawai.sasaran.add', [
+            'sasaranUtama' => $sasaranUtama,
+        ]);
     }
 
     /**
@@ -58,9 +62,11 @@ class SasaranController extends Controller
     public function edit(Sasaran $sasaran)
     {
         $query = Sasaran::findOrFail($sasaran->id);
+        $sasaranUtama = SasaranUtama::where('user_id', '=', Session::get('atasan'))->get();
 
         return view('pages.pegawai.sasaran.edit', [
             'sasaran' => $query,
+            'sasaranUtama' => $sasaranUtama,
         ]);
     }
 
@@ -70,6 +76,7 @@ class SasaranController extends Controller
     public function update(Request $request, Sasaran $sasaran)
     {
         $update = $sasaran->update([
+            "sasaran_utama_id" => $request['sasaran_utama_id'],
             "nama_sasaran" => $request['nama_sasaran'],
         ]);
         if($update == true){

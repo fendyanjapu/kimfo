@@ -9,7 +9,17 @@
 			<form class="px-5 py-5" action="{{ route('sasaran.update', ['sasaran' => $sasaran]) }}" method="post">
 				@csrf
 				@method('PUT')
-
+				<div class="form-group row mt-3">
+					<label class="col-sm-4 control-label">Sasaran Utama</label>
+					<div class="col-sm-8">
+						<select id="sasaran" class="form-control" name="sasaran_utama_id" required>
+							<option value=""></option>
+							@foreach ($sasaranUtama as $item)
+								<option value="{{ $item->id }}" {{ $item->id == $sasaran->sasaran_utama_id ? 'selected' : '' }}>{{ $item->sasaran_strategis }}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
 				<div class="form-group row mt-3">
 					<label class="col-sm-4 control-label">Sasaran</label>
 					<div class="col-sm-8">

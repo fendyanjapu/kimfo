@@ -32,7 +32,7 @@
     <tr>
       <td style="text-align: center" style="width:1%">{{ $loop->iteration }}</td>
       <td style="width:20%"><?= $key->nama_arsip ?></td>
-      <td style="width:20%"><?= $key->created_at ?></td>
+      <td style="text-align: center; width:20%"><?= $key->created_at ?></td>
       <td style="width:20%"><?= $key->keterangan ?></td>
       <td style="text-align: center; width:10%">
       <a href="{{ env('APP_URL') . 'upload/arsip/' . $key->file }}" class="btn btn-default btn-sm mt-1" title="lihat"
@@ -41,9 +41,9 @@
       </a>
       </td>
       <td style="text-align: center">
-      <a href="#" class="btn btn-success btn-sm mt-1"
+      <a href="{{ route('arsip.edit', ['id' => $key->id]) }}" class="btn btn-success btn-sm mt-1"
         title="edit"><i class="icon-pencil"></i></a>
-      <a href="#" class="btn btn-danger btn-sm mt-1"
+      <a href="{{ route('arsip.delete', ['id' => $key->id]) }}" class="btn btn-danger btn-sm mt-1"
         data-confirm-delete="true">
         <i class="icon-trash"></i>
 

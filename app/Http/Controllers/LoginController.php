@@ -11,7 +11,8 @@ Use Alert;
 class LoginController extends Controller
 {
     public function index(){
-        return view('login');
+        $users = User::where('jabatan_id', '>', 6)->where('jabatan_id', '!=', null)->get();
+        return view('login', compact('users'));
     }
 
     public function loginAksi(Request $request){

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sasarans', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('sasaran_utama_id')->unsigned();
             $table->string('nama_sasaran', 255);
             $table->timestamps();
         });
