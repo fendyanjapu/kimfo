@@ -36,9 +36,7 @@ use App\Http\Controllers\UraianSubkegiatanController;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', [LoginController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login-aksi', [LoginController::class, 'loginAksi'])->name('login-aksi');
