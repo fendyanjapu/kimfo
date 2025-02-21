@@ -6,6 +6,7 @@ use Alert;
 use App\Models\Arsip;
 use App\Models\JenisArsip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ArsipController extends Controller
 {
@@ -80,6 +81,11 @@ class ArsipController extends Controller
         $jenis_arsip_id = $getid->jenis_arsip_id;
         $getid->delete();
 
+        $file_path = public_path('upload/arsip/'.$getid->file);
+        if (File::exists($file_path)) {
+            File::delete($file_path);
+        }
+
         if($getid == true){
             Alert::success('Sukses', 'Data Berhasil Dihapus');
             return redirect()->route('arsip.index', ['jenis_arsip_id' => $jenis_arsip_id]);
@@ -88,5 +94,6 @@ class ArsipController extends Controller
             Alert::error('Gagal', 'Data Gagal Dihapus');
             return redirect()->back();
         }
+        
     }
 }
