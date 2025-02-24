@@ -8,7 +8,7 @@
                 @csrf
                 
                 <div class="form-group row mt-3">
-                    <label class="col-sm-4 control-label">Sasaran Strategis</label>
+                    <label class="col-sm-4 control-label">Sasaran</label>
                     <div class="col-sm-8">
                         <input type="text" style="width:100%" name="sasaran_strategis" class="form-control @error('sasaran_strategis') is-invalid @enderror" id="sasaran_strategis" required/>
                         @error('sasaran_strategis')
@@ -32,6 +32,16 @@
                     <div class="col-sm-8">
                         <input type="text" style="width:100%" name="target" class="form-control @error('target') is-invalid @enderror" id="target" required/>
                         @error('target')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Satuan</label>
+                    <div class="col-sm-8">
+                        <input type="text" style="width:100%" name="satuan" class="form-control @error('satuan') is-invalid @enderror" id="satuan"/>
+                        @error('satuan')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>

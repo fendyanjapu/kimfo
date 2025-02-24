@@ -36,14 +36,14 @@
     @foreach ($indikators as $item)
     <tr>
         <td style="text-align: center;width:1%">{{ $loop->iteration }}</td>
-        <td style="text-align: center;">{{ $item->sasaran->nama_sasaran }}</td>
+        <td style="text-align: center;">{{ $item->sasaran?->nama_sasaran }}</td>
         <td style="text-align: center;">{{ $item->nama_indikator }}</td>
         <td style="text-align: center;">{{ $item->target }}</td>
         <td style="text-align: center;">{{ $item->satuan }}</td>
           <td style="text-align: center">
-            <a href="{{ route('indikator.edit', ['indikator' => $item->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
+            <a href="{{ route('indikator.edit', ['indikator' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
 
-            <a href="{{ route('indikator.destroy', $item->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
+            <a href="{{ route('indikator.destroy', $item) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
               <i class="icon-trash"></i>
           </a>
         </td>

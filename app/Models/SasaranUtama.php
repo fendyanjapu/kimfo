@@ -14,5 +14,6 @@ class SasaranUtama extends Model
         'sasaran_strategis',
         'indikator_kinerja',
         'target',
+        'satuan',
     ];
 }

@@ -15,7 +15,7 @@ class SasaranController extends Controller
      */
     public function index()
     {
-        $sasarans = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
+        $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
         // confirm delete
         $title='Hapus Data!';
         $text="Apakah Anda Yakin?";
@@ -29,7 +29,7 @@ class SasaranController extends Controller
      */
     public function create()
     {
-        $sasaranUtama = SasaranUtama::where('user_id', '=', Session::get('atasan'))->get();
+        $sasaranUtama = SasaranUtama::where('user_id', '=', auth()->user()->atasan)->get();
         return view('pages.pegawai.sasaran.add', [
             'sasaranUtama' => $sasaranUtama,
         ]);
@@ -41,7 +41,7 @@ class SasaranController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['user_id'] = Session::get('id_user');
+        $data['user_id'] = auth()->user()->id;
         Sasaran::create($data);
 
         Alert::success('Sukses', 'Data Berhasil Ditambahkan');
@@ -61,11 +61,12 @@ class SasaranController extends Controller
      */
     public function edit(Sasaran $sasaran)
     {
-        $query = Sasaran::findOrFail($sasaran->id);
-        $sasaranUtama = SasaranUtama::where('user_id', '=', Session::get('atasan'))->get();
+        $this->authorize('update', $sasaran);
+
+        $sasaranUtama = SasaranUtama::where('user_id', '=', auth()->user()->atasan)->get();
 
         return view('pages.pegawai.sasaran.edit', [
-            'sasaran' => $query,
+            'sasaran' => $sasaran,
             'sasaranUtama' => $sasaranUtama,
         ]);
     }
@@ -75,6 +76,8 @@ class SasaranController extends Controller
      */
     public function update(Request $request, Sasaran $sasaran)
     {
+        $this->authorize('update', $sasaran);
+
         $update = $sasaran->update([
             "sasaran_utama_id" => $request['sasaran_utama_id'],
             "nama_sasaran" => $request['nama_sasaran'],
@@ -94,6 +97,8 @@ class SasaranController extends Controller
      */
     public function destroy(Sasaran $sasaran)
     {
+        $this->authorize('delete', $sasaran);
+
         if ($sasaran) {
             $sasaran->delete();
             Alert::success('Sukses', 'Data Berhasil Dihapus');

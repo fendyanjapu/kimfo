@@ -14,7 +14,7 @@ class PresensiPulangController extends Controller
      */
     public function index()
     {
-        $presensiMasuk = Presensi::where('user_id', '=', Session::get('id_user'))
+        $presensiMasuk = Presensi::where('user_id', '=', auth()->user()->id)
                             ->where('tanggal', '=', date('Y-m-d'))
                             ->where('jam_masuk', '!=', null);
 
@@ -30,7 +30,7 @@ class PresensiPulangController extends Controller
      */
     public function create()
     {
-        $presensiPulang = Presensi::where('user_id', '=', Session::get('id_user'))
+        $presensiPulang = Presensi::where('user_id', '=', auth()->user()->id)
                             ->where('tanggal', '=', date('Y-m-d'))
                             ->where('jam_pulang', '=', '');
 
@@ -53,7 +53,7 @@ class PresensiPulangController extends Controller
         $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
         $gambar->move($tujuan_upload,$nama_gbr);
 
-        $presensiPulang = Presensi::where('user_id', '=', Session::get('id_user'))
+        $presensiPulang = Presensi::where('user_id', '=', auth()->user()->id)
                                     ->where('tanggal', '=', date('Y-m-d'));
 
         $presensiPulang->update([

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IkuController;
 use App\Http\Controllers\UserController;
@@ -41,8 +42,9 @@ Route::get('/', [LoginController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login-aksi', [LoginController::class, 'loginAksi'])->name('login-aksi');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/dashboad', [DashboardController::class, 'index'] )->name('dashboard')->middleware('auth');
 
-Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
+Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
     Route::get('/get-indikator/{sasaran_id}', [KinerjaHarianContoller::class, 'getIndikator'] )->name('getIndikator');
     Route::get('/arsip/{jenis_arsip_id}', [ArsipController::class, 'index'] )->name('arsip.index');
@@ -60,8 +62,8 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['ceklog']], function() {
     Route::resource('sasaran-utama', SasaranUtamaController::class)->except('show');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['ceklog']], function(){
-   Route::get('/', [AdminController::class, 'index'] )->name('indexAdmin');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
+   
    Route::resource('rfk_program', RfkProgramController::class);
    Route::resource('rfk_kegiatan', RfkKegiatanController::class);
 

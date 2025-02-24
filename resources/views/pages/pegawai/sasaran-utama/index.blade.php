@@ -35,7 +35,7 @@
         <td style="text-align: center;width:1%">{{ $loop->iteration }}</td>
         <td style="text-align: center;">{{ $item->sasaran_strategis }}</td>
         <td style="text-align: center;">{{ $item->indikator_kinerja }}</td>
-        <td style="text-align: center;">{{ $item->target }}</td>
+        <td style="text-align: center;">{{ $item->target." ".$item->satuan }}</td>
         <td style="text-align: center">
             <a href="{{ route('sasaran-utama.edit', ['sasaran_utama' => $item->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
 

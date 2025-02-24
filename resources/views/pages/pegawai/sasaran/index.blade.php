@@ -31,12 +31,12 @@
     @foreach ($sasarans as $item)
     <tr>
         <td style="text-align: center;width:1%">{{ $loop->iteration }}</td>
-        <td style="text-align: center;">{{ $item->sasaran_utama->sasaran_strategis }}</td>
+        <td style="text-align: center;">{{ $item->sasaran_utama?->sasaran_strategis }}</td>
         <td style="text-align: center;">{{ $item->nama_sasaran }}</td>
         <td style="text-align: center">
-            <a href="{{ route('sasaran.edit', ['sasaran' => $item->id]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
+            <a href="{{ route('sasaran.edit', ['sasaran' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
 
-            <a href="{{ route('sasaran.destroy', $item->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
+            <a href="{{ route('sasaran.destroy', $item) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
               <i class="icon-trash"></i>
           </a>
         </td>

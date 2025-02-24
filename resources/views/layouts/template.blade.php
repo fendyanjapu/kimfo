@@ -14,9 +14,9 @@
     <div class="subnavbar-inner">
       <div class="container">
         <ul class="mainnav">
-          <?php if (Session::get('level') == 'pegawai'): ?>
+          <?php if (auth()->user()->level == 'pegawai'): ?>
           <li class="nav-item">
-            <a class="nav-link active" href="{{ route('indexPegawai') }}">
+            <a class="nav-link active" href="{{ route('dashboard') }}">
                 <i class="icon-home"></i><span>Home</span>
             </a>
           </li>
@@ -39,7 +39,7 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" aria-labelledby="DataMaster">
-              @if (Session::get('id_user') <= 5)
+              @if (auth()->user()->id <= 5)
                 <li><a class="dropdown-item" href="{{ route('sasaran-utama.index') }}">Sasaran dan Indikator Kinerja</a></li>
               @else
                 <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
@@ -71,13 +71,13 @@
         </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="{{ route('indexAdmin') }}">
+            <a class="nav-link active" href="#">
                 <i class="icon-file"></i><span>Laporan</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="{{ route('indexAdmin') }}">
+            <a class="nav-link active" href="#">
                 <i class="icon-list-alt"></i><span>Evaluasi</span>
             </a>
           </li>
@@ -90,9 +90,9 @@
 
           <?php endif ?>
           
-            <?php if (Session::get('level') == 'Admin'): ?>
+            <?php if (auth()->user()->level == 'Admin'): ?>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('indexAdmin') }}">
+                <a class="nav-link active" href="{{ route('dashboard') }}">
                     <i class="icon-home"></i><span>Home</span>
                 </a>
               </li>
@@ -134,19 +134,19 @@
           </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="{{ route('indexAdmin') }}">
+              <a class="nav-link active" href="#">
                   <i class="icon-bar-chart"></i><span>Pengukuran</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="{{ route('indexAdmin') }}">
+              <a class="nav-link active" href="#">
                   <i class="icon-file"></i><span>Laporan</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="{{ route('indexAdmin') }}">
+              <a class="nav-link active" href="#">
                   <i class="icon-list-alt"></i><span>Evaluasi</span>
               </a>
             </li>

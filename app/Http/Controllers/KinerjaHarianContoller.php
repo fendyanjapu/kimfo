@@ -19,8 +19,8 @@ class KinerjaHarianContoller extends Controller
      */
     public function index()
     {
-        $kinerjaPegawai = Kinerja_pegawai::where('user_id', '=', Session::get('id_user'))->orderBy('tgl_input', 'desc')->get();
-        $cekPresensi = Presensi::where('user_id', '=', Session::get('id_user'))->where('tanggal', '=', date('Y-m-d'))->count();
+        $kinerjaPegawai = Kinerja_pegawai::where('user_id', '=', auth()->user()->id)->orderBy('tgl_input', 'desc')->get();
+        $cekPresensi = Presensi::where('user_id', '=', auth()->user()->id)->where('tanggal', '=', date('Y-m-d'))->count();
         if ($cekPresensi == 0) {
             return redirect()->route('presensi.index');
         }
@@ -38,7 +38,7 @@ class KinerjaHarianContoller extends Controller
      */
     public function create()
     {
-        $sasaran = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
+        $sasaran = Sasaran::where('user_id', '=', auth()->user()->id)->get();
         return view('pages.pegawai.kinerja_harian.create', [
             'sasarans' => $sasaran,
         ]);
@@ -55,7 +55,7 @@ class KinerjaHarianContoller extends Controller
         $gambar->move($tujuan_upload,$nama_gbr);
 
         $data = $request->all();
-        $data['user_id'] = Session::get('id_user');
+        $data['user_id'] = auth()->user()->id;
         $data['bukti_kegiatan'] = $nama_gbr;
         Kinerja_pegawai::create($data);
 
@@ -79,8 +79,10 @@ class KinerjaHarianContoller extends Controller
      */
     public function edit(Kinerja_pegawai $kinerja_harian)
     {
-        $sasaran = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
-        $indikator = Indikator::where('user_id', '=', Session::get('id_user'))->get();
+        $this->authorize('update', $kinerja_harian);
+
+        $sasaran = Sasaran::where('user_id', '=', auth()->user()->id)->get();
+        $indikator = Indikator::where('user_id', '=', auth()->user()->id)->get();
         $kinerja_pegawais = Kinerja_pegawai::findOrFail($kinerja_harian->id);
 
         return view('pages.pegawai.kinerja_harian.edit', [

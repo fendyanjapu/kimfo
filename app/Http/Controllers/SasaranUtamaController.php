@@ -14,7 +14,7 @@ class SasaranUtamaController extends Controller
      */
     public function index()
     {
-        $sasarans = SasaranUtama::where('user_id', '=', Session::get('id_user'))->get();
+        $sasarans = SasaranUtama::where('user_id', '=', auth()->user()->id)->get();
         // confirm delete
         $title='Hapus Data!';
         $text="Apakah Anda Yakin?";
@@ -37,7 +37,7 @@ class SasaranUtamaController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['user_id'] = Session::get('id_user');
+        $data['user_id'] = auth()->user()->id;
         SasaranUtama::create($data);
 
         Alert::success('Sukses', 'Data Berhasil Ditambahkan');
@@ -57,10 +57,10 @@ class SasaranUtamaController extends Controller
      */
     public function edit(SasaranUtama $sasaranUtama)
     {
-        $query = SasaranUtama::findOrFail($sasaranUtama->id);
+        $this->authorize('update', $sasaranUtama);
 
         return view('pages.pegawai.sasaran-utama.edit', [
-            'sasaranUtama' => $query,
+            'sasaranUtama' => $sasaranUtama,
         ]);
     }
 
@@ -69,10 +69,13 @@ class SasaranUtamaController extends Controller
      */
     public function update(Request $request, SasaranUtama $sasaranUtama)
     {
+        $this->authorize('update', $sasaranUtama);
+
         $update = $sasaranUtama->update([
             "sasaran_strategis" => $request['sasaran_strategis'],
             "indikator_kinerja" => $request['indikator_kinerja'],
             "target" => $request['target'],
+            "satuan" => $request['satuan'],
         ]);
         if($update == true){
             Alert::success('Sukses', 'Data Berhasil diubah');
@@ -89,6 +92,8 @@ class SasaranUtamaController extends Controller
      */
     public function destroy(SasaranUtama $sasaranUtama)
     {
+        $this->authorize('delete', $sasaranUtama);
+
         if ($sasaranUtama) {
             $sasaranUtama->delete();
             Alert::success('Sukses', 'Data Berhasil Dihapus');

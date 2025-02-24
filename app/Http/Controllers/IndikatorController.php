@@ -15,7 +15,7 @@ class IndikatorController extends Controller
      */
     public function index()
     {
-        $indikators = Indikator::where('user_id','=', Session::get('id_user'))->get();
+        $indikators = Indikator::where('user_id','=', auth()->user()->id)->get();
         // confirm delete
         $title='Hapus Data!';
         $text="Apakah Anda Yakin?";
@@ -31,7 +31,7 @@ class IndikatorController extends Controller
      */
     public function create()
     {
-        $sasarans = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
+        $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
         return view('pages.pegawai.indikator.add', [
             'sasarans' => $sasarans
         ]);
@@ -43,7 +43,7 @@ class IndikatorController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['user_id'] = Session::get('id_user');
+        $data['user_id'] = auth()->user()->id;
         indikator::create($data);
 
         Alert::success('Sukses', 'Data Berhasil Ditambahkan');
@@ -63,11 +63,12 @@ class IndikatorController extends Controller
      */
     public function edit(Indikator $indikator)
     {
-        $sasarans = Sasaran::where('user_id', '=', Session::get('id_user'))->get();
-        $query = indikator::findOrFail($indikator->id);
+        $this->authorize('update', $indikator);
+
+        $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
 
         return view('pages.pegawai.indikator.edit', [
-            'indikator' => $query,
+            'indikator' => $indikator,
             'sasarans' => $sasarans
         ]);
     }
@@ -77,6 +78,8 @@ class IndikatorController extends Controller
      */
     public function update(Request $request, Indikator $indikator)
     {
+        $this->authorize('update', $indikator);
+
         $update = $indikator->update([
             "sasaran_id" => $request['sasaran_id'],
             "nama_indikator" => $request['nama_indikator'],
@@ -98,6 +101,8 @@ class IndikatorController extends Controller
      */
     public function destroy(Indikator $indikator)
     {
+        $this->authorize('delete', $indikator);
+
         if ($indikator) {
             $indikator->delete();
             Alert::success('Sukses', 'Data Berhasil Dihapus');

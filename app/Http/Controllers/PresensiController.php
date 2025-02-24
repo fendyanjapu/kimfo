@@ -14,7 +14,7 @@ class PresensiController extends Controller
      */
     public function index()
     {
-        $presensi = Presensi::where('user_id', '=', Session::get('id_user'))->where('tanggal', '=', date('Y-m-d'));
+        $presensi = Presensi::where('user_id', '=', auth()->user()->id)->where('tanggal', '=', date('Y-m-d'));
         if ($presensi->count() == 0) {
             return redirect()->route('presensi.create');
         } else {
@@ -37,13 +37,13 @@ class PresensiController extends Controller
      */
     public function store(Request $request)
     {
-        $gambar =$request->file('gambar');
+        $gambar = $request->file('gambar');
         $tujuan_upload = 'upload/presensi';
         $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
         $gambar->move($tujuan_upload,$nama_gbr);
 
         Presensi::create([
-            'user_id' => Session::get("id_user"),
+            'user_id' => auth()->user()->id,
             'tanggal' => date('Y-m-d'),
             'jam_masuk' => date('H:i:s'),
             'gambar_masuk' => $nama_gbr,

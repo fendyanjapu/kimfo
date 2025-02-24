@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('sasaran_strategis', 255);
             $table->string('indikator_kinerja', 255);
             $table->float('target');
+            $table->string('satuan')->nullable();
             $table->timestamps();
         });
     }
