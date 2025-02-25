@@ -44,16 +44,19 @@
               @else
                 <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
                 <li><a class="dropdown-item" href="{{ route('indikator.index') }}">Indikator</a></li>
+                <li><a class="dropdown-item" href="{{ route('targetBulanan.index') }}">Target Bulanan</a></li>
                 {{-- Upload arsip --}}
+                <hr>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 1]) }}">Renstra</a></li>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 2]) }}">IKU</a></li>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 3]) }}">Renja</a></li>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 4]) }}">PK</a></li>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 5]) }}">Rencana Aksi</a></li>
-                <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 6]) }}">DPA</a></li>
+                {{-- <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 6]) }}">DPA</a></li> --}}
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 7]) }}">Pohon Kinerja / Cascading</a></li>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 8]) }}">LHE</a></li>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 9]) }}">Laporan Monev</a></li>
+                <hr>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 10]) }}">Lainnya</a></li>
               @endif
                 
@@ -67,6 +70,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="pengukuran">
                 <li><a class="dropdown-item" href="{{ route('kinerja_harian.index') }}">Kinerja Harian</a></li>
+                <li><a class="dropdown-item" href="{{ route('capaianKinerja.index') }}">Capaian Kinerja</a></li>
             </ul>
         </li>
 

@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('indikators', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('sasaran_id');
+            $table->smallInteger('user_id');
+            $table->smallInteger('sasaran_id');
             $table->string('nama_indikator', 255);
-            $table->float('target');
+            $table->string('target', 10);
             $table->string('satuan', 100)->nullable();
+            $table->smallInteger('target_waktu_id');
+            $table->char('dari_bulan', 2)->nullable();
+            $table->char('sampai_bulan', 2)->nullable();
             $table->timestamps();
         });
     }

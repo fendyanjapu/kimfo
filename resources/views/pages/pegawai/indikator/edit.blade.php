@@ -42,6 +42,43 @@
                     </div>
                 </div>
 
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Target Waktu</label>
+                    <div class="col-sm-8">
+                        <select name="target_waktu_id" id="" class="form-control" required>
+                            <option value=""></option>
+                            @foreach ($targetWaktus as $targetWaktu)
+                                <option value="{{ $targetWaktu->id }}" {{ $targetWaktu->id == $indikator->target_waktu_id ? 'selected' : '' }}>
+                                    {{ $targetWaktu->target_waktu }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('target_waktu_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Dari Bulan</label>
+                    <div class="col-sm-8">
+                        <input type="number" style="width:100%" name="dari_bulan" class="form-control" id="dari_bulan" value="<?= $indikator->dari_bulan ?>"/>
+                        @error('dari_bulan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Sampai Bulan</label>
+                    <div class="col-sm-8">
+                        <input type="number" style="width:100%" name="sampai_bulan" class="form-control" id="sampai_bulan" value="<?= $indikator->sampai_bulan ?>"/>
+                        @error('sampai_bulan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
                 <div class="col-sm-offset-4 mt-4 text-center">
                     <button type="submit" class="btn btn-primary" id="bSimpan"><i class="fa fa-save"></i> Simpan</button>
                     <a href="#" class="btn btn-danger" onClick="self.history.back()">Kembali</a>

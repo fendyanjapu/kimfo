@@ -28,6 +28,7 @@
       <th style="vertical-align: middle; text-align: center">Indikator</th>
       <th style="vertical-align: middle; text-align: center">Target</th>
       <th style="vertical-align: middle; text-align: center">Satuan</th>
+      <th style="vertical-align: middle; text-align: center">Target Waktu</th>
       <th style="vertical-align: middle; text-align: center" width="15px">#</th>
       
      </tr>
@@ -40,6 +41,13 @@
         <td style="text-align: center;">{{ $item->nama_indikator }}</td>
         <td style="text-align: center;">{{ $item->target }}</td>
         <td style="text-align: center;">{{ $item->satuan }}</td>
+        <td style="text-align: center;">
+          @if ($item->target_waktu_id == 3)
+          {{ $item->targetWaktu->target_waktu." (".$item->dari_bulan." - ".$item->sampai_bulan.")" }}
+          @else
+          {{ $item->targetWaktu->target_waktu }}
+          @endif
+        </td>
           <td style="text-align: center">
             <a href="{{ route('indikator.edit', ['indikator' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
 

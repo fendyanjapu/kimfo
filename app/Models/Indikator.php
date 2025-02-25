@@ -15,10 +15,18 @@ class Indikator extends Model
         'nama_indikator',
         'target',
         'satuan',
+        'target_waktu_id',
+        'dari_bulan',
+        'sampai_bulan',
     ];
 
     public function sasaran()
     {
         return $this->belongsTo(Sasaran::class);
+    }
+
+    public function targetWaktu()
+    {
+        return $this->belongsTo(TargetWaktu::class);
     }
 }

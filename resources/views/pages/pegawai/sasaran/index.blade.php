@@ -23,7 +23,7 @@
      <tr>
       <th style="vertical-align: middle; text-align: center" width="15px">No</th>
       <th style="vertical-align: middle; text-align: center">Sasaran Utama</th>
-      <th style="vertical-align: middle; text-align: center">Sasaran</th>
+      <th style="vertical-align: middle; text-align: center">Sasaran Strategis</th>
       <th style="vertical-align: middle; text-align: center" width="15px">#</th>
      </tr>
   </thead>

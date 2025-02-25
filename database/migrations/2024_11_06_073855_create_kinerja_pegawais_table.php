@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('kinerja_pegawais', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('user_id')->unsigned();
-            $table->integer('sasaran_id')->unsigned();
-            $table->integer('indikator_id')->unsigned();
+            $table->smallInteger('user_id')->unsigned();
+            $table->smallInteger('sasaran_id')->unsigned();
+            $table->smallInteger('indikator_id')->unsigned();
             $table->string('kinerja_harian',255)->nullable();
             $table->float('jumlah')->nullable();
             $table->string('satuan',100)->nullable();

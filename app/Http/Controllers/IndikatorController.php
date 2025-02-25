@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Models\Sasaran;
 use App\Models\Indikator;
+use App\Models\TargetBulanan;
+use App\Models\TargetWaktu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -31,10 +33,9 @@ class IndikatorController extends Controller
      */
     public function create()
     {
+        $targetWaktus = TargetWaktu::all();
         $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
-        return view('pages.pegawai.indikator.add', [
-            'sasarans' => $sasarans
-        ]);
+        return view('pages.pegawai.indikator.add', compact('sasarans', 'targetWaktus'));
     }
 
     /**
@@ -44,10 +45,37 @@ class IndikatorController extends Controller
     {
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
-        indikator::create($data);
+        $insertIndikator = indikator::create($data);
+        $lastInsertedId = $insertIndikator->id;
 
-        Alert::success('Sukses', 'Data Berhasil Ditambahkan');
-        return redirect()->route('indikator.index');
+        if ($request->target_waktu_id == 1 && $insertIndikator) {
+            $trgtBln = $request->target / 12;
+            $dataTarget = [
+                'user_id' => auth()->user()->id,
+                'indikator_id' => $lastInsertedId ,
+                'jan' => $trgtBln,
+                'feb' => $trgtBln,
+                'mar' => $trgtBln,
+                'apr' => $trgtBln,
+                'mei' => $trgtBln,
+                'jun' => $trgtBln,
+                'jul' => $trgtBln,
+                'agu' => $trgtBln,
+                'sep' => $trgtBln,
+                'okt' => $trgtBln,
+                'nov' => $trgtBln,
+                'des' => $trgtBln,
+            ];
+            $insertTargetBulanan = TargetBulanan::create($dataTarget);
+        }
+
+        if ($insertIndikator) {
+            Alert::success('Sukses', 'Data Berhasil Ditambahkan');
+            return redirect()->route('indikator.index');
+        } else {
+            Alert::error('Error!', 'Data Gagal diubah');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -66,10 +94,11 @@ class IndikatorController extends Controller
         $this->authorize('update', $indikator);
 
         $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
-
+        $targetWaktus = TargetWaktu::all();
         return view('pages.pegawai.indikator.edit', [
             'indikator' => $indikator,
-            'sasarans' => $sasarans
+            'sasarans' => $sasarans,
+            'targetWaktus' => $targetWaktus,
         ]);
     }
 
@@ -85,6 +114,9 @@ class IndikatorController extends Controller
             "nama_indikator" => $request['nama_indikator'],
             "target" => $request['target'],
             "satuan" => $request['satuan'],
+            "target_waktu_id" => $request['target_waktu_id'],
+            "dari_bulan" => $request['dari_bulan'],
+            "sampai_bulan" => $request['sampai_bulan'],
         ]);
         if($update == true){
             Alert::success('Sukses', 'Data Berhasil diubah');

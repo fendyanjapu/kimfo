@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CapaianKinerjaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TargetBulananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IkuController;
 use App\Http\Controllers\UserController;
@@ -60,6 +62,8 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::resource('sasaran', SasaranController::class)->except('show');
     Route::resource('indikator', IndikatorController::class);
     Route::resource('sasaran-utama', SasaranUtamaController::class)->except('show');
+    Route::resource('targetBulanan', TargetBulananController::class)->except('show');
+    Route::resource('capaianKinerja', CapaianKinerjaController::class)->except('show');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){

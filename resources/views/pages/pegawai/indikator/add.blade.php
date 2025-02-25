@@ -30,7 +30,7 @@
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Target</label>
                     <div class="col-sm-8">
-                        <input type="text" style="width:100%" name="target" class="form-control @error('target') is-invalid @enderror" id="target" required/>
+                        <input type="number" style="width:100%" name="target" class="form-control @error('target') is-invalid @enderror" id="target" required/>
                         @error('target')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -47,6 +47,41 @@
                     </div>
                 </div>
 
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Target Waktu</label>
+                    <div class="col-sm-8">
+                        <select name="target_waktu_id" id="target_waktu_id" class="form-control ct" required>
+                            <option value=""></option>
+                            @foreach ($targetWaktus as $targetWaktu)
+                                <option value="{{ $targetWaktu->id }}">{{ $targetWaktu->target_waktu }}</option>
+                            @endforeach
+                        </select>
+                        @error('target_waktu_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label" id="labelDari"></label>
+                    <div class="col-sm-8">
+                        <input type="hidden" style="width:100%" name="dari_bulan" class="form-control @error('dari_bulan') is-invalid @enderror" id="dari_bulan" placeholder="Dari Bulan"/>
+                        @error('dari_bulan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label"></label>
+                    <div class="col-sm-8">
+                        <input type="hidden" style="width:100%" name="sampai_bulan" class="form-control @error('sampai_bulan') is-invalid @enderror" id="sampai_bulan" placeholder="Sampai Bulan"/>
+                        @error('sampai_bulan')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
                 <div class="col-sm-offset-4 mt-4 text-center">
                     <button type="submit" class="btn btn-primary" id="bSimpan"><i class="fa fa-save"></i> Simpan</button>
                     <a href="#" class="btn btn-danger" onClick="self.history.back()">Kembali</a>
@@ -58,8 +93,37 @@
 
 <script>
     $(function(){
-     $("#sasaran").select2();
-    }); 
+        $("#sasaran").select2();
+    });
+
+    $("#target_waktu_id").change(function(){
+        let id = $(this).val();
+        if (id == 3) {
+            document.getElementById("dari_bulan").type="number";
+            document.getElementById("sampai_bulan").type="number";
+        } else {
+            document.getElementById("dari_bulan").type="hidden";
+            document.getElementById("sampai_bulan").type="hidden";
+        }
+        if (id == 1) {
+            let target = $("#target").val();
+            let cekNilai = target % 12;
+            if (cekNilai != 0) {
+                alert("Target Tidak Bisa Dibagi 12!");
+                $("option:selected").prop("selected", false)
+            }
+        }
+    });
+
+    $("#target").keyup(function() {
+        $('#target_waktu_id').prop('selectedIndex',0);
+        // let target = $(this).val();
+        // let cekNilai = target % 12;
+
+        // if (cekNilai != 0) {
+        //     $(".ct option[value='1']").remove();
+        // }
+    });
 </script>
 
 
