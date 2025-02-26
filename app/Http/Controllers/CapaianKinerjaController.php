@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CapaianKinerja;
+use App\Models\Indikator;
 use Illuminate\Http\Request;
+use App\Models\CapaianKinerja;
+use Alert;
 
 class CapaianKinerjaController extends Controller
 {
@@ -16,12 +18,21 @@ class CapaianKinerjaController extends Controller
         return view('pages.pegawai.capaianKinerja.index', compact('capaianKinerjas'));
     }
 
+    public function getSatuan(Request $request)
+    {
+        $id = $request->id;
+        $indikator = Indikator::findOrFail($id);
+
+        return json_encode($indikator);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $indikators = Indikator::where('user_id', '=', auth()->user()->id)->get();
+        return view('pages.pegawai.capaianKinerja.add', compact('indikators'));
     }
 
     /**
@@ -29,7 +40,18 @@ class CapaianKinerjaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gambar =$request->file('bukti_capaian');
+        $tujuan_upload = 'upload/bukti_capaian';
+        $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
+        $gambar->move($tujuan_upload,$nama_gbr);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+        $data['bukti_capaian'] = $nama_gbr;
+        CapaianKinerja::create($data);
+
+        Alert::success('Sukses', 'Data Berhasil Ditambahkan');
+        return redirect()->route('capaianKinerja.index');
     }
 
     /**

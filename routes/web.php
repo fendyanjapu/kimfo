@@ -49,6 +49,7 @@ Route::get('/dashboad', [DashboardController::class, 'index'] )->name('dashboard
 Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
     Route::get('/get-indikator/{sasaran_id}', [KinerjaHarianContoller::class, 'getIndikator'] )->name('getIndikator');
+    Route::get('/get-satuan', [CapaianKinerjaController::class, 'getSatuan'] )->name('getSatuan');
     Route::get('/arsip/{jenis_arsip_id}', [ArsipController::class, 'index'] )->name('arsip.index');
     Route::get('/arsip/create/{jenis_arsip_id}', [ArsipController::class, 'create'] )->name('arsip.create');
     Route::get('/arsip/{id}/edit', [ArsipController::class, 'edit'] )->name('arsip.edit');
@@ -63,7 +64,7 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::resource('indikator', IndikatorController::class);
     Route::resource('sasaran-utama', SasaranUtamaController::class)->except('show');
     Route::resource('targetBulanan', TargetBulananController::class)->except('show');
-    Route::resource('capaianKinerja', CapaianKinerjaController::class)->except('show');
+    Route::resource('capaianKinerja', CapaianKinerjaController::class)->except('show', 'edit', 'update', 'delete');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
