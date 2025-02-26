@@ -5,36 +5,31 @@
     <div class="herocontent">
         <div class="row justify-content-center">
             <div class="col-md-8 shadow-xl bg-white rounded">
+                <h3>Presensi Pulang</h3>
                 <form class="px-5 py-5" action="{{ route('presensi-pulang.store')}}" method="post"
                     enctype="multipart/form-data">
                     @csrf
 
-                    {{-- <div class="form-group row mt-3">
-                        <label class="col-sm-4 control-label">Foto Presensi Pulang</label>
+                    <div class="form-group row mt-3">
                         <div class="col-sm-8">
-                            <input type="file" accept="image/*" capture="user" name="gambar" id="gambar" required>
-                        </div>
-                    </div> --}}
-
-                    <div class="row">
-
-                        <div class="col-md-6">
-            
                             <div id="my_camera"></div>
             
                             <br/>
             
-                            <input type=button value="Take Snapshot" onClick="take_snapshot()">
+                            <input type=button value="Take Picture" onClick="take_snapshot()">
             
                             <input type="hidden" name="image" class="image-tag">
-            
                         </div>
-            
-                        <div class="col-md-6">
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <div class="col-md-8">
             
                             <div id="results">Your captured image will appear here...</div>
             
                         </div>
+                    </div>
+
 
                     <div class="col-sm-offset-4 mt-4 text-center">
                         <button type="submit" class="btn btn-primary" id="bSimpan"><i class="fa fa-save"></i>

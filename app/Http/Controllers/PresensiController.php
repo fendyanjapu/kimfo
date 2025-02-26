@@ -37,16 +37,23 @@ class PresensiController extends Controller
      */
     public function store(Request $request)
     {
-        $gambar = $request->file('gambar');
-        $tujuan_upload = 'upload/presensi';
-        $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
-        $gambar->move($tujuan_upload,$nama_gbr);
+        $img = $request->image;    
+        $image_parts = explode(";base64,", $img);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $fileName = uniqid().time().'.png';
+
+        $folderPath = 'upload/presensi/';
+        $file = $folderPath . $fileName;
+
+        file_put_contents($file, $image_base64);
 
         Presensi::create([
             'user_id' => auth()->user()->id,
             'tanggal' => date('Y-m-d'),
             'jam_masuk' => date('H:i:s'),
-            'gambar_masuk' => $nama_gbr,
+            'gambar_masuk' => $fileName,
         ]);
         Alert::success('Hore!', 'Anda berhasil mengisi presensi');
         return redirect()->route('presensi.index');

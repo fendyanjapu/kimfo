@@ -32,8 +32,8 @@ class PresensiPulangController extends Controller
     {
         $presensiPulang = Presensi::where('user_id', '=', auth()->user()->id)
                             ->where('tanggal', '=', date('Y-m-d'))
-                            ->where('jam_pulang', '=', '');
-
+                            ->where('jam_pulang', '!=', null);
+        
         if ($presensiPulang->count() == 0) {
             return view('pages.pegawai.presensi-pulang.create');
         } else {
@@ -48,22 +48,14 @@ class PresensiPulangController extends Controller
      */
     public function store(Request $request)
     {
-        $img = $request->image;
-        
+        $img = $request->image;    
         $image_parts = explode(";base64,", $img);
-
         $image_type_aux = explode("image/", $image_parts[0]);
-
         $image_type = $image_type_aux[1];
-
         $image_base64 = base64_decode($image_parts[1]);
+        $fileName = uniqid().time().'.png';
 
-        $fileName = uniqid() . '.png';
-
-        // $gambar =$request->file('gambar');
-        $folderPath = 'upload/presensi';
-        // $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
-        // $gambar->move($tujuan_upload,$nama_gbr);
+        $folderPath = 'upload/presensi/';
         $file = $folderPath . $fileName;
 
         file_put_contents($file, $image_base64);
