@@ -14,6 +14,10 @@ class TargetBulananController extends Controller
      */
     public function index()
     {
+        $title='Hapus Data!';
+        $text="Apakah Anda Yakin?";
+        confirmDelete($title, $text);
+        
         $targetBulanans = TargetBulanan::where('user_id', '=', auth()->user()->id)->get();
         return view('pages.pegawai.targetBulanan.index', compact('targetBulanans'));
     }
@@ -89,7 +93,7 @@ class TargetBulananController extends Controller
         ]);
         if($update == true){
             Alert::success('Sukses', 'Data Berhasil diubah');
-            return redirect()->route('sasaran.index');
+            return redirect()->route('targetBulanan.index');
         }
         else{
             Alert::error('Error!', 'Data Gagal diubah');
