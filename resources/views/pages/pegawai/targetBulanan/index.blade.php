@@ -63,7 +63,7 @@
         <td style="text-align: center">
             <a href="{{ route('targetBulanan.edit', ['targetBulanan' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
 
-            <a href="{{ route('targetBulanan.destroy', $item) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
+            <a href="{{ route('targetBulanan.destroy', $item->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
               <i class="icon-trash"></i>
           </a>
         </td>
