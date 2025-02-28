@@ -72,7 +72,29 @@ class TargetBulananController extends Controller
      */
     public function update(Request $request, TargetBulanan $targetBulanan)
     {
-        //
+        $update = $targetBulanan->update([
+            "indikator_id" => $request['indikator_id'],
+            "jan" => $request['jan'],
+            "feb" => $request['feb'],
+            "mar" => $request['mar'],
+            "apr" => $request['apr'],
+            "mei" => $request['mei'],
+            "jun" => $request['jun'],
+            "jul" => $request['jul'],
+            "agu" => $request['agu'],
+            "sep" => $request['sep'],
+            "okt" => $request['okt'],
+            "nov" => $request['nov'],
+            "des" => $request['des'],
+        ]);
+        if($update == true){
+            Alert::success('Sukses', 'Data Berhasil diubah');
+            return redirect()->route('sasaran.index');
+        }
+        else{
+            Alert::error('Error!', 'Data Gagal diubah');
+            return redirect()->back();
+        }
     }
 
     /**
