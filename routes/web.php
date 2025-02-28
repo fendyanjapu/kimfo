@@ -50,6 +50,7 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::get('/pegawai', [PegawaiController::class, 'index'] )->name('indexPegawai');
     Route::get('/get-indikator/{sasaran_id}', [KinerjaHarianContoller::class, 'getIndikator'] )->name('getIndikator');
     Route::get('/get-satuan', [CapaianKinerjaController::class, 'getSatuan'] )->name('getSatuan');
+    Route::get('/get-target', [TargetBulananController::class, 'getTarget'] )->name('getTarget');
     Route::get('/arsip/{jenis_arsip_id}', [ArsipController::class, 'index'] )->name('arsip.index');
     Route::get('/arsip/create/{jenis_arsip_id}', [ArsipController::class, 'create'] )->name('arsip.create');
     Route::get('/arsip/{id}/edit', [ArsipController::class, 'edit'] )->name('arsip.edit');

@@ -18,6 +18,14 @@ class TargetBulananController extends Controller
         return view('pages.pegawai.targetBulanan.index', compact('targetBulanans'));
     }
 
+    public function getTarget(Request $request)
+    {
+        $id = $request->id;
+        $indikator = Indikator::findOrFail($id);
+
+        return json_encode($indikator);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -53,7 +61,10 @@ class TargetBulananController extends Controller
      */
     public function edit(TargetBulanan $targetBulanan)
     {
-        //
+        $indikators = Indikator::where('user_id', '=', auth()->user()->id)->get();
+        $query = Indikator::where('id', '=', $targetBulanan->indikator_id)->first();
+        $target = $query->target;
+        return view('pages.pegawai.targetBulanan.edit', compact('indikators', 'targetBulanan', 'target'));
     }
 
     /**
@@ -69,6 +80,13 @@ class TargetBulananController extends Controller
      */
     public function destroy(TargetBulanan $targetBulanan)
     {
-        //
+        if ($targetBulanan) {
+            $targetBulanan->delete();
+            Alert::success('Sukses', 'Data Berhasil Dihapus');
+            return redirect()->route('targetBulanan.index');
+        }
+
+        Alert::error('Error!', 'Data Gagal Dihapus');
+        return redirect()->back();
     }
 }
