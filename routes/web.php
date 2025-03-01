@@ -64,7 +64,7 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::resource('sasaran', SasaranController::class)->except('show');
     Route::resource('indikator', IndikatorController::class);
     Route::resource('sasaran-utama', SasaranUtamaController::class)->except('show');
-    Route::resource('targetBulanan', TargetBulananController::class)->except('show');
+    Route::resource('targetBulanan', TargetBulananController::class)->except('show', 'destroy');
     Route::resource('capaianKinerja', CapaianKinerjaController::class)->except('show', 'edit', 'update', 'delete');
 });
 

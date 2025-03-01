@@ -43,9 +43,8 @@
 
         Webcam.set({
 
-            width: 490,
-
-            height: 350,
+            width: 240,
+			height: 320,
 
             image_format: 'jpeg',
 
