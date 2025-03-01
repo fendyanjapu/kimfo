@@ -22,6 +22,7 @@
     <thead>
      <tr>
       <th style="vertical-align: middle; text-align: center" width="15px">No</th>
+      <th style="vertical-align: middle; text-align: center" width="15px">#</th>
       <th style="vertical-align: middle; text-align: center">Indikator</th>
       <th style="vertical-align: middle; text-align: center">Target</th>
       <th style="vertical-align: middle; text-align: center">Satuan</th>
@@ -37,8 +38,6 @@
       <th style="vertical-align: middle; text-align: center">Oktober</th>
       <th style="vertical-align: middle; text-align: center">November</th>
       <th style="vertical-align: middle; text-align: center">Desember</th>
-
-      <th style="vertical-align: middle; text-align: center" width="15px">#</th>
      </tr>
   </thead>
   <tbody>
@@ -46,6 +45,13 @@
     <tr>
         <td style="text-align: center;width:1%">{{ $loop->iteration }}</td>
         <td style="text-align: center;">{{ $item->indikator?->nama_indikator }}</td>
+        <td style="text-align: center">
+          <a href="{{ route('targetBulanan.edit', ['targetBulanan' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
+
+          {{-- <a href="{{ route('targetBulanan.destroy', $item->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
+            <i class="icon-trash"></i> --}}
+        </a>
+      </td>
         <td style="text-align: center;">{{ $item->indikator?->target }}</td>
         <td style="text-align: center;">{{ $item->indikator?->satuan }}</td>
         <td style="text-align: center;">{{ $item->jan }}</td>
@@ -60,13 +66,7 @@
         <td style="text-align: center;">{{ $item->okt }}</td>
         <td style="text-align: center;">{{ $item->nov }}</td>
         <td style="text-align: center;">{{ $item->des }}</td>
-        <td style="text-align: center">
-            <a href="{{ route('targetBulanan.edit', ['targetBulanan' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
-
-            {{-- <a href="{{ route('targetBulanan.destroy', $item->id) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
-              <i class="icon-trash"></i> --}}
-          </a>
-        </td>
+        
       </tr>
     @endforeach
   </tbody>
