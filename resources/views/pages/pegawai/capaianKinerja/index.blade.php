@@ -26,7 +26,7 @@
       <th style="vertical-align: middle; text-align: center">Bulan</th>
       <th style="vertical-align: middle; text-align: center">Jumlah Capaian</th>
       <th style="vertical-align: middle; text-align: center">Bukti Capaian</th>
-      {{-- <th style="vertical-align: middle; text-align: center" width="15px">#</th> --}}
+      <th style="vertical-align: middle; text-align: center" width="15px">#</th>
      </tr>
   </thead>
   <tbody>
@@ -41,13 +41,13 @@
             <i class="icon-file" aria-hidden="true"></i>
           </a>
         </td>
-        {{-- <td style="text-align: center">
-            <a href="{{ route('capaianKinerja.edit', ['capaianKinerja' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a>
+        <td style="text-align: center">
+            {{-- <a href="{{ route('capaianKinerja.edit', ['capaianKinerja' => $item]) }}" class="btn btn-success btn-sm mt-1" title="edit"><i class="icon-pencil"></i></a> --}}
 
             <a href="{{ route('capaianKinerja.destroy', $item) }}" class="btn btn-danger btn-sm mt-1" data-confirm-delete="true">
               <i class="icon-trash"></i>
           </a>
-        </td> --}}
+        </td>
       </tr>
     @endforeach
   </tbody>

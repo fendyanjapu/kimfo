@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Indikator;
-use App\Models\Sasaran;
-use App\Models\SasaranUtama;
 use PDF;
 use Alert;
+use App\Models\Sasaran;
 use App\Models\Presensi;
+use App\Models\Indikator;
+use App\Models\SasaranUtama;
 use Illuminate\Http\Request;
 use App\Models\Kinerja_pegawai;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
 class KinerjaHarianContoller extends Controller
@@ -19,6 +20,10 @@ class KinerjaHarianContoller extends Controller
      */
     public function index()
     {
+        $title='Hapus Data!';
+        $text="Apakah Anda Yakin?";
+        confirmDelete($title, $text);
+
         $kinerjaPegawai = Kinerja_pegawai::where('user_id', '=', auth()->user()->id)->orderBy('tgl_input', 'desc')->get();
         $cekPresensi = Presensi::where('user_id', '=', auth()->user()->id)->where('tanggal', '=', date('Y-m-d'))->count();
         if ($cekPresensi == 0) {
@@ -123,8 +128,19 @@ class KinerjaHarianContoller extends Controller
      */
     public function destroy(Kinerja_pegawai $kinerja_harian)
     {
+        $file = Kinerja_pegawai::findOrFail($kinerja_harian->id)->first()->bukti_kegiatan;
+
         if ($kinerja_harian) {
             $kinerja_harian->delete();
+
+            $file_path = public_path('upload/bukti_kegiatan/'.$file );
+            if (File::exists($file_path)) {
+                File::delete($file_path);
+                echo 'File deleted successfully.';
+            } else {
+                echo 'File does not exist.';
+            }
+
             Alert::success('Sukses', 'Data Berhasil Dihapus');
             return redirect()->route('kinerja_harian.index');
         }
