@@ -30,7 +30,7 @@
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Target</label>
                     <div class="col-sm-8">
-                        <input type="number" style="width:100%" name="target" class="form-control @error('target') is-invalid @enderror" id="target" required/>
+                        <input type="text" style="width:100%" name="target" class="form-control @error('target') is-invalid @enderror" id="target" required/>
                         @error('target')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

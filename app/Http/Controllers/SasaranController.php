@@ -29,7 +29,12 @@ class SasaranController extends Controller
      */
     public function create()
     {
-        $sasaranUtama = SasaranUtama::where('user_id', '=', auth()->user()->atasan)->get();
+        if (auth()->user()->atasan == 1) {
+            $sasaranUtama = SasaranUtama::where('user_id', '=', auth()->user()->id)->get();
+        } else {
+            $sasaranUtama = SasaranUtama::where('user_id', '=', auth()->user()->atasan)->get();
+        }
+        
         return view('pages.pegawai.sasaran.add', [
             'sasaranUtama' => $sasaranUtama,
         ]);

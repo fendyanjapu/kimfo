@@ -39,9 +39,9 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" aria-labelledby="DataMaster">
-              @if (auth()->user()->id <= 5)
-                <li><a class="dropdown-item" href="{{ route('sasaran-utama.index') }}">Sasaran dan Indikator Kinerja</a></li>
-              @else
+             
+                {{-- <li><a class="dropdown-item" href="{{ route('sasaran-utama.index') }}">Sasaran dan Indikator Kinerja</a></li> --}}
+             
                 <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
                 <li><a class="dropdown-item" href="{{ route('indikator.index') }}">Indikator</a></li>
                 <li><a class="dropdown-item" href="{{ route('targetBulanan.index') }}">Target Bulanan</a></li>
@@ -58,7 +58,7 @@
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 9]) }}">Laporan Monev</a></li>
                 <hr>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 10]) }}">Lainnya</a></li>
-              @endif
+              
                 
             </ul>
         </li>
