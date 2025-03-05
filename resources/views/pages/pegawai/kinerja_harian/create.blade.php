@@ -29,7 +29,7 @@
 			<div class="form-group row mt-3">
 				<label class="col-sm-4 control-label">Kinerja Harian</label>
 				<div class="col-sm-8">
-					<input type="text" style="width:100%" name="kinerja_harian" class="form-control" id="kinerja_harian" required/>
+					<textarea name="kinerja_harian" class="form-control" style="width:100%" id="kinerja_harian" required></textarea>
 				</div>
 			</div>
 			<div class="form-group row mt-3">
@@ -63,7 +63,7 @@
 			<div class="form-group row mt-3">
 				<label class="col-sm-4 control-label">Bukti Kegiatan</label>
 				<div class="col-sm-8">
-					<input type="file" accept="image/*" capture="user" name="bukti_kegiatan" required>
+					<input type="file" name="bukti_kegiatan" required>
 				</div>
 			</div>
             <br>
