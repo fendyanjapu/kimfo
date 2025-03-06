@@ -15,13 +15,14 @@
 						@foreach ($sasarans as $item)
 						<option value="{{ $item->id }}">{{ $item->nama_sasaran }}</option>
 						@endforeach
+						<option value="0">Tugas Lainnya</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group row mt-3">
 				<label class="col-sm-4 control-label">Indikator</label>
 				<div class="col-sm-8">
-					<select id="indikator" class="form-control" name="indikator_id" required>  
+					<select id="indikator" class="form-control" name="indikator_id">  
 						<option value=""></option>
 					</select>
 				</div>

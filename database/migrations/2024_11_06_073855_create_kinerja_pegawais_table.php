@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->smallInteger('user_id')->unsigned();
-            $table->smallInteger('sasaran_id')->unsigned();
-            $table->smallInteger('indikator_id')->unsigned();
+            $table->smallInteger('sasaran_id')->nullable();
+            $table->smallInteger('indikator_id')->nullable();
             $table->string('kinerja_harian',255)->nullable();
             $table->float('jumlah')->nullable();
             $table->string('satuan',100)->nullable();

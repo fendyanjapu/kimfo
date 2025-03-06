@@ -36,8 +36,8 @@
         @foreach ($query as $key)
         <tr>
             <td style="text-align: center" style="width:1%">{{ $loop->iteration }}</td>
-            <td style="width:20%"><?= $key->sasaran->nama_sasaran ?></td>
-            <td style="width:20%"><?= $key->indikator->nama_indikator ?></td>
+            <td style="width:20%"><?= $key->sasaran?->nama_sasaran ?></td>
+            <td style="width:20%"><?= $key->indikator?->nama_indikator ?></td>
             <td style="width:20%"><?= $key->kinerja_harian ?></td>
             <td style="width:20%; text-align: center"><?= $key->jumlah ?></td>
             <td style="width:20%; text-align: center"><?= $key->satuan ?></td>
