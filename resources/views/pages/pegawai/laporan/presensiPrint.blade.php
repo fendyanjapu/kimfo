@@ -44,8 +44,19 @@
 		}
 	?>
 
+	<?php
+		if (auth()->user()->jabatan_id == 20) {
+			$judul = 'PPT/NON ASN PENDUKUNG TENAGA AHLI';
+		} elseif (auth()->user()->jabatan == 21) {
+			$judul = 'THL';
+		} else {
+			$judul = 'ASN';
+		}
+		
+	?>
+
 	<center>
-		<h4>DAFTAR ABSENSI PPT/NON ASN PENDUKUNG TENAGA AHLI</h4>
+		<h4>DAFTAR ABSENSI {{ $judul }}</h4>
 		<h4>DINAS KOMUNIKASI DAN INFORMATIKA</h4>
 		<h4>KABUPATEN BARITO KUALA</h4>
 		<h4>UNTUK BULAN {{ $bln }}</h4>
@@ -55,7 +66,7 @@
 		<tr>
 			<td>Nama</td>
 			<td> : </td>
-			<td>Noor rahmat effendy</td>
+			<td>{{ auth()->user()->nama }}</td>
 		</tr>
 	</table>
 
@@ -85,8 +96,8 @@
 		<tbody>
 			@for ($i = 1; $i <= $jumlahHari; $i++)
 				<tr>
-					<td>{{ $i }}</td>
-					<td>{{ $i.'-'.$month.'-'.date('y') }}</td>
+					<td style="height: 15">{{ $i }}</td>
+					<td style="height: 15">{{ $i.'-'.$month.'-'.date('y') }}</td>
 					<?php 
 						$num_padded = sprintf("%02d", $i);
 						$tgl = date('Y')."-".$bulan."-".$num_padded;
@@ -97,14 +108,32 @@
 							$color = '';
 						}
 					?>
-					<td style="{{ $color }}"></td>
-					<td style="{{ $color }}"></td>
+					<td style="{{ $color }}">{{ $jam_masuk[$i] }}</td>
+					<td style="{{ $color }}">{{ $jam_pulang[$i] }}</td>
 					<td style="{{ $color }}"></td>
 				</tr>
 			@endfor
 		</tbody>
 	</table>
-
+	<br>
+	<table>
+		<tr>
+			<td style="width: 450px"></td>
+			<td style="text-align: center">{{ $jabatan_atasan }}</td>
+		</tr>
+		<br>
+		<br>
+		<br>
+		<br>
+		<tr>
+			<td style="width: 400px"></td>
+			<td style="text-align: center"><u>{{ $nama_atasan }}</u></td>
+		</tr>
+		<tr>
+			<td style="width: 400px"></td>
+			<td style="text-align: center">NIP. {{ $nip_atasan }}</td>
+		</tr>
+	</table>
 </body>
 
 </html>
