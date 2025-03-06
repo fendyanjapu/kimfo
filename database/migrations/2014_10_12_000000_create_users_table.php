@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('nip')->nullable();
             $table->string('nama');
+            $table->string('jabatan_tekon')->nullable();
             $table->integer('jabatan_id')->nullable();
             $table->integer('atasan')->nullable();
             $table->string('level');

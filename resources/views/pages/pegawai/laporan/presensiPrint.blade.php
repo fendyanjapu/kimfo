@@ -34,10 +34,42 @@
 
 	<?php
 		switch ($bulan) {
+			case '01':
+				$bln = 'JANUARI';
+				break;
+			case '02':
+				$bln = 'FEBRUARI';
+				break;
 			case '03':
 				$bln = 'MARET';
 				break;
-			
+			case '04':
+				$bln = 'APRIL';
+				break;
+			case '05':
+				$bln = 'MEI';
+				break;
+			case '06':
+				$bln = 'JUNI';
+				break;
+			case '07':
+				$bln = 'JULI';
+				break;
+			case '08':
+				$bln = 'AGUSTUS';
+				break;
+			case '09':
+				$bln = 'SEPTEMBER';
+				break;
+			case '10':
+				$bln = 'OKTOBER';
+				break;
+			case '11':
+				$bln = 'NOVEMBER';
+				break;
+			case '12':
+				$bln = 'DESEMBER';
+				break;
 			default:
 			  	$bln = '';
 				break;
