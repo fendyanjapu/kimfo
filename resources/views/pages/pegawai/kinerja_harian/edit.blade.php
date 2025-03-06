@@ -14,10 +14,11 @@
 						<label class="col-sm-4 control-label">Sasaran</label>
 						<div class="col-sm-8">
 							<select id="sasaran" class="form-control" name="sasaran_id" required>
-								<option value="">P</option>
+								<option value=""></option>
 								@foreach ($sasarans as $item)
 									<option value="{{ $item->id }}" {{ $item->id == $kinerja_pegawai->sasaran_id ? 'selected' : '' }}>{{ $item->nama_sasaran }}</option>
 								@endforeach
+								<option value="0" {{ $kinerja_pegawai->sasaran_id == 0 ? 'selected' : '' }}>Tugas Lainnya</option>
 							</select>
 						</div>
 					</div>

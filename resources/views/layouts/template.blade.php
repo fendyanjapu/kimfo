@@ -74,11 +74,16 @@
             </ul>
         </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-                <i class="icon-file"></i><span>Laporan</span>
-            </a>
-          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
+            <i class="icon-file"></i><span>Laporan</span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="DataMaster">
+              <li><a class="dropdown-item" href="{{ route('laporanPresensi') }}">Presensi</a></li>
+              <li><a class="dropdown-item" href="#">Bulanan</a></li>
+          </ul>
+      </li>
 
           <li class="nav-item">
             <a class="nav-link active" href="#">
@@ -140,12 +145,6 @@
             <li class="nav-item">
               <a class="nav-link active" href="#">
                   <i class="icon-bar-chart"></i><span>Pengukuran</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link active" href="#">
-                  <i class="icon-file"></i><span>Laporan</span>
               </a>
             </li>
 
