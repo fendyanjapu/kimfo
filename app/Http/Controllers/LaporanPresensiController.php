@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HariLibur;
 use App\Models\Presensi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,6 +59,8 @@ class LaporanPresensiController extends Controller
             }
         }
 
+        $hariLibur = HariLibur::whereMonth('tanggal_libur', '=', $bulan)->get();
+
         $atasan = User::where('id', '=', auth()->user()->atasan)->first();
         $nama_atasan = $atasan->nama;
         $nip_atasan = $atasan->nip;
@@ -72,6 +75,7 @@ class LaporanPresensiController extends Controller
             'nama_atasan',
             'nip_atasan',
             'jabatan_atasan',
+            'hariLibur'
         ));
     	return $pdf->stream('laporan-presensi-pdf');
     }

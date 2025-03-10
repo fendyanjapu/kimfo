@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CapaianKinerjaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HariLiburController;
 use App\Http\Controllers\LaporanPresensiController;
 use App\Http\Controllers\TargetBulananController;
 use Illuminate\Support\Facades\Route;
@@ -92,6 +93,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
    Route::resource('penggunaan_kas', PenggunaanKasController::class);
    Route::resource('kinerja_pegawai', KinerjaPegawaiController::class);
    Route::resource('jabatan', JabatanController::class)->except('show');
+   Route::resource('hariLibur', HariLiburController::class)->except('show');
    
 
    Route::get('iku/index/{i}', [IkuController::class, 'index'])->name('iku.index');

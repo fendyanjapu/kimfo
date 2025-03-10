@@ -139,6 +139,11 @@
 						} else {
 							$color = '';
 						}
+						foreach ($hariLibur as $key) {
+							if ($key->tanggal_libur == $tgl) {
+								$color = 'background-color: grey';
+							}
+						}
 					?>
 					<td style="{{ $color }}">{{ $jam_masuk[$i] }}</td>
 					<td style="{{ $color }}">{{ $jam_pulang[$i] }}</td>
