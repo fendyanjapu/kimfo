@@ -3,6 +3,7 @@
 use App\Http\Controllers\CapaianKinerjaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HariLiburController;
+use App\Http\Controllers\LaporanBulananController;
 use App\Http\Controllers\LaporanPresensiController;
 use App\Http\Controllers\TargetBulananController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +59,8 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::get('/arsip/{id}/edit', [ArsipController::class, 'edit'] )->name('arsip.edit');
     Route::get('/laporanPresensi', [LaporanPresensiController::class, 'index'] )->name('laporanPresensi');
     Route::get('/laporanPresensi/print', [LaporanPresensiController::class, 'print'] )->name('laporanPresensi.print');
+    Route::get('/laporanBulanan', [LaporanBulananController::class, 'index'] )->name('laporanBulanan');
+    Route::get('/laporanBulanan/print', [LaporanBulananController::class, 'print'] )->name('laporanBulanan.print');
 
     Route::post('/arsip/store', [ArsipController::class, 'store'] )->name('arsip.store');
     Route::put('/arsip/{id}/update', [ArsipController::class, 'update'] )->name('arsip.update');

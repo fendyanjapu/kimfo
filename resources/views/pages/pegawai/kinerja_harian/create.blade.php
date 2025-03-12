@@ -36,7 +36,7 @@
 			<div class="form-group row mt-3">
 				<label class="col-sm-4 control-label">Jumlah</label>
 				<div class="col-sm-8">
-					<input type="text" style="width:100%" name="jumlah" class="form-control" id="jumlah" required/>
+					<input type="number" style="width:100%" name="jumlah" class="form-control" id="jumlah" required/>
 				</div>
 			</div>
 			<div class="form-group row mt-3">

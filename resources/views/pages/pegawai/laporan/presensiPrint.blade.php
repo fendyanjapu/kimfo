@@ -155,7 +155,7 @@
 	<br>
 	<table>
 		<tr>
-			<td style="width: 450px"></td>
+			<td style="width: 300px"></td>
 			<td style="text-align: center">{{ $jabatan_atasan }}</td>
 		</tr>
 		<br>
@@ -163,11 +163,11 @@
 		<br>
 		<br>
 		<tr>
-			<td style="width: 400px"></td>
+			<td style="width: 300px"></td>
 			<td style="text-align: center"><u>{{ $nama_atasan }}</u></td>
 		</tr>
 		<tr>
-			<td style="width: 400px"></td>
+			<td style="width: 300px"></td>
 			<td style="text-align: center">NIP. {{ $nip_atasan }}</td>
 		</tr>
 	</table>

@@ -81,7 +81,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="DataMaster">
               <li><a class="dropdown-item" href="{{ route('laporanPresensi') }}">Presensi</a></li>
-              <li><a class="dropdown-item" href="#">Bulanan</a></li>
+              <li><a class="dropdown-item" href="{{ route('laporanBulanan') }}">Bulanan</a></li>
           </ul>
       </li>
 
