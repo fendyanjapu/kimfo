@@ -152,7 +152,7 @@
 							@if ($j == 1)
 							<tr style="{{ $color }}">
 								<td rowspan="{{ $jml_tgl[$i] }}">{{ $i." ".$bln }}</td>
-								<td>{{ $item->jam_awal }} - {{ $item->jam_akhir }}</td>
+								<td>{{ $item->jam_awal }}-{{ $item->jam_akhir }}</td>
 								<td style="text-align: left">{{ $item->kinerja_harian }}</td>
 								<td>{{ $ket }}</td>
 							</tr>
@@ -167,7 +167,7 @@
 						@endif
 						<?php
 						    if (1 == 1) {
-								echo "ok";
+								$a = "ok";
 							}
 							// if ($foto1 == $item->id) {
 							// 	$img1 = $item->bukti_kegiatan;
