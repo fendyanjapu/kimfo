@@ -166,6 +166,9 @@
 							<?php $j++ ?>
 						@endif
 						<?php
+						    if (1 == 1) {
+								echo "ok";
+							}
 							// if ($foto1 == $item->id) {
 							// 	$img1 = $item->bukti_kegiatan;
 							// 	$ket1 = $item->kinerja_harian;
