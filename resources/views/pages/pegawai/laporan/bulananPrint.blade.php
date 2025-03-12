@@ -158,21 +158,21 @@
 							</tr>
 							@else
 							<tr style="{{ $color }}">
-								<td>{{ $item->jam_awal }} - {{ $item->jam_akhir }}</td>
+								<td>{{ $item->jam_awal }}-{{ $item->jam_akhir }}</td>
 								<td style="text-align: left">{{ $item->kinerja_harian }}</td>
 								<td>{{ $ket }}</td>
 							</tr>
 							@endif
 							<?php $j++ ?>
+							<?php
+							if ($foto1 == $item->id) {
+								$img1 = $item->bukti_kegiatan;
+								$ket1 = $item->kinerja_harian;
+							}
+							?>
 						@endif
 						<?php
-						    if (1 == 1) {
-								$a = "ok";
-							}
-							// if ($foto1 == $item->id) {
-							// 	$img1 = $item->bukti_kegiatan;
-							// 	$ket1 = $item->kinerja_harian;
-							// }
+						    
 							// if ($foto2 == $item->id) {
 							// 	$img2 = $item->bukti_kegiatan;
 							// 	$ket2 = $item->kinerja_harian;
