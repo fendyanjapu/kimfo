@@ -195,7 +195,9 @@
 			@endfor
 		</tbody>
 	</table>
-	<br>
+	
+	<div class="page-break"></div>
+
 	<H5>RANGKUMAN KEGIATAN BULAN {{ $bln }} {{ date('Y') }}</H5>
 	<p>Selama bulan {{ strtolower($bln) }} {{ date('Y') }} adapun rangkuman kegiatan yang dilaksanakan yaitu sebagai berikut:</p>
 	<?php $no = 0 ?>
