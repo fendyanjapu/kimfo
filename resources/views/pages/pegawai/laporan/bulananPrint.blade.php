@@ -165,6 +165,11 @@
 							@endif
 							<?php $j++ ?>
 						@endif
+						<?php
+							// for ($x=1; $x <= 4; $x++) { 
+							// 	if ()
+							// }
+						?>
 					@endforeach
 				@else
 					<tr style="{{ $color }}">
@@ -217,7 +222,7 @@
 	<br>
 
 	<table class="center">
-		<tr>
+		{{-- <tr>
 			<td><img src="upload/bukti_kegiatan/{{ $foto1->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
 			<td style="width: 50px"></td>
 			<td><img src="upload/bukti_kegiatan/{{ $foto2->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
@@ -236,7 +241,7 @@
 			<td style="text-align: center">{{ $foto3->kinerja_harian }}</td>
 			<td></td>
 			<td style="text-align: center">{{ $foto4->kinerja_harian }}</td>
-		</tr>
+		</tr> --}}
 	</table>
 	
 </body>
