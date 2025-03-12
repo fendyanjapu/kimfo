@@ -166,10 +166,10 @@
 							<?php $j++ ?>
 						@endif
 						<?php
-							if ($foto1 == $item->id) {
-								$img1 = $item->bukti_kegiatan;
-								$ket1 = $item->kinerja_harian;
-							}
+							// if ($foto1 == $item->id) {
+							// 	$img1 = $item->bukti_kegiatan;
+							// 	$ket1 = $item->kinerja_harian;
+							// }
 							// if ($foto2 == $item->id) {
 							// 	$img2 = $item->bukti_kegiatan;
 							// 	$ket2 = $item->kinerja_harian;
@@ -236,7 +236,7 @@
 
 	<table class="center">
 		<tr>
-			<td><img src="upload/bukti_kegiatan/{{ $img1 }}" width="250px" height="250px" alt=""></td>
+			{{-- <td><img src="upload/bukti_kegiatan/{{ $img1 }}" width="250px" height="250px" alt=""></td> --}}
 			<td style="width: 50px"></td>
 			{{-- <td><img src="upload/bukti_kegiatan/{{ $img2 }}" width="250px" height="250px" alt=""></td> --}}
 		</tr>
