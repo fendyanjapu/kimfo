@@ -40,8 +40,7 @@ class LaporanBulananController extends Controller
 
         $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
 
-        $fotos = Kinerja_pegawai::where('user_id', '=', auth()->user()->id)
-                                ->limit(4)
+        $fotos = Kinerja_pegawai::limit(4)
                                 ->get();
 
         $atasan = User::where('id', '=', auth()->user()->atasan)->first();
