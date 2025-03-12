@@ -10,25 +10,49 @@
                 <div class="form-group row mt-3">
                     <label class="col-sm-4 control-label">Bulan</label>
                     <div class="col-sm-8">
-                        <select name="bulan" id="" class="form-control">
-                            <option value="01" {{ date('m') == '01' ? 'selected' : '' }}>Januari</option>
-                            <option value="02" {{ date('m') == '02' ? 'selected' : '' }}>Februari</option>
-                            <option value="03" {{ date('m') == '03' ? 'selected' : '' }}>Maret</option>
-                            <option value="04" {{ date('m') == '04' ? 'selected' : '' }}>April</option>
-                            <option value="05" {{ date('m') == '05' ? 'selected' : '' }}>Mei</option>
-                            <option value="06" {{ date('m') == '06' ? 'selected' : '' }}>Juni</option>
-                            <option value="07" {{ date('m') == '07' ? 'selected' : '' }}>Juli</option>
-                            <option value="08" {{ date('m') == '08' ? 'selected' : '' }}>Agustus</option>
-                            <option value="09" {{ date('m') == '09' ? 'selected' : '' }}>September</option>
-                            <option value="10" {{ date('m') == '10' ? 'selected' : '' }}>Oktober</option>
-                            <option value="11" {{ date('m') == '11' ? 'selected' : '' }}>November</option>
-                            <option value="12" {{ date('m') == '12' ? 'selected' : '' }}>Desember</option>
+                        <select name="bulan" id="bulan" class="form-control">
+                            <option></option>
+                            <option value="01">Januari</option>
+                            <option value="02">Februari</option>
+                            <option value="03">Maret</option>
+                            <option value="04">April</option>
+                            <option value="05">Mei</option>
+                            <option value="06">Juni</option>
+                            <option value="07">Juli</option>
+                            <option value="08">Agustus</option>
+                            <option value="09">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
                         </select>
                         
                     </div>
                 </div>
 
-                
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Foto 1</label>
+                    <div class="col-sm-8">
+                        <select name="foto1" id="foto1" class="form-control" required></select>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Foto 2</label>
+                    <div class="col-sm-8">
+                        <select name="foto2" id="foto2" class="form-control" required></select>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Foto 3</label>
+                    <div class="col-sm-8">
+                        <select name="foto3" id="foto3" class="form-control" required></select>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label class="col-sm-4 control-label">Foto 4</label>
+                    <div class="col-sm-8">
+                        <select name="foto4" id="foto4" class="form-control" required></select>
+                    </div>
+                </div>
                 
 
                 <div class="col-sm-offset-4 mt-4 text-center">
@@ -40,8 +64,23 @@
     </div>
 </div>
 
-
-
+<script>
+    $('#bulan').change(function() {
+        let bulan = $(this).val();
+        $.ajax({
+            type: "GET",
+            data: "bulan="+bulan,
+            url: "{{ route('getKinerja') }}",
+            cache: false,
+            success: function(result) {
+                $('#foto1').html(result);
+                $('#foto2').html(result);
+                $('#foto3').html(result);
+                $('#foto4').html(result);
+            }
+        });
+    })
+</script>
 
 @endsection
 

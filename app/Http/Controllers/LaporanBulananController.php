@@ -40,8 +40,10 @@ class LaporanBulananController extends Controller
 
         $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
 
-        $fotos = Kinerja_pegawai::limit(4)
-                                ->get();
+        $foto1 = Kinerja_pegawai::where('id', '=', $request->foto1)->first();
+        $foto2 = Kinerja_pegawai::where('id', '=', $request->foto2)->first();
+        $foto3 = Kinerja_pegawai::where('id', '=', $request->foto3)->first();
+        $foto4 = Kinerja_pegawai::where('id', '=', $request->foto4)->first();
 
         $atasan = User::where('id', '=', auth()->user()->atasan)->first();
         $nama_atasan = $atasan->nama;
@@ -58,9 +60,26 @@ class LaporanBulananController extends Controller
             'kinerjas',
             'jml_tgl',
             'sasarans',
-            'fotos',
+            'foto1',
+            'foto2',
+            'foto3',
+            'foto4',
         ));
     	return $pdf->stream('Laporan-Bulanan-'.$this->bulan($bulan));
+    }
+
+    public function getKinerja(Request $request)
+    {
+        $kinerjas = Kinerja_pegawai::where('user_id', '=', auth()->user()->id)
+                                    ->whereMonth('tgl_input', '=', $request->bulan)
+                                    ->whereYear('tgl_input', '=', date('Y'))
+                                    ->orderBy('tgl_input')
+                                    ->orderBy('jam_awal')->get();
+
+        echo "<option></option>";
+        foreach ($kinerjas as $kinerja) {
+            echo "<option value='".$kinerja->id."'>".$kinerja->tgl_input." | ".$kinerja->kinerja_harian."</option>";
+        }
     }
 
     private function bulan($bulan)

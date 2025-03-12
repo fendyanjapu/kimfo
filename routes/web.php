@@ -61,6 +61,7 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::get('/laporanPresensi/print', [LaporanPresensiController::class, 'print'] )->name('laporanPresensi.print');
     Route::get('/laporanBulanan', [LaporanBulananController::class, 'index'] )->name('laporanBulanan');
     Route::get('/laporanBulanan/print', [LaporanBulananController::class, 'print'] )->name('laporanBulanan.print');
+    Route::get('/getKinerja', [LaporanBulananController::class, 'getKinerja'] )->name('getKinerja');
 
     Route::post('/arsip/store', [ArsipController::class, 'store'] )->name('arsip.store');
     Route::put('/arsip/{id}/update', [ArsipController::class, 'update'] )->name('arsip.update');

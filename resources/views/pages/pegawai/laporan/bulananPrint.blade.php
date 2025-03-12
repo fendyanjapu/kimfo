@@ -216,35 +216,26 @@
 	<h5 style="text-align: center">FOTO HASIL KEGIATAN SELAMA BULANs {{ $bln }} {{ date('Y') }}</h5>
 	<br>
 
-	<?php
-		$i = 1;
-		foreach ($fotos as $item) {
-			$img[$i] = $item->bukti_kegiatan;
-			$kegiatan[$i] = $item->kinerja_harian;
-			$i++;
-		}
-	?>
-	
 	<table class="center">
 		<tr>
-			<td><img src="upload/bukti_kegiatan/{{ $img[1] }}" width="250px" height="250px" alt=""></td>
+			<td><img src="upload/bukti_kegiatan/{{ $foto1->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
 			<td style="width: 50px"></td>
-			<td><img src="upload/bukti_kegiatan/{{ $img[2] }}" width="250px" height="250px" alt=""></td>
+			<td><img src="upload/bukti_kegiatan/{{ $foto2->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
 		</tr>
 		<tr>
-			<td style="text-align: center">{{ $kegiatan[1] }}</td>
+			<td style="text-align: center">{{ $foto1->kinerja_harian }}</td>
 			<td></td>
-			<td style="text-align: center">{{ $kegiatan[2] }}</td>
+			<td style="text-align: center">{{ $foto2->kinerja_harian }}</td>
 		</tr>
 		<tr>
-			<td><img src="upload/bukti_kegiatan/{{ $img[3] }}" width="250px" height="250px" alt=""></td>
+			<td><img src="upload/bukti_kegiatan/{{ $foto3->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
 			<td></td>
-			<td><img src="upload/bukti_kegiatan/{{ $img[2] }}" width="250px" height="250px" alt=""></td>
+			<td><img src="upload/bukti_kegiatan/{{ $foto4->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
 		</tr>
 		<tr>
-			<td style="text-align: center">{{ $kegiatan[3] }}</td>
+			<td style="text-align: center">{{ $foto3->kinerja_harian }}</td>
 			<td></td>
-			<td style="text-align: center">{{ $kegiatan[4] }}</td>
+			<td style="text-align: center">{{ $foto4->kinerja_harian }}</td>
 		</tr>
 	</table>
 	
