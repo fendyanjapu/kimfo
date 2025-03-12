@@ -239,7 +239,7 @@
 
 	<table class="center">
 		<tr>
-			{{-- <td><img src="upload/bukti_kegiatan/{{ $img1 }}" width="250px" height="250px" alt=""></td> --}}
+			<td><img src="upload/bukti_kegiatan/{{ $img1 }}" width="250px" height="250px" alt=""></td>
 			<td style="width: 50px"></td>
 			{{-- <td><img src="upload/bukti_kegiatan/{{ $img2 }}" width="250px" height="250px" alt=""></td> --}}
 		</tr>
