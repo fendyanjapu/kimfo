@@ -238,9 +238,9 @@
 		<tr>
 			<td><img src="upload/bukti_kegiatan/{{ $img1 }}" width="250px" height="250px" alt=""></td>
 			<td style="width: 50px"></td>
-			<td><img src="upload/bukti_kegiatan/{{ $img2 }}" width="250px" height="250px" alt=""></td>
+			{{-- <td><img src="upload/bukti_kegiatan/{{ $img2 }}" width="250px" height="250px" alt=""></td> --}}
 		</tr>
-		<tr>
+		{{-- <tr>
 			<td style="text-align: center">{{ $ket1 }}</td>
 			<td></td>
 			<td style="text-align: center">{{ $ket2}}</td>
@@ -254,7 +254,7 @@
 			<td style="text-align: center">{{ $ket3 }}</td>
 			<td></td>
 			<td style="text-align: center">{{ $ket4 }}</td>
-		</tr>
+		</tr> --}}
 	</table>
 	
 </body>
