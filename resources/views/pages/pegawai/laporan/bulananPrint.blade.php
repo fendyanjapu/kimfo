@@ -213,7 +213,7 @@
 	
 	<div class="page-break"></div>
 		
-	<h5 style="text-align: center">FOTO HASIL KEGIATAN SELAMA BULAN {{ $bln }} {{ date('Y') }}</h5>
+	<h5 style="text-align: center">FOTO HASIL KEGIATAN SELAMA BULANs {{ $bln }} {{ date('Y') }}</h5>
 	<br>
 
 	<?php
