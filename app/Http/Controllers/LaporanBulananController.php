@@ -38,13 +38,13 @@ class LaporanBulananController extends Controller
                                     ->orderBy('jam_awal')
                                     ->get();
 
-        $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)
-                            ->whereMonth('tgl_input', '=', $bulan)
-                            ->whereYear('tgl_input', '=', $tahun)
-                            ->where('user_id', '=', auth()->user()->id)
-                            ->get();
+        $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
 
-        $fotos = Kinerja_pegawai::inRandomOrder()->limit(4)->get();
+        $fotos = Kinerja_pegawai::whereMonth('tgl_input', '=', $bulan)
+                                ->whereYear('tgl_input', '=', $tahun)
+                                ->where('user_id', '=', auth()->user()->id)
+                                ->inRandomOrder()->limit(4)
+                                ->get();
 
         $atasan = User::where('id', '=', auth()->user()->atasan)->first();
         $nama_atasan = $atasan->nama;
