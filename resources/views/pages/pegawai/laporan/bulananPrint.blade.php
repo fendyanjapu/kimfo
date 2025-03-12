@@ -218,15 +218,15 @@
 
 	<?php
 		$i = 1;
-		foreach ($fotos as $item) {
-			$img[$i] = $item->bukti_kegiatan;
-			$kegiatan[$i] = $item->kinerja_harian;
-			$i++;
-		}
+		// foreach ($fotos as $item) {
+		// 	$img[$i] = $item->bukti_kegiatan;
+		// 	$kegiatan[$i] = $item->kinerja_harian;
+		// 	$i++;
+		// }
 	?>
 	
 	<table class="center">
-		<tr>
+		{{-- <tr>
 			<td><img src="upload/bukti_kegiatan/{{ $img[1] }}" width="250px" height="250px" alt=""></td>
 			<td style="width: 50px"></td>
 			<td><img src="upload/bukti_kegiatan/{{ $img[2] }}" width="250px" height="250px" alt=""></td>
@@ -245,7 +245,7 @@
 			<td style="text-align: center">{{ $kegiatan[3] }}</td>
 			<td></td>
 			<td style="text-align: center">{{ $kegiatan[4] }}</td>
-		</tr>
+		</tr> --}}
 	</table>
 	
 </body>
