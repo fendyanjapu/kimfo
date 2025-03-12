@@ -40,11 +40,11 @@ class LaporanBulananController extends Controller
 
         $sasarans = Sasaran::where('user_id', '=', auth()->user()->id)->get();
 
-        // $fotos = Kinerja_pegawai::whereMonth('tgl_input', '=', $bulan)
-        //                         ->whereYear('tgl_input', '=', $tahun)
-        //                         ->where('user_id', '=', auth()->user()->id)
-        //                         ->inRandomOrder()->limit(4)
-        //                         ->get();
+        $fotos = Kinerja_pegawai::whereMonth('tgl_input', '=', $bulan)
+                                ->whereYear('tgl_input', '=', $tahun)
+                                ->where('user_id', '=', auth()->user()->id)
+                                ->limit(4)
+                                ->get();
 
         $atasan = User::where('id', '=', auth()->user()->atasan)->first();
         $nama_atasan = $atasan->nama;
@@ -61,7 +61,7 @@ class LaporanBulananController extends Controller
             'kinerjas',
             'jml_tgl',
             'sasarans',
-            // 'fotos',
+            'fotos',
         ));
     	return $pdf->stream('Laporan-Bulanan-'.$this->bulan($bulan));
     }
