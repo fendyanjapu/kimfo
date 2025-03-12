@@ -170,18 +170,18 @@
 								$img1 = $item->bukti_kegiatan;
 								$ket1 = $item->kinerja_harian;
 							}
-							if ($foto2 == $item->id) {
-								$img2 = $item->bukti_kegiatan;
-								$ket2 = $item->kinerja_harian;
-							}
-							if ($foto3 == $item->id) {
-								$img3 = $item->bukti_kegiatan;
-								$ket3 = $item->kinerja_harian;
-							}
-							if ($foto4 == $item->id) {
-								$img4 = $item->bukti_kegiatan;
-								$ket4 = $item->kinerja_harian;
-							}
+							// if ($foto2 == $item->id) {
+							// 	$img2 = $item->bukti_kegiatan;
+							// 	$ket2 = $item->kinerja_harian;
+							// }
+							// if ($foto3 == $item->id) {
+							// 	$img3 = $item->bukti_kegiatan;
+							// 	$ket3 = $item->kinerja_harian;
+							// }
+							// if ($foto4 == $item->id) {
+							// 	$img4 = $item->bukti_kegiatan;
+							// 	$ket4 = $item->kinerja_harian;
+							// }
 						?>
 					@endforeach
 				@else
