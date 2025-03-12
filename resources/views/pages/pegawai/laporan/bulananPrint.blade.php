@@ -166,9 +166,22 @@
 							<?php $j++ ?>
 						@endif
 						<?php
-							// for ($x=1; $x <= 4; $x++) { 
-							// 	if ()
-							// }
+							if ($foto1 == $item->id) {
+								$img1 = $item->bukti_kegiatan;
+								$ket1 = $item->kinerja_harian;
+							}
+							if ($foto2 == $item->id) {
+								$img2 = $item->bukti_kegiatan;
+								$ket2 = $item->kinerja_harian;
+							}
+							if ($foto3 == $item->id) {
+								$img3 = $item->bukti_kegiatan;
+								$ket3 = $item->kinerja_harian;
+							}
+							if ($foto4 == $item->id) {
+								$img4 = $item->bukti_kegiatan;
+								$ket4 = $item->kinerja_harian;
+							}
 						?>
 					@endforeach
 				@else
@@ -222,26 +235,26 @@
 	<br>
 
 	<table class="center">
-		{{-- <tr>
-			<td><img src="upload/bukti_kegiatan/{{ $foto1->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
+		<tr>
+			<td><img src="upload/bukti_kegiatan/{{ $img1 }}" width="250px" height="250px" alt=""></td>
 			<td style="width: 50px"></td>
-			<td><img src="upload/bukti_kegiatan/{{ $foto2->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
+			<td><img src="upload/bukti_kegiatan/{{ $img2 }}" width="250px" height="250px" alt=""></td>
 		</tr>
 		<tr>
-			<td style="text-align: center">{{ $foto1->kinerja_harian }}</td>
+			<td style="text-align: center">{{ $ket1 }}</td>
 			<td></td>
-			<td style="text-align: center">{{ $foto2->kinerja_harian }}</td>
+			<td style="text-align: center">{{ $ket2}}</td>
 		</tr>
 		<tr>
-			<td><img src="upload/bukti_kegiatan/{{ $foto3->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
+			<td><img src="upload/bukti_kegiatan/{{ $img3 }}" width="250px" height="250px" alt=""></td>
 			<td></td>
-			<td><img src="upload/bukti_kegiatan/{{ $foto4->bukti_kegiatan }}" width="250px" height="250px" alt=""></td>
+			<td><img src="upload/bukti_kegiatan/{{ $img4 }}" width="250px" height="250px" alt=""></td>
 		</tr>
 		<tr>
-			<td style="text-align: center">{{ $foto3->kinerja_harian }}</td>
+			<td style="text-align: center">{{ $ket3 }}</td>
 			<td></td>
-			<td style="text-align: center">{{ $foto4->kinerja_harian }}</td>
-		</tr> --}}
+			<td style="text-align: center">{{ $ket4 }}</td>
+		</tr>
 	</table>
 	
 </body>
