@@ -164,27 +164,24 @@
 							</tr>
 							@endif
 							<?php $j++ ?>
-							<?php
-							if ($foto1 == $item->id) {
+						@endif
+						<?php
+						    if ($foto1 == $item->id) {
 								$img1 = $item->bukti_kegiatan;
 								$ket1 = $item->kinerja_harian;
 							}
-							?>
-						@endif
-						<?php
-						    
-							// if ($foto2 == $item->id) {
-							// 	$img2 = $item->bukti_kegiatan;
-							// 	$ket2 = $item->kinerja_harian;
-							// }
-							// if ($foto3 == $item->id) {
-							// 	$img3 = $item->bukti_kegiatan;
-							// 	$ket3 = $item->kinerja_harian;
-							// }
-							// if ($foto4 == $item->id) {
-							// 	$img4 = $item->bukti_kegiatan;
-							// 	$ket4 = $item->kinerja_harian;
-							// }
+							if ($foto2 == $item->id) {
+								$img2 = $item->bukti_kegiatan;
+								$ket2 = $item->kinerja_harian;
+							}
+							if ($foto3 == $item->id) {
+								$img3 = $item->bukti_kegiatan;
+								$ket3 = $item->kinerja_harian;
+							}
+							if ($foto4 == $item->id) {
+								$img4 = $item->bukti_kegiatan;
+								$ket4 = $item->kinerja_harian;
+							}
 						?>
 					@endforeach
 				@else
@@ -234,16 +231,16 @@
 	
 	<div class="page-break"></div>
 		
-	<h5 style="text-align: center">FOTO HASIL KEGIATAN SELAMA BULANs {{ $bln }} {{ date('Y') }}</h5>
+	<h5 style="text-align: center">FOTO HASIL KEGIATAN SELAMA BULAN {{ $bln }} {{ date('Y') }}</h5>
 	<br>
 
 	<table class="center">
 		<tr>
-			{{-- <td><img src="upload/bukti_kegiatan/{{ $img1 }}" width="250px" height="250px" alt=""></td> --}}
+			<td><img src="upload/bukti_kegiatan/{{ $img1 }}" width="250px" height="250px" alt=""></td>
 			<td style="width: 50px"></td>
-			{{-- <td><img src="upload/bukti_kegiatan/{{ $img2 }}" width="250px" height="250px" alt=""></td> --}}
+			<td><img src="upload/bukti_kegiatan/{{ $img2 }}" width="250px" height="250px" alt=""></td>
 		</tr>
-		{{-- <tr>
+		<tr>
 			<td style="text-align: center">{{ $ket1 }}</td>
 			<td></td>
 			<td style="text-align: center">{{ $ket2}}</td>
@@ -257,7 +254,7 @@
 			<td style="text-align: center">{{ $ket3 }}</td>
 			<td></td>
 			<td style="text-align: center">{{ $ket4 }}</td>
-		</tr> --}}
+		</tr>
 	</table>
 	
 </body>
