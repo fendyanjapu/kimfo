@@ -32,7 +32,7 @@
                 
 
                 <div class="col-sm-offset-4 mt-4 text-center">
-                    <button type="submit" class="btn btn-primary" id="bSimpan"><i class="fa fa-save"></i> Simpan</button>
+                    <button type="submit" class="btn btn-primary" id="bSimpan"><i class="fa fa-save"></i> Cetak</button>
                     <a href="#" class="btn btn-danger" onClick="self.history.back()">Kembali</a>
                 </div>
             </form>

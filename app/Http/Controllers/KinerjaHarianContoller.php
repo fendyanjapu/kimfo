@@ -54,15 +54,31 @@ class KinerjaHarianContoller extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'sasaran_id' => 'required',
+            'kinerja_harian' => 'required',
+            'jumlah' => 'required',
+            'satuan' => 'required',
+            'bukti_kegiatan' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx,zip|max:2048',
+            'tgl_input' => 'required|date',
+            'jam_awal' => 'required',
+            'jam_akhir' => 'required',
+        ];
+
         $gambar =$request->file('bukti_kegiatan');
         $tujuan_upload = 'upload/bukti_kegiatan';
         $nama_gbr = time()."_".$gambar->getClientOriginalName(); 
-        $gambar->move($tujuan_upload,$nama_gbr);
+        
 
-        $data = $request->all();
+        $data = $request->validate($rules);
         $data['user_id'] = auth()->user()->id;
+        $data['indikator_id'] = $request->indikator_id;
         $data['bukti_kegiatan'] = $nama_gbr;
-        Kinerja_pegawai::create($data);
+        $store = Kinerja_pegawai::create($data);
+
+        if ($store) {
+            $gambar->move($tujuan_upload,$nama_gbr);
+        }
 
         Alert::success('Sukses', 'Data Berhasil Ditambahkan');
         return redirect()->route('kinerja_harian.index');
