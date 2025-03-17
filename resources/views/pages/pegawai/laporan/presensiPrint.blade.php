@@ -79,7 +79,7 @@
 	<?php
 		if (auth()->user()->jabatan_id == 20) {
 			$judul = 'PPT/NON ASN PENDUKUNG TENAGA AHLI';
-		} elseif (auth()->user()->jabatan == 21) {
+		} elseif (auth()->user()->jabatan_id == 21) {
 			$judul = 'THL';
 		} else {
 			$judul = 'ASN';
