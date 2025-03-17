@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-    <script>
+    {{-- <script>
         $(document).ready(function () {
             $('#tabel').DataTable({
                 "language": {
@@ -9,7 +9,7 @@
                 }
             });
         });
-    </script>
+    </script> --}}
     <h2>
         <div class="par-text">Data Presensi</div>
     </h2>
@@ -59,7 +59,7 @@
         
     </form>
     <br>
-    <table id="tabel" class="table table-striped table-bordered">
+    <table id="tabel" class="table table-bordered">
         <thead>
             <tr>
                 <th style="vertical-align: middle; text-align: center" width="5px">NO</th>
@@ -70,15 +70,29 @@
 
         </thead>
         <tbody>
-            @foreach ($presensis as $key)
-                <tr>
-                    <td style="text-align: center">{{ $loop->iteration }}</td>
-                    <td style="text-align: center"><?= $key->tanggal ?></td>
-                    <td style="text-align: center"><?= $key->jam_masuk ?></td>
-                    <td style="text-align: center"><?= $key->jam_pulang ?></td>
-                </tr>
-            @endforeach
-
+            @for ($i = 1; $i <= $jumlahHari; $i++)
+				<tr style="text-align: center;">
+					<td style="height: 15">{{ $i }}</td>
+					<td style="height: 15">{{ $i.'-'.$month.'-'.date('y') }}</td>
+					<?php 
+						$num_padded = sprintf("%02d", $i);
+						$tgl = date('Y')."-".$bulan."-".$num_padded;
+						$hari = date_format(date_create($tgl), 'l');
+						if ($hari == 'Saturday' || $hari == 'Sunday') {
+							$color = 'background-color: grey';
+						} else {
+							$color = '';
+						}
+						foreach ($hariLibur as $key) {
+							if ($key->tanggal_libur == $tgl) {
+								$color = 'background-color: grey';
+							}
+						}
+					?>
+					<td style="{{ $color }}">{{ isset($jam_masuk[$i]) != null ? $jam_masuk[$i] : '' }}</td>
+					<td style="{{ $color }}">{{ isset($jam_pulang[$i]) != null ? $jam_pulang[$i] : '' }}</td>
+				</tr>
+			@endfor
         </tbody>
     </table>
 

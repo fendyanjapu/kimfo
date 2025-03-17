@@ -122,7 +122,7 @@
 						<div class="col-sm-8">
 							<input type="file" name="bukti_kegiatan" required>
 						</div>
-						<label class="col-sm-4 control-label"><small>*maksimal file 2 MB</small></label>
+						<label class="col-sm-4 control-label"><small>*maksimal file 3 MB</small></label>
 						<div class="col-sm-8">
 							@error('bukti_kegiatan')
 								<small class="alert-danger">{{ $message }}</small>

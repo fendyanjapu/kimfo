@@ -121,7 +121,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="{{ route('dataPresensi') }}">
+              <a class="nav-link active" href="{{ route('admin.presensi') }}">
                   <i class="icon-user"></i><span>Presensi</span>
               </a>
             </li>
@@ -131,9 +131,11 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu" aria-labelledby="DataMaster">
-                  {{-- <li><a class="dropdown-item" href="{{ route('sasaran.index') }}">Sasaran</a></li>
-                  <li><a class="dropdown-item" href="#">Indikator</a></li> --}}
+                  <li><a class="dropdown-item" href="{{ route('admin.sasaran') }}">Sasaran</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.indikator') }}">Indikator</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.targetBulanan') }}">Target Bulanan</a></li>
                   {{-- Upload arsip --}}
+                  <hr>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 1]) }}">Renstra</a></li>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 2]) }}">IKU</a></li>
                 <li><a class="dropdown-item" href="{{ route('arsip.index', ['jenis_arsip_id' => 3]) }}">Renja</a></li>

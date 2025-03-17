@@ -114,7 +114,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
    Route::get('kartu-kendali', [KartuKendaliController::class, 'index'] )->name('kartuKendali');
    Route::get('kartu-kendali-show/{id_uraian_subkegiatan}', [KartuKendaliController::class, 'show'] )->name('kartuKendali.show');
 
-   Route::get('dataPresensi', [DataPresensiController::class, 'index'] )->name('dataPresensi');
+   Route::get('presensi', [AdminController::class, 'presensi'] )->name('admin.presensi');
+   Route::get('sasaran', [AdminController::class, 'sasaran'] )->name('admin.sasaran');
+   Route::get('indikator', [AdminController::class, 'indikator'] )->name('admin.indikator');
+   Route::get('targetBulanan', [AdminController::class, 'targetBulanan'] )->name('admin.targetBulanan');
 
     // rencanakas
     Route::prefix('rencana_kas')->group(function () {
