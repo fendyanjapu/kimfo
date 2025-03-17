@@ -120,6 +120,11 @@
                     <li><a class="dropdown-item" href="{{ route('jabatan.index') }}">Jabatan</a></li>
                 </ul>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ route('dataPresensi') }}">
+                  <i class="icon-user"></i><span>Presensi</span>
+              </a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="DataMaster" role="button" data-bs-toggle="dropdown" >
                 <i class="icon-book"></i><span>Pengumpulan</span>

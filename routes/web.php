@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CapaianKinerjaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataPresensiController;
 use App\Http\Controllers\HariLiburController;
 use App\Http\Controllers\LaporanBulananController;
 use App\Http\Controllers\LaporanPresensiController;
@@ -112,6 +113,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
    Route::get('kartu-kendali', [KartuKendaliController::class, 'index'] )->name('kartuKendali');
    Route::get('kartu-kendali-show/{id_uraian_subkegiatan}', [KartuKendaliController::class, 'show'] )->name('kartuKendali.show');
+
+   Route::get('dataPresensi', [DataPresensiController::class, 'index'] )->name('dataPresensi');
 
     // rencanakas
     Route::prefix('rencana_kas')->group(function () {

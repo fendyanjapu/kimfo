@@ -17,4 +17,9 @@ class Presensi extends Model
         'gambar_masuk',
         'gambar_pulang',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
