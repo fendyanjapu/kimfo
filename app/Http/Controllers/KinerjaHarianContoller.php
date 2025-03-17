@@ -59,7 +59,7 @@ class KinerjaHarianContoller extends Controller
             'kinerja_harian' => 'required',
             'jumlah' => 'required',
             'satuan' => 'required',
-            'bukti_kegiatan' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx,zip|max:2048',
+            'bukti_kegiatan' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx,zip|max:3072',
             'tgl_input' => 'required|date',
             'jam_awal' => 'required',
             'jam_akhir' => 'required',

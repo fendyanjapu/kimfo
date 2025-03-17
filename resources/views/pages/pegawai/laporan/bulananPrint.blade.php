@@ -204,7 +204,7 @@
 	@foreach ($sasarans as $sasaran)
 		<p>{{ ++$no }}. {{ $sasaran->nama_sasaran }}</p>
 	@endforeach
-	<p>{{ $no }}. Tugas Lainnya</p>
+	<p>{{ ++$no }}. Tugas Lainnya</p>
 	<br><br>
 	<table>
 		<tr>
