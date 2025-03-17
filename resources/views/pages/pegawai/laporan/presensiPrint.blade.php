@@ -161,7 +161,6 @@
 		<br>
 		<br>
 		<br>
-		<br>
 		<tr>
 			<td style="width: 300px"></td>
 			<td style="text-align: center"><u>{{ $nama_atasan }}</u></td>
