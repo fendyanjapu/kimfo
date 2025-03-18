@@ -96,5 +96,5 @@
         $('#pegawai').select2();
     })
   </script>
-  
+
 @endsection

@@ -134,8 +134,22 @@ class AdminController extends Controller
             $bulan = date('m');
         }
 
+        switch ($bulan) {
+            case '01':
+                $month = 'jan';
+              break;
+            case '02':
+                $month = 'feb';
+              break;
+            case '03':
+                $month = 'mar';
+              break;
+            default:
+            $month = '';
+          }
+
         $capaianKinerjas = CapaianKinerja::where('user_id', '=', $pegawai_id)
-                                        ->where('bulan', $bulan)->get();
+                                        ->where('bulan', $month)->get();
         
         $pegawais = User::where('jabatan_id', '!=', '1')->orderBy('nama')->get();
 
