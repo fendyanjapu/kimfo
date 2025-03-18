@@ -123,7 +123,7 @@
 			</tr>
 
 		</thead>
-		<tbody style="page-break-inside: avoid;">
+		<tbody >
 			@for ($i = 1; $i <= $jumlahHari; $i++)
 				<?php 
 					$num_padded = sprintf("%02d", $i);
@@ -157,7 +157,7 @@
 								<td>{{ $ket }}</td>
 							</tr>
 							@else
-							<tr style="{{ $color }}">
+							<tr style="{{ $color }}; page-break-before: avoid;">
 								<td>{{ $item->jam_awal }}-{{ $item->jam_akhir }}</td>
 								<td style="text-align: left">{{ $item->kinerja_harian }}</td>
 								<td>{{ $ket }}</td>
