@@ -123,7 +123,7 @@
 			</tr>
 
 		</thead>
-		<tbody>
+		<tbody style="page-break-inside: avoid;">
 			@for ($i = 1; $i <= $jumlahHari; $i++)
 				<?php 
 					$num_padded = sprintf("%02d", $i);
@@ -247,6 +247,7 @@
 			<td></td>
 			<td style="text-align: center">{{ $ket2}}</td>
 		</tr>
+		<br>
 		<tr>
 			<td><img src="upload/bukti_kegiatan/{{ $img3 }}" width="250px" height="250px" alt=""></td>
 			<td></td>
