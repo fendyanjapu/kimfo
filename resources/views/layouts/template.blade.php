@@ -149,11 +149,16 @@
               </ul>
           </li>
 
-            <li class="nav-item">
-              <a class="nav-link active" href="#">
-                  <i class="icon-bar-chart"></i><span>Pengukuran</span>
-              </a>
-            </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pengukuran" role="button" data-bs-toggle="dropdown" >
+              <i class="icon-bar-chart"></i><span>Pengukuran</span>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="pengukuran">
+                <li><a class="dropdown-item" href="{{ route('admin.kinerjaHarian') }}">Kinerja Harian</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.capaianKinerja') }}">Capaian Kinerja</a></li>
+            </ul>
+        </li>
 
             <li class="nav-item">
               <a class="nav-link active" href="#">

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Indikator;
-use App\Models\Sasaran;
-use App\Models\TargetBulanan;
 use App\Models\User;
+use App\Models\Sasaran;
 use App\Models\Presensi;
 use App\Models\HariLibur;
+use App\Models\Indikator;
 use Illuminate\Http\Request;
+use App\Models\TargetBulanan;
+use App\Models\CapaianKinerja;
+use App\Models\Kinerja_pegawai;
 
 class AdminController extends Controller
 {
@@ -99,6 +101,49 @@ class AdminController extends Controller
             'pegawai_id',
             'pegawais',
             'targetBulanans',
+        ));
+    }
+
+    public function kinerjaHarian(Request $request)
+    {
+        $pegawai_id = $request->pegawai;
+        $bulan = $request->bulan;
+        if ($bulan == null) {
+            $bulan = date('m');
+        }
+
+        $kinerjaPegawais = Kinerja_pegawai::where('user_id', '=', $pegawai_id)
+                                        ->whereMonth('tgl_input', $bulan)
+                                        ->orderBy('tgl_input', 'desc')->get();
+        
+        $pegawais = User::where('jabatan_id', '!=', '1')->orderBy('nama')->get();
+
+        return view('pages.admin.data.kinerjaHarian', compact(
+            'pegawai_id',
+            'bulan',
+            'pegawais',
+            'kinerjaPegawais',
+        ));
+    }
+
+    public function capaianKinerja(Request $request)
+    {
+        $pegawai_id = $request->pegawai;
+        $bulan = $request->bulan;
+        if ($bulan == null) {
+            $bulan = date('m');
+        }
+
+        $capaianKinerjas = CapaianKinerja::where('user_id', '=', $pegawai_id)
+                                        ->where('bulan', $bulan)->get();
+        
+        $pegawais = User::where('jabatan_id', '!=', '1')->orderBy('nama')->get();
+
+        return view('pages.admin.data.capaianKinerja', compact(
+            'pegawai_id',
+            'bulan',
+            'pegawais',
+            'capaianKinerjas',
         ));
     }
 }

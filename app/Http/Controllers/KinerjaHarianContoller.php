@@ -29,11 +29,6 @@ class KinerjaHarianContoller extends Controller
         if ($cekPresensi == 0) {
             return redirect()->route('presensi.index');
         }
-
-        // confirm delete
-        $title='Hapus Data!';
-        $text="Apakah Anda Yakin?";
-        confirmDelete($title, $text);
         
         return view('pages.pegawai.kinerja_harian.index', ['query' => $kinerjaPegawai]);
     }
