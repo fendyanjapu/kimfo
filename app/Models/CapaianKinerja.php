@@ -15,10 +15,16 @@ class CapaianKinerja extends Model
         'bulan',
         'jumlah',
         'bukti_capaian',
+        'verifikasi',
     ];
 
     public function indikator()
     {
         return $this->belongsTo(Indikator::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

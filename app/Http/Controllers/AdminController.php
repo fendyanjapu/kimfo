@@ -144,6 +144,33 @@ class AdminController extends Controller
             case '03':
                 $month = 'mar';
               break;
+            case '04':
+                $month = 'apr';
+              break;
+            case '05':
+                $month = 'mei';
+              break;
+            case '06':
+                $month = 'jun';
+              break;
+            case '07':
+                $month = 'jul';
+              break;
+            case '08':
+                $month = 'agu';
+              break;
+            case '09':
+                $month = 'sep';
+              break;
+            case '10':
+                $month = 'okt';
+              break;
+            case '11':
+                $month = 'nov';
+              break;
+            case '12':
+                $month = 'des';
+              break;
             default:
             $month = '';
           }

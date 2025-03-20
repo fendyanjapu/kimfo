@@ -18,6 +18,7 @@ return new class extends Migration
             $table->char('bulan', 3);
             $table->string('jumlah', 10);
             $table->string('bukti_capaian');
+            $table->char('verifikasi', 1)->nullable();
             $table->timestamps();
         });
     }

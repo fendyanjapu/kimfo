@@ -3,6 +3,7 @@
 use App\Http\Controllers\CapaianKinerjaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataPresensiController;
+use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\HariLiburController;
 use App\Http\Controllers\LaporanBulananController;
 use App\Http\Controllers\LaporanPresensiController;
@@ -67,6 +68,9 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth']], function() {
     Route::post('/arsip/store', [ArsipController::class, 'store'] )->name('arsip.store');
     Route::put('/arsip/{id}/update', [ArsipController::class, 'update'] )->name('arsip.update');
     Route::delete('/arsip/{id}/delete', [ArsipController::class, 'delete'] )->name('arsip.delete');
+
+    Route::get('/evaluasi', [EvaluasiController::class, 'index'] )->name('evaluasi.index');
+    Route::get('/evaluasi/verifikasi', [EvaluasiController::class, 'verifikasi'] )->name('evaluasi.verifikasi');
 
     Route::resource('presensi', PresensiController::class);
     Route::resource('presensi-pulang', PresensiPulangController::class);

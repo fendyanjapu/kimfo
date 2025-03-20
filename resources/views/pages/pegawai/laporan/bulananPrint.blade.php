@@ -100,6 +100,13 @@
 			<td> : </td>
 			<td>{{ auth()->user()->nama }}</td>
 		</tr>
+		@if (auth()->user()->jabatan_id < 20)
+			<tr>
+				<td>Jabatan</td>
+				<td> : </td>
+				<td>{{ ucwords(strtolower(auth()->user()->jabatan?->nama_jabatan)) }}</td>
+			</tr>
+		@endif
 		@if (auth()->user()->jabatan_id == 20)
 			<tr>
 				<td>Jabatan</td>
