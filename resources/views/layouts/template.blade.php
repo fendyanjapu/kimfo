@@ -161,7 +161,7 @@
         </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="#">
+              <a class="nav-link active" href="{{ route('admin.evaluasi') }}">
                   <i class="icon-list-alt"></i><span>Evaluasi</span>
               </a>
             </li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PersentaseCapaian;
 use App\Models\User;
 use App\Models\Sasaran;
 use App\Models\Presensi;
@@ -126,14 +127,8 @@ class AdminController extends Controller
         ));
     }
 
-    public function capaianKinerja(Request $request)
+    private function bulan($bulan)
     {
-        $pegawai_id = $request->pegawai;
-        $bulan = $request->bulan;
-        if ($bulan == null) {
-            $bulan = date('m');
-        }
-
         switch ($bulan) {
             case '01':
                 $month = 'jan';
@@ -174,7 +169,18 @@ class AdminController extends Controller
             default:
             $month = '';
           }
+        return $month;
+    }
 
+    public function capaianKinerja(Request $request)
+    {
+        $pegawai_id = $request->pegawai;
+        $bulan = $request->bulan;
+        if ($bulan == null) {
+            $bulan = date('m');
+        }
+        
+        $month = $this->bulan($bulan);
         $capaianKinerjas = CapaianKinerja::where('user_id', '=', $pegawai_id)
                                         ->where('bulan', $month)->get();
         
@@ -186,5 +192,59 @@ class AdminController extends Controller
             'pegawais',
             'capaianKinerjas',
         ));
+    }
+
+    public function evaluasi(Request $request)
+    {
+        $bulan = $request->bulan;
+        if ($bulan == null) {
+            $bulan = date('m');
+        }
+        $month = $this->bulan($bulan);
+        
+        $users = User::where('id', '>', '5')->get();
+        foreach ($users as $user) {
+            $i = 0;
+            $jumlah = 0;
+            $targetBulanans = TargetBulanan::where('user_id', '=', $user->id)->get();
+            foreach ($targetBulanans as $targetBulanan) {
+                
+                    if ($targetBulanan->$month != 0) {
+                        $target = $targetBulanan->$month;
+                        $capaianKinerja = CapaianKinerja::where('user_id', '=', $user->id)
+                                                        ->where('indikator_id', '=', $targetBulanan->indikator_id)
+                                                        ->where('verifikasi', '!=', null)
+                                                        ->where('bulan', '=', $month)->first();
+
+                        $capaian = $capaianKinerja->jumlah ?? '0';
+                        $persentase[++$i] = ($capaian / $target) * 100;
+                        $jumlah += $persentase[$i];
+                    }
+                }
+            if ($i == 0) {
+                $totalPersentase = 0;
+            } else {
+                $totalPersentase = $jumlah / $i;
+            }
+            $persentaseCapaian = PersentaseCapaian::where('user_id', '=', $user->id)
+                                                ->where('tahun', '=', date('Y'))
+                                                ->where('bulan', '=', $bulan);
+            if ($persentaseCapaian->count() > 0) {
+                $data = [
+                    'persentase' => number_format($totalPersentase, 2)
+                ];
+                $persentaseCapaian->update($data);
+            } else {
+                $data = [
+                    'user_id' => $user->id,
+                    'tahun' => date('Y'),
+                    'bulan' => $bulan,
+                    'persentase' => number_format($totalPersentase, 2)
+                ];
+                PersentaseCapaian::create($data);
+            }
+        }
+        $persentaseCapaians = PersentaseCapaian::where('bulan', '=', $bulan)->orderBy('persentase', 'desc')->get();
+        return view('pages.admin.data.evaluasi', compact('bulan', 'persentaseCapaians'));
     }
 }

@@ -124,6 +124,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
    Route::get('targetBulanan', [AdminController::class, 'targetBulanan'] )->name('admin.targetBulanan');
    Route::get('kinerjaHarian', [AdminController::class, 'kinerjaHarian'] )->name('admin.kinerjaHarian');
    Route::get('capaianKinerja', [AdminController::class, 'capaianKinerja'] )->name('admin.capaianKinerja');
+   Route::get('evaluasi', [AdminController::class, 'evaluasi'] )->name('admin.evaluasi');
 
     // rencanakas
     Route::prefix('rencana_kas')->group(function () {
