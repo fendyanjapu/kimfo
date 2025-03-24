@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PersentaseCapaian;
 use App\Models\User;
 use App\Models\Sasaran;
 use App\Models\Presensi;
@@ -12,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Models\TargetBulanan;
 use App\Models\CapaianKinerja;
 use App\Models\Kinerja_pegawai;
+use App\Models\PersentaseCapaian;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -255,8 +256,22 @@ class AdminController extends Controller
     {
         $nama = User::findOrFail($id)->nama;
         $month = $this->bulan($bulan);
-        $capaianKinerjas = CapaianKinerja::where('user_id', '=', $id)->where('bulan', '=', $month)->get();
         
-        return view('pages.admin.data.evaluasiDetail', compact('nama', 'capaianKinerjas'));
+        $query = Indikator::where('user_id', '=', $id)->get();
+        // $target = [];
+        foreach ($query as $key) {
+            $targets = TargetBulanan::where('indikator_id', '=', $key->id)->first();
+            $target[$key->id] = $targets->$month;
+            $capaians = CapaianKinerja::where('indikator_id', '=', $key->id)
+                                    ->where('bulan', '=', $month)
+                                    ->where('verifikasi', '!=', null);
+            if ($capaians->count() > 0) {
+                $capaian[$key->id] = $capaians->first()->jumlah;
+            } else {
+                $capaian[$key->id] = 0;
+            }
+        }
+        
+        return view('pages.admin.data.evaluasiDetail', compact('nama', 'query', 'target', 'capaian'));
     }
 }

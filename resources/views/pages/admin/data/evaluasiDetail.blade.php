@@ -25,24 +25,26 @@
             <tr>
                 <th style="vertical-align: middle; text-align: center" width="15px">No</th>
                 <th style="vertical-align: middle; text-align: center">Indikator Kinerja</th>
-                <th style="vertical-align: middle; text-align: center">Bulan</th>
+                <th style="vertical-align: middle; text-align: center">Target</th>
                 <th style="vertical-align: middle; text-align: center">Jumlah Capaian</th>
-                <th style="vertical-align: middle; text-align: center">Bukti Capaian</th>
+                <th style="vertical-align: middle; text-align: center">Satuan</th>
+                {{-- <th style="vertical-align: middle; text-align: center">Bukti Capaian</th> --}}
             </tr>
         </thead>
         <tbody>
-            @foreach ($capaianKinerjas as $item)
+            @foreach ($query as $item)
                 <tr>
                     <td style="text-align: center;width:1%">{{ $loop->iteration }}</td>
-                    <td style="text-align: center;">{{ $item->indikator?->nama_indikator }}</td>
-                    <td style="text-align: center;">{{ strtoupper($item->bulan) }}</td>
-                    <td style="text-align: center;">{{ $item->jumlah }}</td>
-                    <td style="text-align: center; width:10%">
+                    <td style="text-align: center;">{{ $item->nama_indikator }}</td>
+                    <td style="text-align: center;">{{ $target[$item->id] }}</td>
+                    <td style="text-align: center;">{{ $capaian[$item->id] }}</td>
+                    <td style="text-align: center;">{{ $item->satuan }}</td>
+                    {{-- <td style="text-align: center; width:10%">
                         <a href="{{ env('APP_URL') . 'upload/bukti_capaian/' . $item->bukti_capaian }}"
                             class="btn btn-default btn-sm mt-1" title="lihat" target="_blank">
                             <i class="icon-file" aria-hidden="true"></i>
                         </a>
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
         </tbody>
