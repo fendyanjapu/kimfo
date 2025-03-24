@@ -67,7 +67,7 @@
                     <td style="text-align: center;">{{ $item->user?->nama }}</td>
                     <td style="text-align: center;">{{ $item->persentase." %" }}</td>
                     <td style="text-align: center">
-                        <a href="#" class="btn btn-primary btn-sm mt-1" title="lihat">lihat</a>
+                        <a href="{{ route('admin.evaluasiDetail', ['bulan' => $bulan, 'id' => $item->user_id]) }}" class="btn btn-primary btn-sm mt-1" title="lihat">lihat</a>
                     </td>
                 </tr>
             @endforeach

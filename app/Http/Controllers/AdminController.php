@@ -225,6 +225,9 @@ class AdminController extends Controller
                 $totalPersentase = 0;
             } else {
                 $totalPersentase = $jumlah / $i;
+                if ($totalPersentase > 100) {
+                    $totalPersentase = 100;
+                }
             }
             $persentaseCapaian = PersentaseCapaian::where('user_id', '=', $user->id)
                                                 ->where('tahun', '=', date('Y'))
@@ -246,5 +249,14 @@ class AdminController extends Controller
         }
         $persentaseCapaians = PersentaseCapaian::where('bulan', '=', $bulan)->orderBy('persentase', 'desc')->get();
         return view('pages.admin.data.evaluasi', compact('bulan', 'persentaseCapaians'));
+    }
+
+    public function evaluasiDetail($bulan, $id)
+    {
+        $nama = User::findOrFail($id)->nama;
+        $month = $this->bulan($bulan);
+        $capaianKinerjas = CapaianKinerja::where('user_id', '=', $id)->where('bulan', '=', $month)->get();
+        
+        return view('pages.admin.data.evaluasiDetail', compact('nama', 'capaianKinerjas'));
     }
 }
