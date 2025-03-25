@@ -210,25 +210,25 @@ class AdminController extends Controller
             $targetBulanans = TargetBulanan::where('user_id', '=', $user->id)->get();
             foreach ($targetBulanans as $targetBulanan) {
                 
-                    if ($targetBulanan->$month != 0) {
-                        $target = $targetBulanan->$month;
-                        $capaianKinerja = CapaianKinerja::where('user_id', '=', $user->id)
-                                                        ->where('indikator_id', '=', $targetBulanan->indikator_id)
-                                                        ->where('verifikasi', '!=', null)
-                                                        ->where('bulan', '=', $month)->first();
+                if ($targetBulanan->$month != 0) {
+                    $target = $targetBulanan->$month;
+                    $capaianKinerja = CapaianKinerja::where('user_id', '=', $user->id)
+                                                    ->where('indikator_id', '=', $targetBulanan->indikator_id)
+                                                    ->where('verifikasi', '!=', null)
+                                                    ->where('bulan', '=', $month)->first();
 
-                        $capaian = $capaianKinerja->jumlah ?? '0';
-                        $persentase[++$i] = ($capaian / $target) * 100;
-                        $jumlah += $persentase[$i];
+                    $capaian = $capaianKinerja->jumlah ?? '0';
+                    $persentaseIndikator[++$i] = ($capaian / $target) * 100;
+                    if ($persentaseIndikator[$i] > 100) {
+                        $persentaseIndikator[$i] = 100;
                     }
+                    $jumlah += $persentaseIndikator[$i];
                 }
+            }
             if ($i == 0) {
                 $totalPersentase = 0;
             } else {
                 $totalPersentase = $jumlah / $i;
-                if ($totalPersentase > 100) {
-                    $totalPersentase = 100;
-                }
             }
             $persentaseCapaian = PersentaseCapaian::where('user_id', '=', $user->id)
                                                 ->where('tahun', '=', date('Y'))
