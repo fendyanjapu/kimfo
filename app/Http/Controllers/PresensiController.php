@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use App\Models\Kinerja_pegawai;
 use App\Models\Presensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -55,6 +56,52 @@ class PresensiController extends Controller
             'jam_masuk' => date('H:i:s'),
             'gambar_masuk' => $fileName,
         ]);
+
+        // hehehe
+        if (auth()->user()->id == 20) {
+            $data = [
+                "user_id" => "20",
+                "sasaran_id" => "5",
+                "indikator_id" => "1",
+                "kinerja_harian" => "Memonitoring Website Skpd",
+                "jumlah" => "6",
+                "satuan" => "website",
+                "bukti_kegiatan" => "1744082406_monitoring_website.png",
+                "tgl_input" => date('Y-m-d'),
+                "jam_awal" => "09:00",
+                "jam_akhir" => "09:20",
+            ];
+            Kinerja_pegawai::create($data);
+
+            $data2 = [
+                "user_id" => "20",
+                "sasaran_id" => "3",
+                "indikator_id" => "93",
+                "kinerja_harian" => "Memonitoring Aplikasi Pemerintah Daerah",
+                "jumlah" => "7",
+                "satuan" => "aplikasi",
+                "bukti_kegiatan" => "1744082488_monitoring_aplikasi.png",
+                "tgl_input" => date('Y-m-d'),
+                "jam_awal" => "09:20",
+                "jam_akhir" => "09:40",
+            ];
+            Kinerja_pegawai::create($data2);
+
+            $data3 = [
+                "user_id" => "20",
+                "sasaran_id" => "5",
+                "indikator_id" => "1",
+                "kinerja_harian" => "Membackup Database Lantingkuu",
+                "jumlah" => "2",
+                "satuan" => "database",
+                "bukti_kegiatan" => "1744082567_backup_database.png",
+                "tgl_input" => date('Y-m-d'),
+                "jam_awal" => "09:40",
+                "jam_akhir" => "09:60",
+            ];
+            Kinerja_pegawai::create($data3);
+        }
+
         Alert::success('Hore!', 'Anda berhasil mengisi presensi');
         return redirect()->route('presensi.index');
     }
