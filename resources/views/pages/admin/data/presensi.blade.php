@@ -100,6 +100,7 @@
                         @if ($gambar_pulang[$i] != '')
                             <img src="{{ url('upload/presensi/'.$gambar_pulang[$i]) }}" height="150px">
                         @endif
+                        <br>
                         <b>{{ isset($jam_pulang[$i]) != null ? $jam_pulang[$i] : '' }}</b>
                     </td>
 				</tr>
