@@ -31,6 +31,7 @@ class AdminController extends Controller
         $jam_pulang = [];
         $gambar_masuk = [];
         $gambar_pulang = [];
+        $dinas_luar = [];
 
         if ($pegawai_id != null) {
             for ($i = 1; $i <= $jumlahHari; $i++) {
