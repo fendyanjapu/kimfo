@@ -42,11 +42,13 @@ class AdminController extends Controller
                     $jam_pulang[$i] = $presensi->jam_pulang;
                     $gambar_masuk[$i] = $presensi->gambar_masuk;
                     $gambar_pulang[$i] = $presensi->gambar_pulang;
+                    $dinas_luar[$i] = $presensi->dinas_luar;
                 }  else {
                     $jam_masuk[$i] = '';
                     $jam_pulang[$i] = '';
                     $gambar_masuk[$i] = '';
                     $gambar_pulang[$i] = '';
+                    $dinas_luar[$i] = '';
                 }
             }
         }
@@ -65,6 +67,7 @@ class AdminController extends Controller
             'jam_pulang',
             'gambar_masuk', 
             'gambar_pulang',
+            'dinas_luar',
             'hariLibur'
         ));
         
