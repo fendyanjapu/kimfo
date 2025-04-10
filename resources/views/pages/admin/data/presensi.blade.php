@@ -98,9 +98,11 @@
                         <br>
                         <b>{{ isset($jam_masuk[$i]) != null ? $jam_masuk[$i] : '' }}</b>
                         <br>
-                        @if ($dinas_luar[$i] == 1)
-                            <p>Dinas Luar</p>
-                        @endif
+                        @isset($dinas_luar[$i])
+                            @if ($dinas_luar[$i] == 1)
+                                <p>Dinas Luar</p>
+                            @endif
+                        @endisset
                     </td>
 					<td style="{{ $color }}">
                         @isset($gambar_pulang[$i])
