@@ -29,6 +29,8 @@ class AdminController extends Controller
 
         $jam_masuk = [];
         $jam_pulang = [];
+        $gambar_masuk = [];
+        $gambar_pulang = [];
 
         if ($pegawai_id != null) {
             for ($i = 1; $i <= $jumlahHari; $i++) {
@@ -65,6 +67,7 @@ class AdminController extends Controller
             'gambar_pulang',
             'hariLibur'
         ));
+        
     }
 
     public function sasaran(Request $request)

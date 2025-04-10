@@ -55,6 +55,7 @@ class PresensiController extends Controller
             'tanggal' => date('Y-m-d'),
             'jam_masuk' => date('H:i:s'),
             'gambar_masuk' => $fileName,
+            'dinas_luar' => $request->dinas_luar,
         ]);
 
         // hehehe

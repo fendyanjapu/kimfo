@@ -16,6 +16,7 @@ class Presensi extends Model
         'jam_pulang',
         'gambar_masuk',
         'gambar_pulang',
+        'dinas_luar',
     ];
 
     public function user()

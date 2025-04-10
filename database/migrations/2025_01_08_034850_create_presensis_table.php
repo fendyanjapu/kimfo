@@ -20,6 +20,7 @@ return new class extends Migration
             $table->time('jam_pulang')->nullable();
             $table->string('gambar_masuk', 255);
             $table->string('gambar_pulang', 255)->nullable();
+            $table->char('dinas_luar', 1)->nullable();
 
             $table->timestamps();
         });

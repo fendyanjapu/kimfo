@@ -12,9 +12,13 @@
                     <div class="form-group row mt-3">
                         <div class="col-sm-8">
                             <div id="my_camera"></div>
-
-                            <br />
-
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" name="dinas_luar" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                  Dinas Luar
+                                </label>
+                              </div>
+                              <br>
                             <input type=button value="Take Picture" onClick="take_snapshot()">
 
                             <input type="hidden" name="image" class="image-tag">
