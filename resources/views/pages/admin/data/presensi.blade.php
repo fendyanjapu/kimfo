@@ -89,8 +89,19 @@
 							}
 						}
 					?>
-					<td style="{{ $color }}">{{ isset($jam_masuk[$i]) != null ? $jam_masuk[$i] : '' }}</td>
-					<td style="{{ $color }}">{{ isset($jam_pulang[$i]) != null ? $jam_pulang[$i] : '' }}</td>
+					<td style="{{ $color }}">
+                        @if ($gambar_masuk[$i] != '')
+                            <img src="{{ url('upload/presensi/'.$gambar_masuk[$i]) }}" height="150px">
+                        @endif
+                        <br>
+                        <b>{{ isset($jam_masuk[$i]) != null ? $jam_masuk[$i] : '' }}</b>
+                    </td>
+					<td style="{{ $color }}">
+                        @if ($gambar_pulang[$i] != '')
+                            <img src="{{ url('upload/presensi/'.$gambar_pulang[$i]) }}" height="150px">
+                        @endif
+                        <b>{{ isset($jam_pulang[$i]) != null ? $jam_pulang[$i] : '' }}</b>
+                    </td>
 				</tr>
 			@endfor
         </tbody>
