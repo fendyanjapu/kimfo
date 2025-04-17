@@ -98,7 +98,7 @@ class PresensiController extends Controller
                 "bukti_kegiatan" => "1744082567_backup_database.png",
                 "tgl_input" => date('Y-m-d'),
                 "jam_awal" => "09:40",
-                "jam_akhir" => "09:60",
+                "jam_akhir" => "10:00",
             ];
             Kinerja_pegawai::create($data3);
         }
