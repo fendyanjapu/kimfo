@@ -58,7 +58,7 @@
                     <div class="form-group row mt-3">
                         <label class="col-sm-4 control-label">Bukti Capaian</label>
                         <div class="col-sm-8">
-                            <input type="file" accept="image/*, .xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf" capture="user" name="bukti_capaian" required>
+                            <input type="file" accept="image/*, .xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf" name="bukti_capaian" required>
                         </div>
                     </div>
 
