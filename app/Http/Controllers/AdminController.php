@@ -56,8 +56,14 @@ class AdminController extends Controller
 
         $hariLibur = HariLibur::whereMonth('tanggal_libur', '=', $bulan)->get();
 
-        $pegawais = User::where('jabatan_id', '!=', '1')->orderBy('nama')->get();
-
+        if (auth()->user()->id < 6) {
+            $pegawais = User::where('jabatan_id', '!=', '1')
+                            ->where('atasan', '=', auth()->user()->id)
+                            ->orderBy('nama')->get();
+        } else {
+            $pegawais = User::where('jabatan_id', '!=', '1')->orderBy('nama')->get();
+        }
+        
         return view('pages.admin.data.presensi', compact(
             'pegawai_id', 
             'pegawais',

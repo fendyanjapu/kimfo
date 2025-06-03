@@ -57,7 +57,7 @@ class UserController extends Controller
             'atasan' => $validasi['atasan'],
             'jabatan_id' => $validasi['jabatan_id'],
             'tgl_login' => Null,
-            'password' => sha1($validasi['password']),
+            'password' => bcrypt($validasi['password']),
             'level' => 'pegawai'
         ]);
 

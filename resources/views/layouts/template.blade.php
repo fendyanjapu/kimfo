@@ -85,11 +85,23 @@
           </ul>
       </li>
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link active" href="{{ route('evaluasi.index') }}">
                 <i class="icon-list-alt"></i><span>Evaluasi</span>
             </a>
-          </li>
+          </li> --}}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="evaluasi" role="button" data-bs-toggle="dropdown" >
+              <i class="icon-list-alt"></i><span>Evaluasi</span>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="evaluasi">
+              <li><a class="dropdown-item" href="{{ route('evaluasi.index') }}">Capaian Kinerja</a></li>
+                <li><a class="dropdown-item" href="#">Kinerja Harian</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.presensi') }}">Presensi</a></li>
+            </ul>
+        </li>
 
           <li class="nav-item">
             <a class="nav-link active" href="{{ route('logout') }}">
@@ -160,11 +172,23 @@
             </ul>
         </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link active" href="{{ route('admin.evaluasi') }}">
                   <i class="icon-list-alt"></i><span>Evaluasi</span>
               </a>
-            </li>
+            </li> --}}
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="evaluasi" role="button" data-bs-toggle="dropdown" >
+                <i class="icon-list-alt"></i><span>Evaluasi</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="evaluasi">
+                <li><a class="dropdown-item" href="{{ route('admin.evaluasi') }}">Capaian Kinerja</a></li>
+                  <li><a class="dropdown-item" href="#">Kinerja Harian</a></li>
+                  <li><a class="dropdown-item" href="#">Presensi</a></li>
+              </ul>
+          </li>
 
             {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="RencanaKas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
